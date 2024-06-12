@@ -107,10 +107,10 @@ public class Login_REG {
 		user.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyReleased(KeyEvent arg0) {
-				String usr = user.getText();
-				String ad = Login_Admin.username_exist_admin(usr);
-				String em = Login_Employee.username_exist_emp(usr);
-				String mng = Login_Manager.username_exist_mngr(usr);
+				String username = user.getText();
+				String email = user.getText();
+				String 
+				new Register(username, email, username, username, null)
 
 				if (ad == null && em == null && mng == null) {
 					user.setBorder(null);

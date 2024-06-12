@@ -7,7 +7,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JWindow;
 import java.awt.BorderLayout;
-import javax.swing.UIManager;
 
 public class LOG_Splash {
 	public static void main(String[] args) throws InterruptedException {
@@ -17,8 +16,8 @@ public class LOG_Splash {
 	public static void showSplashAndRunMainApp() throws InterruptedException {
 		showSplash();
 		// Tampilkan aplikasi utama (misal JFrame)
-		Login_Jfrm log = new Login_Jfrm();
-		log.main(null);
+		// Login_Jfrm log = new Login_Jfrm();
+		Login_Jfrm.main(null);
 	}
 
 	public static void showSplash() throws InterruptedException {

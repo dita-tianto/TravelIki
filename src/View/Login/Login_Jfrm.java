@@ -1,6 +1,6 @@
 package View.Login;
 
-import Controller.Login_cntrl;
+import Controller.Login;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
@@ -84,7 +84,7 @@ public class Login_Jfrm extends JFrame {
         desktopPane.setLayout(null);
 
         addLoginComponents();
-        
+
     }
 
     private void addLoginComponents() {
@@ -98,7 +98,7 @@ public class Login_Jfrm extends JFrame {
         user = new JTextField();
         user.setBounds(885, 48, 250, 30); // Perbesar ukuran dan sesuaikan posisi
         desktopPane.add(user);
-        user.setColumns(10);    
+        user.setColumns(10);
 
         JLabel lblPassword = new JLabel("Password : ");
         lblPassword.setFont(new Font("Poppins", Font.BOLD, 16)); // Perbesar teks
@@ -118,7 +118,7 @@ public class Login_Jfrm extends JFrame {
         desktopPane.add(rol); // Add to the content pane
 
         // Initialize and set up the JLabel for Role
-        JLabel lblRole = new JLabel("Role : "); 
+        JLabel lblRole = new JLabel("Role : ");
         lblRole.setFont(new Font("Poppins", Font.BOLD, 16)); // Match the font
         lblRole.setBounds(785, 125, 120, 30); // Position below Password
         desktopPane.add(lblRole); // Add to the content pane
@@ -130,11 +130,11 @@ public class Login_Jfrm extends JFrame {
                 if (rol.getSelectedItem().toString().equals("Select")) {
                     JOptionPane.showMessageDialog(null, "Select Your Role");
                 } else {
-                    String un = user.getText();
-                    String ps = new String(((JPasswordField) passw).getPassword()); // Use getPassword() for
-                                                                                    // JPasswordField
-                    String role = rol.getSelectedItem().toString();
-                    new Login_cntrl(un, ps, role);
+                    String username = user.getText();
+                    String password = new String(((JPasswordField) passw).getPassword()); // Use getPassword() for
+                    // JPasswordField
+                    // String role = rol.getSelectedItem().toString();
+                    new Login(username, password);
                 }
             }
         });
@@ -151,7 +151,7 @@ public class Login_Jfrm extends JFrame {
                 rol.setSelectedIndex(0); // Reset combo box to default
             }
         });
-        btnReset.setBounds(1040, 165, 100, 30); // Adjusted posi    tion and size
+        btnReset.setBounds(1040, 165, 100, 30); // Adjusted posi tion and size
         desktopPane.add(btnReset);
 
         // Icon untuk field Username
@@ -187,16 +187,15 @@ public class Login_Jfrm extends JFrame {
         lblRegisterHere.setForeground(new Color(0, 51, 153));
         lblRegisterHere.setFont(new Font("Tahoma", Font.BOLD, 14));
         lblRegisterHere.setBounds(1040, 195, 150, 20); // Adjusted position with increased x-value for spacing
-        
+
         lblRegisterHere.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent arg0) {
-                Login_REG loginReg = new Login_REG();
-                loginReg.main(null);
+                // Login_REG loginReg = new Login_REG();
+                Login_REG.main(null);
             }
         });
         desktopPane.add(lblRegisterHere);
 
-        
     }
 }
