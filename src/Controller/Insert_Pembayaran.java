@@ -8,5 +8,4 @@ public class Insert_Pembayaran {
         ins_pembayaran.set_data_pesanan(give_id_pesanan, give_tanggal_pembayaran, give_bayar);
         ins_pembayaran.insert_pesanan();
     }
-    
 }
