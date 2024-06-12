@@ -4,10 +4,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Date;
-import javax.swing.table.TableModel;
-
-import net.proteanit.sql.DbUtils;
 
 public class Pemesanan {
     private  int id_pesanan;
