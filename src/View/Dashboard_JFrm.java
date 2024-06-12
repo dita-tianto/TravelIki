@@ -11,7 +11,7 @@ import javax.swing.JPanel;
 import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 
-import Backup_Restore.BackUpFrame;
+// import Backup_Restore.BackUpFrame;
 import View.All_panel.Add_category;
 import View.All_panel.Create_Purchase;
 import View.All_panel.Create_Sale;
@@ -214,19 +214,6 @@ public class Dashboard_JFrm extends JFrame {
 		mnExtra = new JMenu("Extra");
 		mnExtra.setLocation(new Point(43, 100));
 		menuBar.add(mnExtra);
-
-		// cut
-		mnBackupRestore = new JMenu("Backup");
-		mnExtra.add(mnBackupRestore);
-
-		mntmBackupData = new JMenuItem("Backup Data");
-		mntmBackupData.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				BackUpFrame b = new BackUpFrame();
-				b.setVisible(true);
-			}
-		});
-		mnBackupRestore.add(mntmBackupData);
 
 		if (role.equals("Admin") || role.equals("Manager")) {
 			mntmP = new JMenuItem("Create Purchase");
