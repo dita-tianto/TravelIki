@@ -13,28 +13,25 @@ public class Pembayaran {
     private int id_pesanan;
     private String tanggal_pembayaran;
     private double bayar;
-    private double kekurangan;
 
 
     // TAMBAH PEMBAYARAN
     
-    public void set_data_pesanan(int give_id_pesanan, String give_tanggal_pembayaran, double give_bayar, double give_kekurangan){
+    public void set_data_pesanan(int give_id_pesanan, String give_tanggal_pembayaran, double give_bayar){
         this.id_pesanan = give_id_pesanan;
         this.tanggal_pembayaran = give_tanggal_pembayaran;
         this.bayar = give_bayar;
-        this.kekurangan = give_kekurangan;
     }
     
     public void insert_pesanan(){
-        String cmd = "INSERT INTO `pembayaran`(`tanggal_pembayaran`, `bayar`, `kekurangan`) VALUES (?, ?, ?) WHERE id_pesanan = ?";
+        String cmd = "INSERT INTO `pembayaran`(`tanggal_pembayaran`, `bayar`) VALUES (?, ?) WHERE id_pesanan = ?";
 
         try(Connection con = Database.getConnection();
             PreparedStatement stmt = con.prepareStatement(cmd)){
             
             stmt.setString(1, this.tanggal_pembayaran);
             stmt.setDouble(2, this.bayar);
-            stmt.setDouble(3, this.kekurangan);
-            stmt.setInt(4, this.id_pesanan);
+            stmt.setInt(3, this.id_pesanan);
             stmt.execute();
 
             System.out.println("[ PEMBAYARAN BERHASIL ]");    

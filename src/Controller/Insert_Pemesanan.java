@@ -13,10 +13,9 @@ public class Insert_Pemesanan {
         ins_pemesanan.insert_pesanan();
 
         int id_pesanan = ins_pemesanan.get_id_pesanan(give_id_pengguna, give_tanggal_pemesanan);
-        double subtotal = ins_detail_pesanan.hitung_subtotal(give_kuantitas, give_harga_satuan);
 
         // MENAMBAHKAN DETAIL PESANAN
-        ins_detail_pesanan.set_detail_pesanan(id_pesanan, give_id_layanan, give_id_paket, give_kuantitas, give_harga_satuan, subtotal);
+        ins_detail_pesanan.set_detail_pesanan(id_pesanan, give_id_layanan, give_id_paket, give_kuantitas, give_harga_satuan);
         ins_detail_pesanan.insert_detail_pesanan();
     }
     
