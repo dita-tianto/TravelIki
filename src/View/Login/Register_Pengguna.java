@@ -9,7 +9,7 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.*;
 
-public class Login_REG {
+public class Register_Pengguna {
 
 	private JFrame frmLoginPanel;
 	private JTextField user;
@@ -28,7 +28,7 @@ public class Login_REG {
 		EventQueue.invokeLater(() -> {
                     try {
                         UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
-                        Login_REG window = new Login_REG();
+                        Register_Pengguna window = new Register_Pengguna();
                         window.frmLoginPanel.setVisible(true);
                     } catch (ClassNotFoundException | IllegalAccessException | InstantiationException | UnsupportedLookAndFeelException e) {
                         System.err.println(e);
@@ -39,7 +39,7 @@ public class Login_REG {
 	/**
 	 * Create the application.
 	 */
-	public Login_REG() {
+	public Register_Pengguna() {
 		initialize();
 	}
 
@@ -63,7 +63,7 @@ public class Login_REG {
 			{
 				try {
 					// Load the background image
-					image = ImageIO.read(Login_Jfrm.class.getResource("/resource/RevisiDoneRegis.png"));
+					image = ImageIO.read(Login_Pengguna.class.getResource("/resource/RevisiDoneRegis.png"));
 				} catch (IOException e) {
 					System.err.println(e);
 				}

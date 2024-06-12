@@ -10,9 +10,9 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
-public class Login_Jfrm extends JFrame {
+public class Login_Pengguna extends JFrame {
 
-    public static Login_Jfrm window;
+    public static Login_Pengguna window;
     private JTextField username;
     private JPasswordField password;
     private JToggleButton tglbtnNewToggleButton;
@@ -22,7 +22,7 @@ public class Login_Jfrm extends JFrame {
     /**
      * Create the application.
      */
-    public Login_Jfrm() {
+    public Login_Pengguna() {
         initialize();
     }
 
@@ -33,7 +33,7 @@ public class Login_Jfrm extends JFrame {
         EventQueue.invokeLater(() -> {
             try {
                 UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
-                window = new Login_Jfrm();
+                window = new Login_Pengguna();
                 window.setVisible(true);
             } catch (ClassNotFoundException | IllegalAccessException | InstantiationException | UnsupportedLookAndFeelException e) {
                 System.err.println(e);
@@ -60,7 +60,7 @@ public class Login_Jfrm extends JFrame {
             {
                 try {
                     // Load the background image
-                    image = ImageIO.read(Login_Jfrm.class.getResource("/resource/RevDoneAcc1.png"));
+                    image = ImageIO.read(Login_Pengguna.class.getResource("/resource/RevDoneAcc1.png"));
                 } catch (IOException e) {
                     System.err.println(e);
                 }
@@ -127,13 +127,13 @@ public class Login_Jfrm extends JFrame {
 
         // Icon untuk field Username
         JLabel lblUsernameIcon = new JLabel();
-        lblUsernameIcon.setIcon(new ImageIcon(Login_Jfrm.class.getResource("/resource/Vector.png")));
+        lblUsernameIcon.setIcon(new ImageIcon(Login_Pengguna.class.getResource("/resource/Vector.png")));
         lblUsernameIcon.setBounds(1140, 48, 50, 30); // Sesuaikan posisinya
         desktopPane.add(lblUsernameIcon);
 
         // icon password
         tglbtnNewToggleButton = new JToggleButton("");
-        tglbtnNewToggleButton.setIcon(new ImageIcon(Login_Jfrm.class.getResource("/resource/eye.png")));
+        tglbtnNewToggleButton.setIcon(new ImageIcon(Login_Pengguna.class.getResource("/resource/eye.png")));
         tglbtnNewToggleButton.addActionListener((ActionEvent arg0) -> {
             if (tglbtnNewToggleButton.isSelected()) {
                 password.setEchoChar((char) 0);
@@ -160,8 +160,8 @@ public class Login_Jfrm extends JFrame {
         lblRegisterHere.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent arg0) {
-                // Login_REG loginReg = new Login_REG();
-                Login_REG.main(null);
+                // Register_Pengguna loginReg = new Register_Pengguna();
+                Register_Pengguna.main(null);
             }
         });
         desktopPane.add(lblRegisterHere);
