@@ -94,19 +94,19 @@ public class Dashboard_JFrm extends JFrame {
 	public Dashboard_JFrm(Enums.role give_role) {
 
 		switch (give_role) {
-			case Enums.role.ADMIN -> {
+			case ADMIN -> {
 				System.out.println("[ LOGIN ADMIN ]");
 				Login_Jfrm l = new Login_Jfrm();
 				l.window.dispose();
 			}
 
-			case Enums.role.EMPLOYEE -> {
+			case EMPLOYEE -> {
 				System.out.println("[ LOGIN EMPLOYEE ]");
 				Login_Jfrm em = new Login_Jfrm();
 				em.window.dispose();
 			}
 
-			case Enums.role.CUSTOMER -> {
+			case CUSTOMER -> {
 				System.out.println("[ LOGIN CUSTOMER ]");
 				Login_Jfrm Mngr = new Login_Jfrm();
 				Mngr.window.dispose();
@@ -119,7 +119,7 @@ public class Dashboard_JFrm extends JFrame {
 		setModalExclusionType(ModalExclusionType.APPLICATION_EXCLUDE);
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Dashboard_JFrm.class.getResource("/resource/sp (4).png")));
 		setBackground(new Color(0, 51, 153));
-		// setTitle("WWW.Traveliki.com");
+		setTitle("WWW.Traveliki.com");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(445, 100, 850, 550);
 
