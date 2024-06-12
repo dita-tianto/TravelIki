@@ -93,4 +93,10 @@ public class Detail_Pesanan {
 
         return tm;
     }
+
+    public double hitung_subtotal(int give_kuantitas, double give_harga_satuan){
+        return give_kuantitas * give_harga_satuan;
+    }
+
+    
 }

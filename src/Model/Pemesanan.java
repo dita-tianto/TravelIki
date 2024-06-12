@@ -28,7 +28,7 @@ public class Pemesanan {
             stmt.setString(2, this.tanggal_pemesanan);
             stmt.execute();
 
-            update_total_harga(id_pesanan);
+            update_total_harga(get_id_pesanan(id_pengguna, tanggal_pemesanan));
 
             System.out.println("[ PESANAN DITAMBAHKAN ]");    
 
@@ -56,7 +56,7 @@ public class Pemesanan {
         }
     }
 
-    public static void update_status_pemesanan(int give_id_layanan, Enums.pemesanan give_status){
+    public void update_status_pemesanan(int give_id_layanan, Enums.pemesanan give_status){
         String cmd = "UPDATE `pesanan` SET `status_pesanan` = ? WHERE id_pesanan = ?";
         
         try(Connection con = Database.getConnection();
@@ -75,7 +75,7 @@ public class Pemesanan {
 
     // CEK PESANAN
 
-    public static double hitung_total_harga(int give_id_pesanan){ //selalu hitung setelah insert pesanan
+    public double hitung_total_harga(int give_id_pesanan){ //selalu hitung setelah insert pesanan
         String cmd = "SELECT `id_pesanan`, `subtotal` FROM `detail_pesanan` WHERE id_pesanan = ?";
 
         double total = 0;
@@ -96,5 +96,26 @@ public class Pemesanan {
         }
 
         return total;
+    }
+
+    public int get_id_pesanan(int give_id_pengguna, String give_tanggal_pemesanan){
+        String cmd = "SELECT `id_pesanan` FROM `pesanan` WHERE `id_pengguna` = ? AND `tanggal_pemesanan` = ?";
+
+        try(Connection con = Database.getConnection();
+            PreparedStatement stmt = con.prepareStatement(cmd)){
+
+            stmt.setInt(1, give_id_pengguna);
+            stmt.setString(1, tanggal_pemesanan);
+
+            ResultSet rs = stmt.executeQuery();
+            
+            while(rs.next()){
+                id_pesanan = rs.getInt("id_pesanan");
+            }
+            
+        } catch (SQLException e) {
+            System.err.println(e);
+        }
+        return id_pesanan;
     }
 }
