@@ -190,17 +190,6 @@ public class Login_REG {
 			}
 		});
 		btnReset.setBounds(1035, 220, 100, 30);
-		desktopPane.add(btnReset);
-
-		rol = new JComboBox<>();
-		rol.setModel(
-				new DefaultComboBoxModel<>(new String[] { "Select", "Employee", "Manager", "Admin", "Super_Admin" }));
-		rol.setBounds(885, 175, 250, 30);
-		desktopPane.add(rol);
-
-		JLabel lblRole = new JLabel("Role : ");
-		lblRole.setFont(new Font("Poppins", Font.BOLD, 16));
-		lblRole.setBounds(785, 175, 120, 30);
-		desktopPane.add(lblRole);
+		desktopPane.add(btnReset);		
 	}
 }

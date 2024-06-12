@@ -26,7 +26,7 @@ import java.awt.Color;
 public class Add_category extends JPanel {
 	private JTextField name;
 	public static JTable table;
-	Product_category is=new Product_category();
+	Product_category is = new Product_category();
 	private JComboBox cmb;
 
 	/**

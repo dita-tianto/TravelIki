@@ -2,6 +2,7 @@ package View;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 
@@ -38,6 +39,7 @@ import java.awt.event.ActionEvent;
 import java.awt.Toolkit;
 
 import javax.imageio.ImageIO;
+import javax.swing.Box;
 import javax.swing.ImageIcon;
 
 import de.javasoft.plaf.synthetica.SyntheticaAluOxideLookAndFeel;
@@ -80,8 +82,7 @@ public class Dashboard_JFrm extends JFrame {
 
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
-				try {	
-
+				try {
 					UIManager.setLookAndFeel(new SyntheticaAluOxideLookAndFeel());
 					Dashboard_JFrm frame = new Dashboard_JFrm(Enums.role.CUSTOMER);
 					frame.setVisible(true);
@@ -118,12 +119,23 @@ public class Dashboard_JFrm extends JFrame {
 		setModalExclusionType(ModalExclusionType.APPLICATION_EXCLUDE);
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Dashboard_JFrm.class.getResource("/resource/sp (4).png")));
 		setBackground(new Color(0, 51, 153));
-		setTitle("WWW.Traveliki.com");
+		// setTitle("WWW.Traveliki.com");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(445, 100, 850, 550);
 
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
+
+		// Buat label untuk menampilkan teks "WWW.Traveliki.com" di tengah
+		JLabel titleLabel = new JLabel("WWW.Traveliki.com");
+		titleLabel.setFont(new Font("Arial", Font.BOLD, 18));
+		titleLabel.setForeground(Color.BLACK); // Atur warna teks sesuai keinginan
+		titleLabel.setHorizontalAlignment(JLabel.CENTER);
+
+		// Tambahkan label ke menu bar
+		menuBar.add(Box.createHorizontalGlue()); // Glue untuk menyebarkan komponen ke tepi
+		menuBar.add(titleLabel);
+		menuBar.add(Box.createHorizontalGlue()); // Glue untuk menyebarkan komponen ke tepi lainnya
 
 		// sebagai admin aksess all
 		if (give_role.equals(Enums.role.ADMIN)) {
@@ -131,31 +143,37 @@ public class Dashboard_JFrm extends JFrame {
 			mnHome.setIcon(new ImageIcon(Dashboard_JFrm.class.getResource("/resource/home (2).png")));
 			menuBar.add(mnHome);
 
-			mntmAddCatagory = new JMenuItem("Add Catagory");
+			mntmAddCatagory = new JMenuItem("Tambahkan Layanan");
 			mntmAddCatagory.setMnemonic(KeyEvent.VK_O);
 			mntmAddCatagory.setIcon(new ImageIcon(Dashboard_JFrm.class.getResource("/resource/cat.png")));
 			mntmAddCatagory.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
-
-					JInternalFrame JIF = new JInternalFrame("Category", false, true, false, true);
-
-					Add_category Add_category = new Add_category();
-					JIF.getContentPane().add(Add_category);
+					// Buat JInternalFrame baru
+					JInternalFrame JIF = new JInternalFrame("Tambahkan Layanan", false, true, false, true);
+					// Buat panel Add_category
+					Add_category addCategoryPanel = new Add_category();
+					// Tambahkan panel ke content pane JInternalFrame
+					JIF.getContentPane().add(addCategoryPanel);
+					// Pack JInternalFrame agar sesuai dengan ukuran komponennya
 					JIF.pack();
-
+					// Tambahkan JInternalFrame ke desktopPane
 					desktopPane.add(JIF);
-					setBackground(new Color(0, 51, 153));
+					// Atur background warna desktopPane
+					desktopPane.setBackground(new Color(0, 51, 153));
+					// Set JInternalFrame menjadi terlihat
 					JIF.setVisible(true);
-
 				}
 			});
 
 			mnHome.add(mntmAddCatagory);
 
-			mntmAddProduct = new JMenuItem("Add Product");
+			// end layanan
+
+			// tambah kategori
+			mntmAddProduct = new JMenuItem("Tambah Kategori");
 			mntmAddProduct.setMnemonic('b');
 			mntmAddProduct.setMnemonic(KeyEvent.VK_D);
-			mntmAddProduct.setIcon(new ImageIcon(Dashboard_JFrm.class.getResource("/resource/sp (9).png")));
+			mntmAddProduct.setIcon(new ImageIcon(Dashboard_JFrm.class.getResource("/resource/cat.png")));
 			mntmAddProduct.addActionListener(new ActionListener() {
 
 				public void actionPerformed(ActionEvent e) {
@@ -170,9 +188,10 @@ public class Dashboard_JFrm extends JFrame {
 			});
 
 			mnHome.add(mntmAddProduct);
+			// end kategori
 
-			mntmAddUnit = new JMenuItem("Add Unit");
-			mntmAddUnit.setIcon(new ImageIcon(Dashboard_JFrm.class.getResource("/resource/unit.gif")));
+			mntmAddUnit = new JMenuItem("Tambah Pemesanan");
+			mntmAddUnit.setIcon(new ImageIcon(Dashboard_JFrm.class.getResource("/resource/cat.png")));
 			mntmAddUnit.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
 					JInternalFrame JIF = new JInternalFrame("Add Units", false, true, false, true);
@@ -185,6 +204,39 @@ public class Dashboard_JFrm extends JFrame {
 				}
 			});
 			mnHome.add(mntmAddUnit);
+			// end pemesanan
+
+			mntmAddUnit = new JMenuItem("Tambah Paket");
+			mntmAddUnit.setIcon(new ImageIcon(Dashboard_JFrm.class.getResource("/resource/cat.png")));
+			mntmAddUnit.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					JInternalFrame JIF = new JInternalFrame("Add Units", false, true, false, true);
+					Units unit = new Units();
+					JIF.getContentPane().add(unit);
+					JIF.pack();
+
+					desktopPane.add(JIF);
+					JIF.setVisible(true);
+				}
+			});
+			mnHome.add(mntmAddUnit);
+			// end paket
+
+			mntmAddUnit = new JMenuItem("Tambah Pembayaran");
+			mntmAddUnit.setIcon(new ImageIcon(Dashboard_JFrm.class.getResource("/resource/cat.png")));
+			mntmAddUnit.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					JInternalFrame JIF = new JInternalFrame("Add Units", false, true, false, true);
+					Units unit = new Units();
+					JIF.getContentPane().add(unit);
+					JIF.pack();
+
+					desktopPane.add(JIF);
+					JIF.setVisible(true);
+				}
+			});
+			mnHome.add(mntmAddUnit);
+			// end pembayaran
 
 		}
 
@@ -216,54 +268,36 @@ public class Dashboard_JFrm extends JFrame {
 		mnExtra.setLocation(new Point(43, 100));
 		menuBar.add(mnExtra);
 
-		// if (role.equals("Admin") || role.equals("Manager")) {
-		// 	mntmP = new JMenuItem("Create Purchase");
-		// 	mntmP.setIcon(new ImageIcon(Dashboard_JFrm.class.getResource("/resource/sp (12).png")));
-		// 	mntmP.addActionListener(new ActionListener() {
-		// 		public void actionPerformed(ActionEvent arg0) {
-		// 			JInternalFrame JIF = new JInternalFrame("All Units", false, true, false, true);
-		// 			Create_Purchase Create_Purchase = new Create_Purchase();
-		// 			JIF.getContentPane().add(Create_Purchase);
-		// 			JIF.pack();
+		// ini tampilan yang ada di awal :)
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(new BorderLayout(0, 0));
 
-		// 			desktopPane.add(JIF);
-		// 			JIF.setVisible(true);
-		// 		}
-		// 	});
-		// 	mnBillingInfo.add(mntmP);
+		desktopPane = new JDesktopPane() {
+			private Image image;
+			{
+				try {
+					// URL
+					image = ImageIO.read(LOG_Splash.class.getResource("/resource/LatarBelakang.png")); // ganti :)
 
-		// }
-
-			//ini tampilan yang ada di awal :)
-			contentPane = new JPanel();
-			contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-			setContentPane(contentPane);
-			contentPane.setLayout(new BorderLayout(0, 0));
-
-			desktopPane = new JDesktopPane() {
-				private Image image;
-				{
-					try {
-						// URL
-						image = ImageIO.read(LOG_Splash.class.getResource("/resource/LatarBelakang.png")); // ganti :)
-	
-					} catch (IOException e) {
-						e.printStackTrace();	
-					}
+				} catch (IOException e) {
+					e.printStackTrace();
 				}
+			}
 
-				@Override
+			@Override
 
-				protected void paintComponent(Graphics g) {
-					super.paintComponent(g);
-					g.drawImage(image, 0, 0, getWidth(), getHeight(), this);
-				}
+			protected void paintComponent(Graphics g) {
+				super.paintComponent(g);
+				g.drawImage(image, 0, 0, getWidth(), getHeight(), this);
+			}
 
-			};
+		};
 
-			desktopPane.setBackground(Color.GRAY);
-			contentPane.add(desktopPane, BorderLayout.CENTER);
-			desktopPane.setLayout(new MigLayout("", "[][]", "[][]"));
+		desktopPane.setBackground(Color.GRAY);
+		contentPane.add(desktopPane, BorderLayout.CENTER);
+		desktopPane.setLayout(new MigLayout("", "[][]", "[][]"));
 
 		// Tambahkan panel untuk menampilkan deskripsi produk di tengah desktopPane
 		JPanel productDescriptionPanel = new JPanel();
