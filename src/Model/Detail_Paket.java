@@ -12,7 +12,7 @@ public class Detail_Paket {
     private int id_paket;
     private int id_layanan;
 
-    // TAMBAH KATEGORI
+    // TAMBAH DETAIL PAKET
     
     public void set_data_paket(int give_id_paket, int give_id_layanan){
         this.id_paket = give_id_paket;
@@ -36,7 +36,7 @@ public class Detail_Paket {
         }
     }
 
-    // CEK KATEGORI
+    // CEK DETAIL PAKET
 
     public static TableModel load_detail_paket(){
         String cmd = "SELECT * FROM `detail_paket_layanan` WHERE 1;";

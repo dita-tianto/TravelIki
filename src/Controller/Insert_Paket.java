@@ -12,7 +12,8 @@ public class Insert_Paket {
         ins_paket.set_data_paket(give_paket, give_deskripsi, give_harga, give_id_kategori); 
         ins_paket.insert_paket();
 
-        int id_paket = ins_paket.get_id_paket(give_paket, give_id_kategori);
+        // buat paket dulu lalu tambahkan layanannya
+        int id_paket = ins_paket.get_id_paket(give_paket, give_id_kategori); 
 
         // MENAMBAHKAN DETAIL PAKET
         ins_Detail_Paket.set_data_paket(id_paket, give_id_layanan);
