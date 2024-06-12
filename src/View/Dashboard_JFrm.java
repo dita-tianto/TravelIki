@@ -147,6 +147,7 @@ public class Dashboard_JFrm extends JFrame {
 			mntmAddCatagory.setMnemonic(KeyEvent.VK_O);
 			mntmAddCatagory.setIcon(new ImageIcon(Dashboard_JFrm.class.getResource("/resource/cat.png")));
 			mntmAddCatagory.addActionListener(new ActionListener() {
+				
 				public void actionPerformed(ActionEvent arg0) {
 					// Buat JInternalFrame baru
 					JInternalFrame JIF = new JInternalFrame("Tambahkan Layanan", false, true, false, true);
