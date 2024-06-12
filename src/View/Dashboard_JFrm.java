@@ -15,9 +15,9 @@ import javax.swing.border.EmptyBorder;
 import Model.Enums;
 // import Backup_Restore.BackUpFrame;
 import View.All_panel.Add_category;
-import View.All_panel.Create_Purchase;
+// import View.All_panel.Create_Purchase;
 import View.All_panel.Create_Sale;
-import View.All_panel.Create_bill;
+// import View.All_panel.Create_bill;
 
 import View.All_panel.Product_name;
 import View.All_panel.Units;
@@ -29,12 +29,12 @@ import java.awt.Color;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
-import java.awt.event.ActionListener;
+// import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
-import java.awt.image.BufferedImage;
-import java.io.File;
+// import java.awt.image.BufferedImage;
+// import java.io.File;
 import java.io.IOException;
-import java.net.URL;
+// import java.net.URL;
 import java.awt.event.ActionEvent;
 import java.awt.Toolkit;
 
@@ -42,50 +42,49 @@ import javax.imageio.ImageIO;
 import javax.swing.Box;
 import javax.swing.ImageIcon;
 
+import de.javasoft.plaf.synthetica.SyntheticaAluOxideLookAndFeel;
 import net.miginfocom.swing.MigLayout;
 import javax.swing.JLabel;
-import java.awt.GridLayout;
+// import java.awt.GridLayout;
 import java.awt.Dialog.ModalExclusionType;
-import java.awt.Window.Type;
-import javax.swing.JButton;
-import java.awt.ComponentOrientation;
-import java.awt.Component;
+// import java.awt.Window.Type;
+// import javax.swing.JButton;
+// import java.awt.ComponentOrientation;
+// import java.awt.Component;
 import java.awt.Point;
-import javax.swing.JCheckBoxMenuItem;
+// import javax.swing.JCheckBoxMenuItem;
 import javax.swing.UnsupportedLookAndFeelException;
 
 public class Dashboard_JFrm extends JFrame {
 
 	// ini penginisialisasikan apapun itu nantinya yang di buat :)
-	private JPanel contentPane;
+	private final JPanel contentPane;
 	private JDesktopPane desktopPane;
-	private JMenu mnHome;
-	private JMenu mnHomeEmp;
+	private final JMenu mnHome;
+	// private JMenu mnHomeEmp;
 	private JMenuItem mntmAddCatagory;
 	private JMenuItem mntmAddProduct;
 	private JMenuItem mntmAddUnit;
-	private JMenu mnBillingInfo;
-	private JMenuItem mntmCreateCashMemo;
-	private JMenuItem mntmP;
-	private JMenu mnExtra;
-	private JMenu Logout;
-	private JMenu mnBackupRestore;
-	private JMenuItem mntmBackupData;
-	private JMenuItem mntmRestoreData;
-	private JMenu keluar;
+	private final JMenu mnBillingInfo;
+	private  JMenuItem mntmCreateCashMemo;
+	// private JMenuItem mntmP;
+	private final JMenu mnExtra;
+	// private JMenu Logout;
+	// private JMenu mnBackupRestore;
+	// private JMenuItem mntmBackupData;
+	// private JMenuItem mntmRestoreData;
+	// private JMenu keluar;
 
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-
 		EventQueue.invokeLater(() -> {
 			try {
-				UIManager.setLookAndFeel("de.javasoft.plaf.synthetica.SyntheticaAluOxideLookAndFeel");
+				// UIManager.setLookAndFeel("de.javasoft.plaf.synthetica.SyntheticaAluOxideLookAndFeel");
 				Dashboard_JFrm frame = new Dashboard_JFrm(Enums.role.CUSTOMER);
 				frame.setVisible(true);
-			} catch (ClassNotFoundException | IllegalAccessException | InstantiationException
-					| UnsupportedLookAndFeelException e) {
+			} catch (Exception e) {
 				System.err.println(e);
 			}
 		});
@@ -94,19 +93,19 @@ public class Dashboard_JFrm extends JFrame {
 	public Dashboard_JFrm(Enums.role give_role) {
 
 		switch (give_role) {
-			case ADMIN -> {
+			case Enums.role.ADMIN -> {
 				System.out.println("[ LOGIN ADMIN ]");
 				Login_Jfrm l = new Login_Jfrm();
 				l.window.dispose();
 			}
 
-			case EMPLOYEE -> {
+			case Enums.role.EMPLOYEE -> {
 				System.out.println("[ LOGIN EMPLOYEE ]");
 				Login_Jfrm em = new Login_Jfrm();
 				em.window.dispose();
 			}
 
-			case CUSTOMER -> {
+			case Enums.role.CUSTOMER -> {
 				System.out.println("[ LOGIN CUSTOMER ]");
 				Login_Jfrm Mngr = new Login_Jfrm();
 				Mngr.window.dispose();
@@ -136,138 +135,54 @@ public class Dashboard_JFrm extends JFrame {
 		menuBar.add(Box.createHorizontalGlue()); // Glue untuk menyebarkan komponen ke tepi
 		menuBar.add(titleLabel);
 		menuBar.add(Box.createHorizontalGlue()); // Glue untuk menyebarkan komponen ke tepi lainnya
-
-		// sebagai admin aksess all
-		if (give_role.equals(Enums.role.ADMIN)) {
-			mnHome = new JMenu("Home");
-			mnHome.setIcon(new ImageIcon(Dashboard_JFrm.class.getResource("/resource/home (2).png")));
-			menuBar.add(mnHome);
-
-			mntmAddCatagory = new JMenuItem("Tambahkan Layanan");
-			mntmAddCatagory.setMnemonic(KeyEvent.VK_O);
-			mntmAddCatagory.setIcon(new ImageIcon(Dashboard_JFrm.class.getResource("/resource/cat.png")));
-			mntmAddCatagory.addActionListener(new ActionListener() {
-
-				public void actionPerformed(ActionEvent arg0) {
-					// Buat JInternalFrame baru
-					JInternalFrame JIF = new JInternalFrame("Tambahkan Layanan", false, true, false, true);
-					// Buat panel Add_category
-					Add_category addCategoryPanel = new Add_category();
-					// Tambahkan panel ke content pane JInternalFrame
-					JIF.getContentPane().add(addCategoryPanel);
-					// Pack JInternalFrame agar sesuai dengan ukuran komponennya
-					JIF.pack();
-					// Tambahkan JInternalFrame ke desktopPane
-					desktopPane.add(JIF);
-					// Atur background warna desktopPane
-					desktopPane.setBackground(new Color(0, 51, 153));
-					// Set JInternalFrame menjadi terlihat
-					JIF.setVisible(true);
-				}
-			});
-
-			mnHome.add(mntmAddCatagory);
-
-			// end layanan
-
-			// tambah kategori
-			mntmAddProduct = new JMenuItem("Tambah Kategori");
-			mntmAddProduct.setMnemonic('b');
-			mntmAddProduct.setMnemonic(KeyEvent.VK_D);
-			mntmAddProduct.setIcon(new ImageIcon(Dashboard_JFrm.class.getResource("/resource/cat.png")));
-			mntmAddProduct.addActionListener(new ActionListener() {
-
-				public void actionPerformed(ActionEvent e) {
-					JInternalFrame JIF = new JInternalFrame("Product Category", false, true, false, true);
-					Product_name Product_name = new Product_name();
-					JIF.getContentPane().add(Product_name);
-					JIF.pack();
-
-					desktopPane.add(JIF);
-					JIF.setVisible(true);
-				}
-			});
-
-			mnHome.add(mntmAddProduct);
-			// end kategori
-
-			mntmAddUnit = new JMenuItem("Tambah Pemesanan");
-			mntmAddUnit.setIcon(new ImageIcon(Dashboard_JFrm.class.getResource("/resource/cat.png")));
-			mntmAddUnit.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent arg0) {
-					JInternalFrame JIF = new JInternalFrame("Add Units", false, true, false, true);
-					Units unit = new Units();
-					JIF.getContentPane().add(unit);
-					JIF.pack();
-
-					desktopPane.add(JIF);
-					JIF.setVisible(true);
-				}
-			});
-			mnHome.add(mntmAddUnit);
-			// end pemesanan
-
-			mntmAddUnit = new JMenuItem("Tambah Paket");
-			mntmAddUnit.setIcon(new ImageIcon(Dashboard_JFrm.class.getResource("/resource/cat.png")));
-			mntmAddUnit.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent arg0) {
-					JInternalFrame JIF = new JInternalFrame("Add Units", false, true, false, true);
-					Units unit = new Units();
-					JIF.getContentPane().add(unit);
-					JIF.pack();
-
-					desktopPane.add(JIF);
-					JIF.setVisible(true);
-				}
-			});
-			mnHome.add(mntmAddUnit);
-			// end paket
-
-			mntmAddUnit = new JMenuItem("Tambah Pembayaran");
-			mntmAddUnit.setIcon(new ImageIcon(Dashboard_JFrm.class.getResource("/resource/cat.png")));
-			mntmAddUnit.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent arg0) {
-					JInternalFrame JIF = new JInternalFrame("Add Units", false, true, false, true);
-					Units unit = new Units();
-					JIF.getContentPane().add(unit);
-					JIF.pack();
-
-					desktopPane.add(JIF);
-					JIF.setVisible(true);
-				}
-			});
-			mnHome.add(mntmAddUnit);
-			// end pembayaran
-
-		}
-
-		// ini untuk akses user dan employee teman : )
+		
+		mnHome = new JMenu("Home");
+		mnHome.setIcon(new ImageIcon(Dashboard_JFrm.class.getResource("/resource/home (2).png")));
+		menuBar.add(mnHome);
 
 		mnBillingInfo = new JMenu("Billing Info");
 		mnBillingInfo.setIcon(new ImageIcon(Dashboard_JFrm.class.getResource("/resource/bill.png")));
 		menuBar.add(mnBillingInfo);
 
-		mntmCreateCashMemo = new JMenuItem("Create Bill");
-		mntmCreateCashMemo.setIcon(new ImageIcon(Dashboard_JFrm.class.getResource("/resource/sp (11).png")));
-		mntmCreateCashMemo.addActionListener(new ActionListener() {
-
-			public void actionPerformed(ActionEvent arg0) {
-				JInternalFrame JIF = new JInternalFrame("All Units", false, true, false, true);
-				Create_Sale Create_Sale = new Create_Sale();
-				JIF.getContentPane().add(Create_Sale);
-				JIF.pack();
-
-				desktopPane.add(JIF);
-				JIF.setVisible(true);
-			}
-		});
-
-		// cut
-		mnBillingInfo.add(mntmCreateCashMemo);
-
 		mnExtra = new JMenu("Extra");
 		mnExtra.setLocation(new Point(43, 100));
 		menuBar.add(mnExtra);
+
+		switch (give_role) {
+			case ADMIN -> {
+				System.out.println("[ LOGIN ADMIN ]");
+
+				// LOGIN MENU 
+
+			}
+
+			case EMPLOYEE -> {
+				System.out.println("[ LOGIN EMPLOYEE ]");
+
+				// LOGIN MENU
+
+			}
+
+			case CUSTOMER -> {
+				System.out.println("[ LOGIN CUSTOMER ]");
+
+				// LOGIN MENU
+
+			}
+
+			default -> throw new AssertionError();
+		}
+
+
+		// isi method yang akan digunakan dalam menu
+		home_insert_layanan();
+		home_insert_kategori();
+		home_insert_product();
+		home_insert_unit();
+
+		billingInfo_insert();
+		
+
 
 		// ini tampilan yang ada di awal :)
 		contentPane = new JPanel();
@@ -283,7 +198,7 @@ public class Dashboard_JFrm extends JFrame {
 					image = ImageIO.read(LOG_Splash.class.getResource("/resource/LatarBelakang.png")); // ganti :)
 
 				} catch (IOException e) {
-					e.printStackTrace();
+					System.err.println(e);
 				}
 			}
 
@@ -315,16 +230,116 @@ public class Dashboard_JFrm extends JFrame {
 		keluar.setIcon(new ImageIcon(Dashboard_JFrm.class.getResource("/resource/home (3).png")));
 		menuBar.add(keluar);
 
+		// Keluar dari aplikasi
 		JMenuItem keluarItem = new JMenuItem("Keluar");
 		keluarItem.setIcon(new ImageIcon(Dashboard_JFrm.class.getResource("/resource/home (3).png")));
-		keluarItem.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				// Keluar dari aplikasi
-				Login_Jfrm keluarJendela = new Login_Jfrm();
-				keluarJendela.frmLoginPanel.setVisible(true);
-				dispose();
-			}
+		keluarItem.addActionListener((ActionEvent arg0) -> {
+			Login_Jfrm.frmLoginPanel.setVisible(true);
+			dispose();
 		});
 		keluar.add(keluarItem);
 	}
+
+	// METHOD DALAM APLIKASI
+
+	// HOME
+	private void home_insert_layanan(){
+		mntmAddCatagory = new JMenuItem("Tambahkan Layanan");
+		mntmAddCatagory.setMnemonic(KeyEvent.VK_O);
+		mntmAddCatagory.setIcon(new ImageIcon(Dashboard_JFrm.class.getResource("/resource/cat.png")));
+		mntmAddCatagory.addActionListener((ActionEvent arg0) -> {
+			// Buat JInternalFrame baru
+			JInternalFrame JIF = new JInternalFrame("Tambahkan Layanan", false, true, false, true);
+			// Buat panel Add_category
+			Add_category addCategoryPanel = new Add_category();
+			// Tambahkan panel ke content pane JInternalFrame
+			JIF.getContentPane().add(addCategoryPanel);
+			// Pack JInternalFrame agar sesuai dengan ukuran komponennya
+			JIF.pack();
+			// Tambahkan JInternalFrame ke desktopPane
+			desktopPane.add(JIF);
+			// Atur background warna desktopPane
+			desktopPane.setBackground(new Color(0, 51, 153));
+			// Set JInternalFrame menjadi terlihat
+			JIF.setVisible(true);
+		});
+
+		mnHome.add(mntmAddCatagory);
+
+	}
+
+    private void home_insert_kategori() {
+        mntmAddCatagory = new JMenuItem("Tambahkan Layanan");
+		mntmAddCatagory.setMnemonic(KeyEvent.VK_O);
+		mntmAddCatagory.setIcon(new ImageIcon(Dashboard_JFrm.class.getResource("/resource/cat.png")));
+		mntmAddCatagory.addActionListener((ActionEvent arg0) -> {
+			// Buat JInternalFrame baru
+			JInternalFrame JIF = new JInternalFrame("Tambahkan Layanan", false, true, false, true);
+			// Buat panel Add_category
+			Add_category addCategoryPanel = new Add_category();
+			// Tambahkan panel ke content pane JInternalFrame
+			JIF.getContentPane().add(addCategoryPanel);
+			// Pack JInternalFrame agar sesuai dengan ukuran komponennya
+			JIF.pack();
+			// Tambahkan JInternalFrame ke desktopPane
+			desktopPane.add(JIF);
+			// Atur background warna desktopPane
+			desktopPane.setBackground(new Color(0, 51, 153));
+			// Set JInternalFrame menjadi terlihat
+			JIF.setVisible(true);
+		});
+
+		mnHome.add(mntmAddCatagory);
+    }
+
+	private void home_insert_product() {
+		mntmAddProduct = new JMenuItem("Tambah Kategori");
+		mntmAddProduct.setMnemonic('b');
+		mntmAddProduct.setMnemonic(KeyEvent.VK_D);
+		mntmAddProduct.setIcon(new ImageIcon(Dashboard_JFrm.class.getResource("/resource/cat.png")));
+		mntmAddProduct.addActionListener((ActionEvent e) -> {
+			JInternalFrame JIF = new JInternalFrame("Product Category", false, true, false, true);
+			Product_name Product_name = new Product_name();
+			JIF.getContentPane().add(Product_name);
+			JIF.pack();
+
+			desktopPane.add(JIF);
+			JIF.setVisible(true);
+		});
+
+		mnHome.add(mntmAddProduct);
+	}
+	
+	private void home_insert_unit(){
+		mntmAddUnit = new JMenuItem("Tambah Pemesanan");
+		mntmAddUnit.setIcon(new ImageIcon(Dashboard_JFrm.class.getResource("/resource/cat.png")));
+		mntmAddUnit.addActionListener((ActionEvent arg0) -> {
+			JInternalFrame JIF = new JInternalFrame("Add Units", false, true, false, true);
+			Units unit = new Units();
+			JIF.getContentPane().add(unit);
+			JIF.pack();
+
+			desktopPane.add(JIF);
+			JIF.setVisible(true);
+		});
+		mnHome.add(mntmAddUnit);
+	}
+
+	private void billingInfo_insert() {
+		mntmCreateCashMemo = new JMenuItem("Create Bill");
+		mntmCreateCashMemo.setIcon(new ImageIcon(Dashboard_JFrm.class.getResource("/resource/sp (11).png")));
+		mntmCreateCashMemo.addActionListener((ActionEvent arg0) -> {
+			JInternalFrame JIF = new JInternalFrame("All Units", false, true, false, true);
+			Create_Sale Create_Sale = new Create_Sale();
+			JIF.getContentPane().add(Create_Sale);
+			JIF.pack();
+
+			desktopPane.add(JIF);
+			JIF.setVisible(true);
+		});
+		
+		mnBillingInfo.add(mntmCreateCashMemo);
+	}
+
+	
 }

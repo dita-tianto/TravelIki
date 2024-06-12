@@ -15,7 +15,6 @@ public class Login_Jfrm extends JFrame {
     public static Login_Jfrm window;
     private JTextField username;
     private JPasswordField password;
-    private JComboBox<String> rol;
     private JToggleButton tglbtnNewToggleButton;
     private JDesktopPane desktopPane;
     public static JFrame frmLoginPanel;
