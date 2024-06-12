@@ -14,12 +14,12 @@ public class Detail_Paket {
 
     // TAMBAH KATEGORI
     
-    public void set_data_kategori(int give_id_paket, int give_id_layanan){
+    public void set_data_paket(int give_id_paket, int give_id_layanan){
         this.id_paket = give_id_paket;
         this.id_layanan = give_id_layanan;
     }
     
-    public void insert_kategori(){
+    public void insert_layanan(){
         String cmd = "INSERT INTO `detail_paket_layanan`(`id_paket`, `id_layanan`) VALUE (?, ?)";
 
         try(Connection con = Database.getConnection();
@@ -38,7 +38,7 @@ public class Detail_Paket {
 
     // CEK KATEGORI
 
-    public static TableModel load_data_kategori(){
+    public static TableModel load_detail_paket(){
         String cmd = "SELECT * FROM `detail_paket_layanan` WHERE 1;";
 
         TableModel tm = null;
