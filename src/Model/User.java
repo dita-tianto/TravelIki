@@ -13,7 +13,6 @@ public class User {
     private Enums.role role;
 
     // REGISTER
-    
     public void set_user_data(String give_username, String give_email, String give_no_telepon, String give_password, Enums.role give_role){
         this.username = give_username;
         this.email = give_email;

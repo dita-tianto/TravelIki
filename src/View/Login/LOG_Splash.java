@@ -10,7 +10,9 @@ import java.awt.BorderLayout;
 import javax.swing.UIManager;
 
 public class LOG_Splash {
-	public static void main(String[] args) throws InterruptedException {
+	public static Object frmLoginPanel;
+
+    public static void main(String[] args) throws InterruptedException {
 		showSplashAndRunMainApp();
 	}
 
