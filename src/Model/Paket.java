@@ -9,6 +9,7 @@ import javax.swing.table.TableModel;
 import net.proteanit.sql.DbUtils;
 
 public class Paket {
+    private int id_paket;
     private String paket;
     private String deskripsi;
     private double harga;
@@ -45,7 +46,7 @@ public class Paket {
     // UPDATE paket
 
     public void update_paket(int give_id_paket){
-        String cmd = "UPDATE `paket_layanan` SET `nama_paket` = ?, `deskripsi` = ?, `harga` = ?, id_kategori = ? WHERE id = ?)";
+        String cmd = "UPDATE `paket_layanan` SET `nama_paket` = ?, `deskripsi` = ?, `harga` = ?, id_kategori = ? WHERE id_paket = ?)";
 
         try(Connection con = Database.getConnection();
             PreparedStatement stmt = con.prepareStatement(cmd)){
@@ -65,6 +66,27 @@ public class Paket {
     }
 
     // CEK paket
+
+    public int get_id_paket(String give_paket, int give_id_kategori){
+        String cmd = "SELECT `id_pesanan` FROM `pesanan` WHERE `id_pengguna` = ? AND `tanggal_pemesanan` = ?";
+
+        try(Connection con = Database.getConnection();
+            PreparedStatement stmt = con.prepareStatement(cmd)){
+
+            stmt.setString(1, give_paket);
+            stmt.setInt(2, give_id_kategori);
+
+            ResultSet rs = stmt.executeQuery();
+            
+            while(rs.next()){
+                id_paket = rs.getInt("id_paket");
+            }
+            
+        } catch (SQLException e) {
+            System.err.println(e);
+        }
+        return id_paket;
+    }
 
     public static TableModel load_data_paket(){
         String cmd = "SELECT a.nama_paket as Nama, b.nama_kategori as Kategori, a.harga_paket as Harga, a.status_paket FROM paket_layanan a, kategori_layanan b WHERE a.id_kategori=b.id_kategori;";

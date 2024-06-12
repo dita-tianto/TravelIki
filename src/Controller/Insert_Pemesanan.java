@@ -12,6 +12,7 @@ public class Insert_Pemesanan {
         ins_pemesanan.set_data_pesanan(give_id_pengguna, give_tanggal_pemesanan);
         ins_pemesanan.insert_pesanan();
 
+        // buat pesanan dulu lalu tambahkan pesanannya (layanan/paket)
         int id_pesanan = ins_pemesanan.get_id_pesanan(give_id_pengguna, give_tanggal_pemesanan);
 
         // MENAMBAHKAN DETAIL PESANAN

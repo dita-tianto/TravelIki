@@ -9,17 +9,18 @@ import javax.swing.table.TableModel;
 import net.proteanit.sql.DbUtils;
 
 public class Detail_Paket {
+    private int id_detail_paket;
     private int id_paket;
     private int id_layanan;
 
-    // TAMBAH KATEGORI
+    // TAMBAH DETAIL PAKET
     
-    public void set_data_kategori(int give_id_paket, int give_id_layanan){
+    public void set_data_paket(int give_id_paket, int give_id_layanan){
         this.id_paket = give_id_paket;
         this.id_layanan = give_id_layanan;
     }
     
-    public void insert_kategori(){
+    public void insert_layanan(){
         String cmd = "INSERT INTO `detail_paket_layanan`(`id_paket`, `id_layanan`) VALUE (?, ?)";
 
         try(Connection con = Database.getConnection();
@@ -36,9 +37,34 @@ public class Detail_Paket {
         }
     }
 
-    // CEK KATEGORI
+    // UPDATE PAKET
 
-    public static TableModel load_data_kategori(){
+    public void update_detail_paket(int give_id_detail_paket){
+        String cmd = "UPDATE `detail_paket_layanan` SET `id_layanan` = ? WHERE id_detail_paket = ?)";
+
+        try(Connection con = Database.getConnection();
+            PreparedStatement stmt = con.prepareStatement(cmd)){
+            
+            stmt.setInt(1, this.id_layanan);
+            stmt.setInt(2, give_id_detail_paket);
+            stmt.execute();
+
+            System.out.println("[ DETAIL PAKET DIPERBARUI ]");    
+
+        } catch (SQLException e) {
+            System.err.println(e);
+        }
+    }
+
+
+    // CEK DETAIL PAKET
+
+    
+    public int get_id_detail_paket() {
+        return id_detail_paket;
+    }
+
+    public static TableModel load_detail_paket(){
         String cmd = "SELECT * FROM `detail_paket_layanan` WHERE 1;";
 
         TableModel tm = null;

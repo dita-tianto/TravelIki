@@ -105,7 +105,7 @@ public class Pemesanan {
             PreparedStatement stmt = con.prepareStatement(cmd)){
 
             stmt.setInt(1, give_id_pengguna);
-            stmt.setString(1, tanggal_pemesanan);
+            stmt.setString(1, give_tanggal_pemesanan);
 
             ResultSet rs = stmt.executeQuery();
             
