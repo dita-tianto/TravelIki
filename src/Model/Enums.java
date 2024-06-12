@@ -12,8 +12,15 @@ public class Enums {
         NOT_AVAILABLE
     }
 
+    public static enum pemesanan{
+        PROCESSED, // menunggu pembayaran
+        CANCELLED,
+        COMPLETED
+    }
+
     public static enum pembayaran{
         PAID,
-        PENDING
+        PENDING,
+        FAILED
     }
 }
