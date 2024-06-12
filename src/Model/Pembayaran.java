@@ -41,7 +41,7 @@ public class Pembayaran {
         }
     }
     
-    // CEK PEMBAYARAN
+    // CEK PEMBAYARAN 
 
     public static TableModel cek_pembayaran(int give_id_pembayaran){ //selalu hitung setelah insert pesanan
         String cmd = "SELECT * FROM `pembayaran` WHERE id_pembayaran = ?";
