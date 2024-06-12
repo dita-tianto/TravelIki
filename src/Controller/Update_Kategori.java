@@ -1,12 +1,12 @@
 package Controller;
 
-import Model.Layanan;
+import Model.Kategori;
 
 public class Update_Kategori {
-    public Update_Kategori(int give_id_layanan, String give_layanan, String give_deskripsi, double give_harga, int give_id_kategori){
-        Layanan up_layanan = new Layanan();
-        up_layanan.set_data_layanan(give_layanan, give_deskripsi, give_harga, give_id_kategori);
-        up_layanan.update_layanan(give_id_layanan);
+    public Update_Kategori(int give_id_kategori, String give_kategori){
+        Kategori ins_kategori = new Kategori();
+        ins_kategori.set_data_kategori(give_kategori);
+        ins_kategori.update_kategori(give_id_kategori);
     }
     
 }
