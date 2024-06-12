@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 
+import Model.Enums;
 // import Backup_Restore.BackUpFrame;
 import View.All_panel.Add_category;
 import View.All_panel.Create_Purchase;
@@ -82,7 +83,7 @@ public class Dashboard_JFrm extends JFrame {
 				try {	
 
 					UIManager.setLookAndFeel(new SyntheticaAluOxideLookAndFeel());
-					Dashboard_JFrm frame = new Dashboard_JFrm("Running Dash");
+					Dashboard_JFrm frame = new Dashboard_JFrm(Enums.role.CUSTOMER);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -96,23 +97,23 @@ public class Dashboard_JFrm extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Dashboard_JFrm(String role) {
+	public Dashboard_JFrm(Enums.role give_role) {
 
-		if (role.equals("Admin")) {
+		if (give_role.equals("Admin")) {
 			System.out.println("ok");
 			Login_Jfrm l = new Login_Jfrm();
 			l.window.dispose();
-		} else if (role.equals("Employee")) {
+		} else if (give_role.equals("Employee")) {
 			System.out.println("ok employee");
 			Login_Jfrm em = new Login_Jfrm();
 			em.window.dispose();
-		} else if (role.equals("Manager")) {
+		} else if (give_role.equals("Manager")) {
 			System.out.println("Ok manager");
 			Login_Jfrm Mngr = new Login_Jfrm();
 			Mngr.window.dispose();
 		}
 
-		System.out.println(role);
+		System.out.println(give_role);
 
 		setModalExclusionType(ModalExclusionType.APPLICATION_EXCLUDE);
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Dashboard_JFrm.class.getResource("/resource/sp (4).png")));
@@ -125,7 +126,7 @@ public class Dashboard_JFrm extends JFrame {
 		setJMenuBar(menuBar);
 
 		// sebagai admin aksess all
-		if (role.equals("Admin")) {
+		if (give_role.equals(Enums.role.ADMIN)) {
 			mnHome = new JMenu("Home");
 			mnHome.setIcon(new ImageIcon(Dashboard_JFrm.class.getResource("/resource/home (2).png")));
 			menuBar.add(mnHome);
@@ -215,23 +216,23 @@ public class Dashboard_JFrm extends JFrame {
 		mnExtra.setLocation(new Point(43, 100));
 		menuBar.add(mnExtra);
 
-		if (role.equals("Admin") || role.equals("Manager")) {
-			mntmP = new JMenuItem("Create Purchase");
-			mntmP.setIcon(new ImageIcon(Dashboard_JFrm.class.getResource("/resource/sp (12).png")));
-			mntmP.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent arg0) {
-					JInternalFrame JIF = new JInternalFrame("All Units", false, true, false, true);
-					Create_Purchase Create_Purchase = new Create_Purchase();
-					JIF.getContentPane().add(Create_Purchase);
-					JIF.pack();
+		// if (role.equals("Admin") || role.equals("Manager")) {
+		// 	mntmP = new JMenuItem("Create Purchase");
+		// 	mntmP.setIcon(new ImageIcon(Dashboard_JFrm.class.getResource("/resource/sp (12).png")));
+		// 	mntmP.addActionListener(new ActionListener() {
+		// 		public void actionPerformed(ActionEvent arg0) {
+		// 			JInternalFrame JIF = new JInternalFrame("All Units", false, true, false, true);
+		// 			Create_Purchase Create_Purchase = new Create_Purchase();
+		// 			JIF.getContentPane().add(Create_Purchase);
+		// 			JIF.pack();
 
-					desktopPane.add(JIF);
-					JIF.setVisible(true);
-				}
-			});
-			mnBillingInfo.add(mntmP);
+		// 			desktopPane.add(JIF);
+		// 			JIF.setVisible(true);
+		// 		}
+		// 	});
+		// 	mnBillingInfo.add(mntmP);
 
-		}
+		// }
 
 			//ini tampilan yang ada di awal :)
 			contentPane = new JPanel();

@@ -110,32 +110,32 @@ public class Login_Jfrm extends JFrame {
         passw.setBounds(885, 84, 250, 30); // Tempatkan di bawah Username
         desktopPane.add(passw);
 
-        // Initialize and set up the JComboBox
-        rol = new JComboBox<>();
-        rol.setModel(
-                new DefaultComboBoxModel<>(new String[] { "Select", "Employee", "Manager", "Admin", "Super_Admin" }));
-        rol.setBounds(885, 125, 250, 30); // Position below Password
-        desktopPane.add(rol); // Add to the content pane
+        // // Initialize and set up the JComboBox
+        // rol = new JComboBox<>();
+        // rol.setModel(
+        //         new DefaultComboBoxModel<>(new String[] { "Select", "Employee", "Manager", "Admin", "Super_Admin" }));
+        // rol.setBounds(885, 125, 250, 30); // Position below Password
+        // desktopPane.add(rol); // Add to the content pane
 
-        // Initialize and set up the JLabel for Role
-        JLabel lblRole = new JLabel("Role : ");
-        lblRole.setFont(new Font("Poppins", Font.BOLD, 16)); // Match the font
-        lblRole.setBounds(785, 125, 120, 30); // Position below Password
-        desktopPane.add(lblRole); // Add to the content pane
+        // // Initialize and set up the JLabel for Role
+        // JLabel lblRole = new JLabel("Role : ");
+        // lblRole.setFont(new Font("Poppins", Font.BOLD, 16)); // Match the font
+        // lblRole.setBounds(785, 125, 120, 30); // Position below Password
+        // desktopPane.add(lblRole); // Add to the content pane
 
         // Login button
         JButton btnLogin = new JButton("Login");
         btnLogin.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
-                if (rol.getSelectedItem().toString().equals("Select")) {
+                if (false) {
                     JOptionPane.showMessageDialog(null, "Select Your Role");
                 } else {
                     String username = user.getText();
                     String password = new String(((JPasswordField) passw).getPassword()); // Use getPassword() for
                     // JPasswordField
                     // String role = rol.getSelectedItem().toString();
-                    new Login(username, password);
-                }
+                new Login(username, password);
+                    }
             }
         });
         btnLogin.setBounds(885, 165, 100, 30); // Adjusted position and size

@@ -4,12 +4,13 @@ import javax.swing.JOptionPane;
 
 import Model.Enums;
 import Model.User;
-import Model.Enums.role;
+// import Model.Enums.role;
 import View.Dashboard_JFrm;
+import View.Login.Login_Jfrm;
 
 public class Login {
     public Login(String give_username, String give_password){
-        User log_user = new User();
+        // User log_user = new User();
         Enums.role user_role = User.check_user_data(give_username, give_password);
 
         if (user_role == null) {
@@ -22,5 +23,4 @@ public class Login {
             Login_Jfrm.frmLoginPanel.dispose();
 		}
     }
-    
 }
