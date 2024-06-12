@@ -16,8 +16,4 @@ public class Enums {
         PAID,
         PENDING
     }
-
-    public static enum category{
-        
-    }
 }

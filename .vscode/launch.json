@@ -1,0 +1,15 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Launch Main",
+            "request": "launch",
+            "mainClass": "src/Main.java", // Ganti dengan nama kelas utama Anda
+            "classpath": [
+                "${workspaceFolder}/lib/rs2xml.jar", // Pastikan path ini sesuai dengan lokasi JAR Anda
+                "${workspaceFolder}/bin" // Menambahkan folder bin atau src jika diperlukan
+            ]
+        }
+    ]
+}
