@@ -46,7 +46,7 @@ public class Paket {
     // UPDATE paket
 
     public void update_paket(int give_id_paket){
-        String cmd = "UPDATE `paket_layanan` SET `nama_paket` = ?, `deskripsi` = ?, `harga` = ?, id_kategori = ? WHERE id = ?)";
+        String cmd = "UPDATE `paket_layanan` SET `nama_paket` = ?, `deskripsi` = ?, `harga` = ?, id_kategori = ? WHERE id_paket = ?)";
 
         try(Connection con = Database.getConnection();
             PreparedStatement stmt = con.prepareStatement(cmd)){
