@@ -1,6 +1,5 @@
 package View.Login;
 
-
 import java.awt.Color;
 import javax.swing.ImageIcon;
 import javax.swing.JProgressBar;
@@ -10,7 +9,7 @@ import javax.swing.JWindow;
 import java.awt.BorderLayout;
 import javax.swing.UIManager;
 
-public class Landing {
+public class LOG_Splash {
 	public static void main(String[] args) throws InterruptedException {
 		showSplashAndRunMainApp();
 	}
@@ -30,7 +29,7 @@ public class Landing {
 		JPanel content = new JPanel(new BorderLayout());
 
 		// Gambar splash
-		JLabel splashLabel = new JLabel(new ImageIcon(Landing.class.getResource("/resource/landingpage.png")));
+		JLabel splashLabel = new JLabel(new ImageIcon(LOG_Splash.class.getResource("/resource/landingpage.png")));
 		splash.setBounds(480, 250, 625, 350);
 		content.add(splashLabel, BorderLayout.CENTER);
 
