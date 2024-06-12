@@ -109,10 +109,13 @@ public class Login_REG {
 			public void keyReleased(KeyEvent arg0) {
 				String username = user.getText();
 				String email = user.getText();
-				String 
-				new Register(username, email, username, username, null)
+				String no_telepon = user.getText();
+				String password = user.getText();
+				Enums.role role = Enums.role.CUSTOMER;
 
-				if (ad == null && em == null && mng == null) {
+				new Register(username, email, no_telepon, password, role);
+
+				if (username == null && email == null && no_telepon == null && password == null && role == null) {
 					user.setBorder(null);
 					user_lbl.setVisible(false);
 					btnRegister.setEnabled(true);
@@ -160,12 +163,13 @@ public class Login_REG {
 				if (rol.getSelectedItem().toString().equals("Select")) {
 					JOptionPane.showMessageDialog(null, "Select Your Role");
 				} else {
-					String un = user.getText();
-					String ps = new String(passw.getPassword());
-					String emailText = email.getText();
-					String phone = notelpon.getText();
-					String role = rol.getSelectedItem().toString();
-					new Login_REG_ctrl(user, emailText, notelpon, passw, role);
+					String username = user.getText();
+					String password = new String(passw.getPassword());
+					// String emailText = email.getText();
+					// String phone = notelpon.getText();
+					// String role = rol.getSelectedItem().toString();
+
+					new Login(username, password);
 					JOptionPane.showMessageDialog(null, "Registration Successful");
 
 					frmLoginPanel.dispose();
