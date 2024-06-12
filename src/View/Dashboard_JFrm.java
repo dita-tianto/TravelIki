@@ -42,8 +42,6 @@ import javax.imageio.ImageIO;
 import javax.swing.Box;
 import javax.swing.ImageIcon;
 
-import de.javasoft.plaf.synthetica.SyntheticaAluOxideLookAndFeel;
-// import de.javasoft.plaf.synthetica.SyntheticaBlackEyeLookAndFeel;
 import net.miginfocom.swing.MigLayout;
 import javax.swing.JLabel;
 import java.awt.GridLayout;
@@ -54,6 +52,7 @@ import java.awt.ComponentOrientation;
 import java.awt.Component;
 import java.awt.Point;
 import javax.swing.JCheckBoxMenuItem;
+import javax.swing.UnsupportedLookAndFeelException;
 
 public class Dashboard_JFrm extends JFrame {
 
@@ -80,38 +79,39 @@ public class Dashboard_JFrm extends JFrame {
 	 */
 	public static void main(String[] args) {
 
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					UIManager.setLookAndFeel(new SyntheticaAluOxideLookAndFeel());
-					Dashboard_JFrm frame = new Dashboard_JFrm(Enums.role.CUSTOMER);
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
+		EventQueue.invokeLater(() -> {
+			try {
+				UIManager.setLookAndFeel("de.javasoft.plaf.synthetica.SyntheticaAluOxideLookAndFeel");
+				Dashboard_JFrm frame = new Dashboard_JFrm(Enums.role.CUSTOMER);
+				frame.setVisible(true);
+			} catch (ClassNotFoundException | IllegalAccessException | InstantiationException
+					| UnsupportedLookAndFeelException e) {
+				System.err.println(e);
 			}
 		});
 	}
 
-	// iki tera bas
-
-	/**
-	 * Create the frame.
-	 */
 	public Dashboard_JFrm(Enums.role give_role) {
 
-		if (give_role.equals("Admin")) {
-			System.out.println("ok");
-			Login_Jfrm l = new Login_Jfrm();
-			l.window.dispose();
-		} else if (give_role.equals("Employee")) {
-			System.out.println("ok employee");
-			Login_Jfrm em = new Login_Jfrm();
-			em.window.dispose();
-		} else if (give_role.equals("Manager")) {
-			System.out.println("Ok manager");
-			Login_Jfrm Mngr = new Login_Jfrm();
-			Mngr.window.dispose();
+		switch (give_role) {
+			case Enums.role.ADMIN -> {
+				System.out.println("[ LOGIN ADMIN ]");
+				Login_Jfrm l = new Login_Jfrm();
+				l.window.dispose();
+			}
+
+			case Enums.role.EMPLOYEE -> {
+				System.out.println("[ LOGIN EMPLOYEE ]");
+				Login_Jfrm em = new Login_Jfrm();
+				em.window.dispose();
+			}
+
+			case Enums.role.CUSTOMER -> {
+				System.out.println("[ LOGIN CUSTOMER ]");
+				Login_Jfrm Mngr = new Login_Jfrm();
+				Mngr.window.dispose();
+			}
+			default -> throw new AssertionError();
 		}
 
 		System.out.println(give_role);
@@ -147,7 +147,7 @@ public class Dashboard_JFrm extends JFrame {
 			mntmAddCatagory.setMnemonic(KeyEvent.VK_O);
 			mntmAddCatagory.setIcon(new ImageIcon(Dashboard_JFrm.class.getResource("/resource/cat.png")));
 			mntmAddCatagory.addActionListener(new ActionListener() {
-				
+
 				public void actionPerformed(ActionEvent arg0) {
 					// Buat JInternalFrame baru
 					JInternalFrame JIF = new JInternalFrame("Tambahkan Layanan", false, true, false, true);
