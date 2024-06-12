@@ -92,27 +92,6 @@ public class Dashboard_JFrm extends JFrame {
 
 	public Dashboard_JFrm(Enums.role give_role) {
 
-		switch (give_role) {
-			case Enums.role.ADMIN -> {
-				System.out.println("[ LOGIN ADMIN ]");
-				Login_Jfrm l = new Login_Jfrm();
-				l.window.dispose();
-			}
-
-			case Enums.role.EMPLOYEE -> {
-				System.out.println("[ LOGIN EMPLOYEE ]");
-				Login_Jfrm em = new Login_Jfrm();
-				em.window.dispose();
-			}
-
-			case Enums.role.CUSTOMER -> {
-				System.out.println("[ LOGIN CUSTOMER ]");
-				Login_Jfrm Mngr = new Login_Jfrm();
-				Mngr.window.dispose();
-			}
-			default -> throw new AssertionError();
-		}
-
 		System.out.println(give_role);
 
 		setModalExclusionType(ModalExclusionType.APPLICATION_EXCLUDE);
