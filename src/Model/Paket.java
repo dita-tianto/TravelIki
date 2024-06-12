@@ -8,66 +8,66 @@ import javax.swing.table.TableModel;
 
 import net.proteanit.sql.DbUtils;
 
-public class Layanan {
-    private String layanan;
+public class Paket {
+    private String paket;
     private String deskripsi;
     private double harga;
     private int id_kategori;
 
-    // TAMBAH LAYANAN
+    // TAMBAH paket
     
-    public void set_data_layanan(String give_layanan, String give_deskripsi, double give_harga, int give_id_kategori){
-        this.layanan = give_layanan;
+    public void set_data_paket(String give_paket, String give_deskripsi, double give_harga, int give_id_kategori){
+        this.paket = give_paket;
         this.deskripsi = give_deskripsi;
         this.harga = give_harga;
         this.id_kategori = give_id_kategori;
     }
     
-    public void insert_layanan(){
-        String cmd = "INSERT INTO `layanan`(`nama_layanan`, `deskripsi`, `harga`, `id_kategori`) VALUES (?, ?, ?, ?)";
+    public void insert_paket(){
+        String cmd = "INSERT INTO `paket_layanan`(`nama_paket`, `deskripsi`, `harga`, `id_kategori`) VALUES (?, ?, ?, ?)";
 
         try(Connection con = Database.getConnection();
             PreparedStatement stmt = con.prepareStatement(cmd)){
             
-            stmt.setString(1, this.layanan);
+            stmt.setString(1, this.paket);
             stmt.setString(2, this.deskripsi);
             stmt.setDouble(3, this.harga);
             stmt.setInt(4, this.id_kategori);
             stmt.execute();
 
-            System.out.println("[ LAYANAN DITAMBAHKAN ]");    
+            System.out.println("[ PAKET DITAMBAHKAN ]");    
 
         } catch (SQLException e) {
             System.err.println(e);
         }
     }
     
-    // UPDATE LAYANAN
+    // UPDATE paket
 
-    public void update_layanan(int give_id_layanan){
-        String cmd = "UPDATE `layanan` SET `nama_layanan` = ?, `deskripsi` = ?, `harga` = ?, id_kategori = ? WHERE id = ?)";
+    public void update_paket(int give_id_paket){
+        String cmd = "UPDATE `paket_layanan` SET `nama_paket` = ?, `deskripsi` = ?, `harga` = ?, id_kategori = ? WHERE id = ?)";
 
         try(Connection con = Database.getConnection();
             PreparedStatement stmt = con.prepareStatement(cmd)){
             
-            stmt.setString(1, this.layanan);
+            stmt.setString(1, this.paket);
             stmt.setString(2, this.deskripsi);
             stmt.setDouble(3, this.harga);
             stmt.setInt(4, this.id_kategori);
-            stmt.setInt(5, give_id_layanan);
+            stmt.setInt(5, give_id_paket);
             stmt.execute();
 
-            System.out.println("[ LAYANAN DIPERBARUI ]");    
+            System.out.println("[ PAKET DIPERBARUI ]");    
 
         } catch (SQLException e) {
             System.err.println(e);
         }
     }
 
-    // CEK LAYANAN
+    // CEK paket
 
-    public static TableModel load_data_layanan(){
-        String cmd = "SELECT a.nama_layanan as Nama, b.nama_kategori as Kategori, a.harga_layanan as Harga, a.status_layanan FROM layanan a, kategori_layanan b WHERE a.id_kategori=b.id_kategori;";
+    public static TableModel load_data_paket(){
+        String cmd = "SELECT a.nama_paket as Nama, b.nama_kategori as Kategori, a.harga_paket as Harga, a.status_paket FROM paket_layanan a, kategori_layanan b WHERE a.id_kategori=b.id_kategori;";
 
         TableModel tm = null;
 

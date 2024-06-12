@@ -17,10 +17,4 @@ public class Enums {
         CANCELLED,
         COMPLETED
     }
-
-    public static enum pembayaran{
-        PAID,
-        PENDING,
-        FAILED
-    }
 }

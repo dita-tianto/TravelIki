@@ -37,7 +37,7 @@ public class Pemesanan {
         }
     }
     
-    // UPDATE 
+    // UPDATE PESANAN
 
     public void update_total_harga(int give_id_layanan){
         String cmd = "UPDATE `pesanan` SET `total_harga` = ? WHERE id_pesanan = ?)";
@@ -46,6 +46,23 @@ public class Pemesanan {
             PreparedStatement stmt = con.prepareStatement(cmd)){
             
             stmt.setDouble(1, hitung_total_harga(give_id_layanan));
+            stmt.setInt(2, give_id_layanan);
+            stmt.execute();
+
+            System.out.println("[ TOTAL HARGA DIPERBARUI ]");    
+
+        } catch (SQLException e) {
+            System.err.println(e);
+        }
+    }
+
+    public static void update_status_pemesanan(int give_id_layanan, Enums.pemesanan give_status){
+        String cmd = "UPDATE `pesanan` SET `status_pesanan` = ? WHERE id_pesanan = ?";
+        
+        try(Connection con = Database.getConnection();
+            PreparedStatement stmt = con.prepareStatement(cmd)){
+            
+            stmt.setString(1, give_status.name());
             stmt.setInt(2, give_id_layanan);
             stmt.execute();
 
