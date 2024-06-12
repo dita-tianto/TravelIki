@@ -1,0 +1,36 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "java",
+      "name": "LOG_Splash",
+      "request": "launch",
+      "mainClass": "View.Login.LOG_Splash",
+      "projectName": "TravelIki_11635728"
+    },
+    {
+      "type": "java",
+      "name": "LOG_Splash",
+      "request": "launch",
+      "mainClass": "View.Login.LOG_Splash",
+      "projectName": "TravelIki_78ecfa10"
+    },
+    {
+      "type": "java",
+      "name": "Landing",
+      "request": "launch",
+      "mainClass": "View.Login.Landing",
+      "projectName": "TravelIki_78ecfa10"
+    },
+    {
+      "type": "java",
+      "name": "Launch Main",
+      "request": "launch",
+      "mainClass": "src/Main.java",
+      "classpath": [
+        "${workspaceFolder}/lib/rs2xml.jar",
+        "${workspaceFolder}/bin"
+      ]
+    }
+  ]
+}

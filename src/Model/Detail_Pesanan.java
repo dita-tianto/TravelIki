@@ -19,17 +19,17 @@ public class Detail_Pesanan {
 
     // TAMBAH PESANAN
     
-    public void set_detail_pesanan(int give_id_pesanan, int give_id_layanan, int give_id_paket, int give_kuantitas, double give_harga_satuan, double give_subtotal){
+    public void set_detail_pesanan(int give_id_pesanan, int give_id_layanan, int give_id_paket, int give_kuantitas, double give_harga_satuan){
         this.id_pesanan = give_id_pesanan;
         this.id_layanan = give_id_layanan;
         this.id_paket = give_id_paket;
         this.kuantitas = give_kuantitas;
         this.harga_satuan = give_harga_satuan;
-        this.subtotal = give_subtotal;
+        this.subtotal = hitung_subtotal(give_kuantitas, give_harga_satuan);
     }
     
     public void insert_detail_pesanan(){
-        String cmd = "INSERT INTO `detail_pesanan`(`id_layanan`, `id_paket`, `kuantitas`, `harga_satuan`, `subtotal`) VALUES (?, ?, ?, ?, ?)";
+        String cmd = "INSERT INTO `detail_pesanan`(`id_layanan`, `id_paket`, `kuantitas`, `harga_satuan`, `subtotal`) VALUES (?, ?, ?, ?, ?) WHERE id_pesanan = ?";
 
         try(Connection con = Database.getConnection();
             PreparedStatement stmt = con.prepareStatement(cmd)){
@@ -39,6 +39,7 @@ public class Detail_Pesanan {
             stmt.setInt(3, this.kuantitas);
             stmt.setDouble(4, this.harga_satuan);
             stmt.setDouble(5, this.subtotal);
+            stmt.setInt(6, this.id_pesanan);
             stmt.execute();
 
             System.out.println("[ DETAIL PESANAN DITAMBAHKAN ]");    
@@ -73,13 +74,15 @@ public class Detail_Pesanan {
 
     // CEK LAYANAN
 
-    public static TableModel load_data_detail_pesanan(){
-        String cmd = "SELECT a.id_detail_pesanan, a.id_pesanan, a.id_layanan, a.id_paket, a.kuantitas, a.harga_satuan, a.subtotal FROM detail_pesanan a JOIN pemesanan b ON a.id_pesanan = b.id_pesanan JOIN layanan c ON a.id_layanan = c.id_layanan JOIN paket_layanan d ON a.id_paket = d.id_paket;";
+    public static TableModel load_data_detail_pesanan(int give_id_detail_pesanan){
+        String cmd = "SELECT * FROM `detail_pesanan` WHERE id_detail_pesanan = ?";
 
         TableModel tm = null;
 
         try(Connection con = Database.getConnection();
             PreparedStatement stmt = con.prepareStatement(cmd)){
+
+            stmt.setInt(1, give_id_detail_pesanan);
 
             ResultSet rs = stmt.executeQuery();
             tm = DbUtils.resultSetToTableModel(rs); // konversi rs ke TableModel
@@ -90,4 +93,10 @@ public class Detail_Pesanan {
 
         return tm;
     }
+
+    public double hitung_subtotal(int give_kuantitas, double give_harga_satuan){
+        return give_kuantitas * give_harga_satuan;
+    }
+
+    
 }
