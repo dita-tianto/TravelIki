@@ -1,14 +1,11 @@
 package Controller;
 
-import java.awt.Window;
-
 import javax.swing.JOptionPane;
 
 import Model.Enums;
 import Model.User;
 import Model.Enums.role;
 import View.Dashboard_JFrm;
-import View.Login.LOG_Splash;
 
 public class Login {
     public Login(String give_username, String give_password){
@@ -22,7 +19,7 @@ public class Login {
             System.out.println("[LOGIN AS " + user_role + " ]");
             Dashboard_JFrm Dashboard_JFrm = new Dashboard_JFrm(user_role); // ini langsung masuk ke dashboard sesuai role
             Dashboard_JFrm.setVisible(true);
-            ((Window) LOG_Splash.frmLoginPanel).dispose();
+            Login_Jfrm.frmLoginPanel.dispose();
 		}
     }
     
