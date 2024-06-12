@@ -40,7 +40,7 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
 import de.javasoft.plaf.synthetica.SyntheticaAluOxideLookAndFeel;
-import de.javasoft.plaf.synthetica.SyntheticaBlackEyeLookAndFeel;
+// import de.javasoft.plaf.synthetica.SyntheticaBlackEyeLookAndFeel;
 import net.miginfocom.swing.MigLayout;
 import javax.swing.JLabel;
 import java.awt.GridLayout;
