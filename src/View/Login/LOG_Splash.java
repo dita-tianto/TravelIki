@@ -1,12 +1,12 @@
 package View.Login;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import javax.swing.ImageIcon;
-import javax.swing.JProgressBar;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JProgressBar;
 import javax.swing.JWindow;
-import java.awt.BorderLayout;
 
 public class LOG_Splash {
 	public static void main(String[] args) throws InterruptedException {
@@ -46,7 +46,7 @@ public class LOG_Splash {
 		// Simulasi proses loading
 		for (int i = 0; i <= 100; i++) {
 			progressBar.setValue(i);
-			Thread.sleep(50); // Simulasi waktu loading
+			Thread.sleep(20); // Simulasi waktu loading
 		}
 
 		// affff
