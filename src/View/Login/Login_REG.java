@@ -1,13 +1,13 @@
 package View.Login;
 
-import javax.swing.*;
+import Controller.*;
+import Model.*;
 import java.awt.*;
 import java.awt.event.*;
-import javax.imageio.ImageIO;
-import javax.swing.border.*;
-import Model.*;
-import Controller.*;
 import java.io.IOException;
+import javax.imageio.ImageIO;
+import javax.swing.*;
+import javax.swing.border.*;
 
 public class Login_REG {
 
@@ -25,17 +25,15 @@ public class Login_REG {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
-					Login_REG window = new Login_REG();
-					window.frmLoginPanel.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
+		EventQueue.invokeLater(() -> {
+                    try {
+                        UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
+                        Login_REG window = new Login_REG();
+                        window.frmLoginPanel.setVisible(true);
+                    } catch (ClassNotFoundException | IllegalAccessException | InstantiationException | UnsupportedLookAndFeelException e) {
+                        System.err.println(e);
+                    }
+                });
 	}
 
 	/**
@@ -67,7 +65,7 @@ public class Login_REG {
 					// Load the background image
 					image = ImageIO.read(Login_Jfrm.class.getResource("/resource/RevisiDoneRegis.png"));
 				} catch (IOException e) {
-					e.printStackTrace();
+					System.err.println(e);
 				}
 			}
 
@@ -113,9 +111,9 @@ public class Login_REG {
 				String password = user.getText();
 				Enums.role role = Enums.role.CUSTOMER;
 
-				new Register(username, email, no_telepon, password, role);
+				Register.run_register(username, email, no_telepon, password, role);
 
-				if (username == null && email == null && no_telepon == null && password == null && role == null) {
+				if (username == null && email == null && no_telepon == null && password == null) {
 					user.setBorder(null);
 					user_lbl.setVisible(false);
 					btnRegister.setEnabled(true);
@@ -158,37 +156,33 @@ public class Login_REG {
 		desktopPane.add(passw);
 
 		btnRegister = new JButton("Register");
-		btnRegister.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				if (rol.getSelectedItem().toString().equals("Select")) {
-					JOptionPane.showMessageDialog(null, "Select Your Role");
-				} else {
-					String username = user.getText();
-					String password = new String(passw.getPassword());
-					// String emailText = email.getText();
-					// String phone = notelpon.getText();
-					// String role = rol.getSelectedItem().toString();
-
-					new Login(username, password);
-					JOptionPane.showMessageDialog(null, "Registration Successful");
-
-					frmLoginPanel.dispose();
-				}
-			}
-		});
+		btnRegister.addActionListener((ActionEvent arg0) -> {
+                    if (rol.getSelectedItem().toString().equals("Select")) {
+                        JOptionPane.showMessageDialog(null, "Select Your Role");
+                    } else {
+                        String username = user.getText();
+                        String password = new String(passw.getPassword());
+                        // String emailText = email.getText();
+                        // String phone = notelpon.getText();
+                        // String role = rol.getSelectedItem().toString();
+                        
+                        Login.run_login(username, password);
+                        JOptionPane.showMessageDialog(null, "Registration Successful");
+                        
+                        frmLoginPanel.dispose();
+                    }
+                });
 		btnRegister.setBounds(885, 220, 100, 30);
 		desktopPane.add(btnRegister);
 
 		JButton btnReset = new JButton("Reset");
-		btnReset.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				user.setText("");
-				email.setText("");
-				notelpon.setText("");
-				passw.setText("");
-				rol.setSelectedIndex(0);
-			}
-		});
+		btnReset.addActionListener((ActionEvent arg0) -> {
+                    user.setText("");
+                    email.setText("");
+                    notelpon.setText("");
+                    passw.setText("");
+                    rol.setSelectedIndex(0);
+                });
 		btnReset.setBounds(1035, 220, 100, 30);
 		desktopPane.add(btnReset);		
 	}

@@ -1,15 +1,13 @@
 package Controller;
 
-import javax.swing.JOptionPane;
-
 import Model.Enums;
 import Model.User;
-// import Model.Enums.role;
 import View.Dashboard_JFrm;
 import View.Login.Login_Jfrm;
+import javax.swing.JOptionPane;
 
 public class Login {
-    public Login(String give_username, String give_password){
+    public static void run_login(String give_username, String give_password){
         // User log_user = new User();
         Enums.role user_role = User.check_user_data(give_username, give_password);
 

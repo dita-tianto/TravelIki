@@ -1,22 +1,20 @@
 package View.Login;
 
 import Controller.Login;
-import javax.swing.*;
-import javax.swing.border.EmptyBorder;
-
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
 import javax.imageio.ImageIO;
+import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 
 public class Login_Jfrm extends JFrame {
 
     public static Login_Jfrm window;
-    private JTextField user;
-    private JPasswordField passw; // Ganti JTextField dengan JPasswordField
+    private JTextField username;
+    private JPasswordField password;
     private JComboBox<String> rol;
     private JToggleButton tglbtnNewToggleButton;
     private JDesktopPane desktopPane;
@@ -33,15 +31,13 @@ public class Login_Jfrm extends JFrame {
      * Launch the application.
      */
     public static void main(String[] args) {
-        EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                try {
-                    UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
-                    window = new Login_Jfrm();
-                    window.setVisible(true);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+        EventQueue.invokeLater(() -> {
+            try {
+                UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
+                window = new Login_Jfrm();
+                window.setVisible(true);
+            } catch (ClassNotFoundException | IllegalAccessException | InstantiationException | UnsupportedLookAndFeelException e) {
+                System.err.println(e);
             }
         });
     }
@@ -67,7 +63,7 @@ public class Login_Jfrm extends JFrame {
                     // Load the background image
                     image = ImageIO.read(Login_Jfrm.class.getResource("/resource/RevDoneAcc1.png"));
                 } catch (IOException e) {
-                    e.printStackTrace();
+                    System.err.println(e);
                 }
             }
 
@@ -95,61 +91,37 @@ public class Login_Jfrm extends JFrame {
         lblUsername.setBounds(785, 48, 120, 30); // Sesuaikan bounds agar lebih besar
         desktopPane.add(lblUsername);
 
-        user = new JTextField();
-        user.setBounds(885, 48, 250, 30); // Perbesar ukuran dan sesuaikan posisi
-        desktopPane.add(user);
-        user.setColumns(10);
+        username = new JTextField();
+        username.setBounds(885, 48, 250, 30); // Perbesar ukuran dan sesuaikan posisi
+        desktopPane.add(username);
+        username.setColumns(10);
 
         JLabel lblPassword = new JLabel("Password : ");
         lblPassword.setFont(new Font("Poppins", Font.BOLD, 16)); // Perbesar teks
         lblPassword.setBounds(785, 84, 120, 30); // Tempatkan di bawah Username
         desktopPane.add(lblPassword);
 
-        passw = new JPasswordField();
-        passw.setColumns(10);
-        passw.setBounds(885, 84, 250, 30); // Tempatkan di bawah Username
-        desktopPane.add(passw);
-
-        // // Initialize and set up the JComboBox
-        // rol = new JComboBox<>();
-        // rol.setModel(
-        //         new DefaultComboBoxModel<>(new String[] { "Select", "Employee", "Manager", "Admin", "Super_Admin" }));
-        // rol.setBounds(885, 125, 250, 30); // Position below Password
-        // desktopPane.add(rol); // Add to the content pane
-
-        // // Initialize and set up the JLabel for Role
-        // JLabel lblRole = new JLabel("Role : ");
-        // lblRole.setFont(new Font("Poppins", Font.BOLD, 16)); // Match the font
-        // lblRole.setBounds(785, 125, 120, 30); // Position below Password
-        // desktopPane.add(lblRole); // Add to the content pane
+        password = new JPasswordField();
+        password.setColumns(10);
+        password.setBounds(885, 84, 250, 30); // Tempatkan di bawah Username
+        desktopPane.add(password);
 
         // Login button
         JButton btnLogin = new JButton("Login");
-        btnLogin.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent arg0) {
-                if (false) {
-                    JOptionPane.showMessageDialog(null, "Select Your Role");
-                } else {
-                    String username = user.getText();
-                    String password = new String(((JPasswordField) passw).getPassword()); // Use getPassword() for
-                    // JPasswordField
-                    // String role = rol.getSelectedItem().toString();
-                new Login(username, password);
-                    }
-            }
+        btnLogin.addActionListener((ActionEvent arg0) -> {
+            String give_username = username.getText();
+            String give_password = new String(password.getPassword());
+
+            Login.run_login(give_username, give_password);
         });
         btnLogin.setBounds(885, 165, 100, 30); // Adjusted position and size
         desktopPane.add(btnLogin);
 
         // Reset button
         JButton btnReset = new JButton("Reset");
-        btnReset.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent arg0) {
-                // Clear input fields
-                user.setText("");
-                passw.setText("");
-                rol.setSelectedIndex(0); // Reset combo box to default
-            }
+        btnReset.addActionListener((ActionEvent arg0) -> {
+            username.setText("");
+            password.setText("");
         });
         btnReset.setBounds(1040, 165, 100, 30); // Adjusted posi tion and size
         desktopPane.add(btnReset);
@@ -163,13 +135,11 @@ public class Login_Jfrm extends JFrame {
         // icon password
         tglbtnNewToggleButton = new JToggleButton("");
         tglbtnNewToggleButton.setIcon(new ImageIcon(Login_Jfrm.class.getResource("/resource/eye.png")));
-        tglbtnNewToggleButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent arg0) {
-                if (tglbtnNewToggleButton.isSelected()) {
-                    passw.setEchoChar((char) 0);
-                } else {
-                    passw.setEchoChar('*');
-                }
+        tglbtnNewToggleButton.addActionListener((ActionEvent arg0) -> {
+            if (tglbtnNewToggleButton.isSelected()) {
+                password.setEchoChar((char) 0);
+            } else {
+                password.setEchoChar('*');
             }
         });
 
