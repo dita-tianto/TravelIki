@@ -19,13 +19,13 @@ public class Detail_Pesanan {
 
     // TAMBAH PESANAN
     
-    public void set_detail_pesanan(int give_id_pesanan, int give_id_layanan, int give_id_paket, int give_kuantitas, double give_harga_satuan, double give_subtotal){
+    public void set_detail_pesanan(int give_id_pesanan, int give_id_layanan, int give_id_paket, int give_kuantitas, double give_harga_satuan){
         this.id_pesanan = give_id_pesanan;
         this.id_layanan = give_id_layanan;
         this.id_paket = give_id_paket;
         this.kuantitas = give_kuantitas;
         this.harga_satuan = give_harga_satuan;
-        this.subtotal = give_subtotal;
+        this.subtotal = hitung_subtotal(give_kuantitas, give_harga_satuan);
     }
     
     public void insert_detail_pesanan(){
