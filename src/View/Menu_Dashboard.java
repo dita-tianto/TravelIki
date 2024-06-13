@@ -20,6 +20,7 @@ import View.All_panel.Create_Sale;
 import View.All_panel.Panel_Insert_Kategori;
 // import View.All_panel.Create_bill;
 import View.All_panel.Panel_Insert_Layanan;
+import View.All_panel.Panel_Insert_Ulasan;
 import View.All_panel.Product_name;
 import View.All_panel.Units;
 import View.Login.Splash_Screen;
@@ -156,6 +157,7 @@ public class Menu_Dashboard extends JFrame {
 
 		// SEMENTARA
 		menu_insert_layanan();
+		menu_insert_ulasan();
 
 
 
@@ -250,22 +252,20 @@ public class Menu_Dashboard extends JFrame {
         mnHome.add(mntmAddCategory);
 	}
 
-	private void home_insert_product() {
-		mntmAddProduct = new JMenuItem("Tambah Kategori");
-		mntmAddProduct.setMnemonic('b');
-		mntmAddProduct.setMnemonic(KeyEvent.VK_D);
-		mntmAddProduct.setIcon(new ImageIcon(Menu_Dashboard.class.getResource("/resource/cat.png")));
-		mntmAddProduct.addActionListener((ActionEvent e) -> {
-			JInternalFrame JIF = new JInternalFrame("Product Category", false, true, false, true);
-			Product_name Product_name = new Product_name();
-			JIF.getContentPane().add(Product_name);
-			JIF.pack();
+	private void menu_insert_ulasan() {
+		mntmAddCategory = new JMenuItem("Tambahkan Ulasan");
+        mntmAddCategory.setMnemonic(KeyEvent.VK_O);
+        mntmAddCategory.setIcon(new ImageIcon(Menu_Dashboard.class.getResource("/resource/cat.png")));
+        mntmAddCategory.addActionListener((ActionEvent arg0) -> {
+            JInternalFrame JIF = new JInternalFrame("Tambahkan Ulasan", false, true, false, true);
+            Panel_Insert_Ulasan addCategoryPanel = new Panel_Insert_Ulasan();
+            JIF.getContentPane().add(addCategoryPanel);
+            JIF.pack();
+            desktopPane.add(JIF);
+            JIF.setVisible(true);
+        });
 
-			desktopPane.add(JIF);
-			JIF.setVisible(true);
-		});
-
-		mnHome.add(mntmAddProduct);
+        mnHome.add(mntmAddCategory);
 	}
 
 	private void home_insert_unit() {
