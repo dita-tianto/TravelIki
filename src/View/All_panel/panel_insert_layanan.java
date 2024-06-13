@@ -16,6 +16,7 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
@@ -24,84 +25,128 @@ import java.awt.event.MouseEvent;
 import java.awt.Color;
 
 public class panel_insert_layanan extends JPanel {
-	private JTextField name;
-	public static JTable table;
-	Product_category is = new Product_category();
-	private JComboBox cmb;
+    private JTextField name;
+    private JTextField description;
+    private JTextField price;
+    public static JTable table;
+    private JComboBox<String> cmb;
+    private Product_category is = new Product_category();
 
-	/**
-	 * Create the panel.
-	 */
-	public panel_insert_layanan() {
+    /**
+     * Create the panel.
+     */
+    public panel_insert_layanan() {
 
-		setForeground(new Color(0, 51, 204));
-		setLayout(new MigLayout("", "[grow][][][][grow]", "[][][][][grow]"));
+        setForeground(new Color(0, 51, 204));
+        setLayout(new MigLayout("", "[grow][][][][grow]", "[][][][][][grow]"));
 
-		JLabel lblCategoryName = new JLabel("Nama Kategory : ");
-		add(lblCategoryName, "cell 1 0");
+        // Label and text field for service name
+        JLabel lblServiceName = new JLabel("Nama Layanan : ");
+        add(lblServiceName, "cell 1 0");
 
-		name = new JTextField();
-		add(name, "cell 4 0,growx");
-		name.setColumns(10);
+        name = new JTextField();
+        add(name, "cell 4 0,growx");
+        name.setColumns(10);
 
-		JLabel lblStatus = new JLabel("Status ::");
-		add(lblStatus, "cell 1 1");
+        // Label and text field for description
+        JLabel lblDescription = new JLabel("Nama Deskripsi : ");
+        add(lblDescription, "cell 1 1");
 
-		JButton save = new JButton("Save");
-		save.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
+        description = new JTextField();
+        add(description, "cell 4 1,growx");
+        description.setColumns(10);
 
-				String Cat_name = name.getText();
-				String Cat_status = cmb.getSelectedItem().toString();
+        // Label and text field for price
+        JLabel lblPrice = new JLabel("Harga : ");
+        add(lblPrice, "cell 1 2");
 
-				if (cmb.getSelectedIndex() == 0) {
-					JOptionPane.showMessageDialog(null, "Select Status");
-				} else {
-					Get_Category_data Get_Category_data = new Get_Category_data(Cat_name, Cat_status);
+        price = new JTextField();
+        add(price, "cell 4 2,growx");
+        price.setColumns(10);
 
-					is.load();
+        // Label and combo box for payment status
+        JLabel lblStatus = new JLabel("Status Pembayaran : ");
+        add(lblStatus, "cell 1 3");
 
-				}
-			}
-		});
+        Status Status = new Status();
+        ArrayList<String> status = new ArrayList<>(Status.return_status());
 
-		Status Status = new Status();
-		ArrayList<String> status = new ArrayList<>();
-		status = Status.return_status();
+        cmb = new JComboBox<>();
+        cmb.setModel(new DefaultComboBoxModel<>(status.toArray(new String[0])));
+        add(cmb, "cell 4 3,growx");
 
-		cmb = new JComboBox();
-		cmb.setModel(new DefaultComboBoxModel<>(status.toArray()));
-		add(cmb, "cell 4 1,growx");
-		add(save, "cell 4 2");
+        // Save button
+        JButton save = new JButton("Save");
+        save.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent arg0) {
+                String serviceName = name.getText();
+                String serviceDescription = description.getText();
+                String servicePrice = price.getText();
+                String serviceStatus = cmb.getSelectedItem().toString();
 
-		JScrollPane scrollPane = new JScrollPane();
+                if (cmb.getSelectedIndex() == 0) {
+                    JOptionPane.showMessageDialog(null, "Select Status");
+                } else {
+                    // Save service data (adapt as necessary for your data model)
+                    Get_Category_data getCategoryData = new Get_Category_data(serviceName, serviceStatus);
+                    // Add saving logic for description and price here
 
-		add(scrollPane, "cell 0 4 5 1,grow");
+                    loadServiceData();
+                }
+            }
+        });
+        add(save, "cell 4 4");
 
-		table = new JTable();
-		table.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent arg0) {
-				int row = table.getSelectedRow();
+        // Scroll pane and table
+        JScrollPane scrollPane = new JScrollPane();
+        add(scrollPane, "cell 0 5 5 1,grow");
 
-				String get1stColumeValue_name = table.getModel().getValueAt(row, 0).toString();
-				String get2ndColumeValue_st = table.getModel().getValueAt(row, 1).toString();
+        table = new JTable();
+        table.setModel(new DefaultTableModel(
+            new Object[][]{},
+            new String[]{"Nama Layanan", "Nama Deskripsi", "Harga", "Status Pembayaran"}
+        ));
+        table.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent arg0) {
+                int row = table.getSelectedRow();
+                if (row >= 0) {
+                    String serviceName = table.getModel().getValueAt(row, 0).toString();
+                    String serviceDescription = table.getModel().getValueAt(row, 1).toString();
+                    String servicePrice = table.getModel().getValueAt(row, 2).toString();
+                    String serviceStatus = table.getModel().getValueAt(row, 3).toString();
 
-				Product_category Product_category = new Product_category();
-				int id = Product_category.get_cat_id(get1stColumeValue_name);
+                    Product_category productCategory = new Product_category();
+                    int id = productCategory.get_cat_id(serviceName);
 
-				Cat_update Cat_update = new Cat_update(id);
+                    Cat_update catUpdate = new Cat_update(id);
+                    catUpdate.textField.setText(serviceName);
+                    catUpdate.descriptionField.setText(serviceDescription);
+                    catUpdate.priceField.setText(servicePrice);
+                    catUpdate.comboBox.setSelectedItem(serviceStatus);
 
-				Cat_update.textField.setText(get1stColumeValue_name);
-				Cat_update.comboBox.setSelectedItem(get2ndColumeValue_st);
+                    catUpdate.setVisible(true);
+                }
+            }
+        });
+        scrollPane.setViewportView(table);
 
-				Cat_update.setVisible(true);
+        // Load data into the table initially
+        loadServiceData();
+    }
 
-			}
-		});
-		scrollPane.setViewportView(table);
-		// is.load();
+    private void loadServiceData() {
+        // Dummy data for demonstration
+        Object[][] data = {
+            {"Service1", "Description1", "1000", "Active"},
+            {"Service2", "Description2", "2000", "Inactive"}
+        };
 
-	}
+        DefaultTableModel model = (DefaultTableModel) table.getModel();
+        model.setRowCount(0); // Clear existing rows
 
+        for (Object[] row : data) {
+            model.addRow(row);
+        }
+    }
 }

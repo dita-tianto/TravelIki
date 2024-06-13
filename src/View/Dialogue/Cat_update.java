@@ -29,6 +29,7 @@ public class Cat_update extends JDialog {
 	public static JTextField textField;
 	public JComboBox comboBox;
 	private JButton okButton;
+    public Object descriptionField;
 
 	/**
 	 * Launch the application.
