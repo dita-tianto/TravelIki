@@ -12,4 +12,9 @@ public class Insert_Paket {
         ins_paket.insert_paket();
     }
 
+    public Insert_Paket(String package_Name, String description, double parsedPrice, int parsedCategoryId,
+            int parsedServiceId) {
+        //TODO Auto-generated constructor stub
+    }
+
 }
