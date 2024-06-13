@@ -1,8 +1,9 @@
 import View.Menu_Dashboard;
+import View.All_panel.Panel_Insert_Layanan;
 import View.All_panel.Panel_Insert_Pembayaran;
 import View.All_panel.Panel_Insert_Pemesanan;
 import View.All_panel.Panel_Insert_Pembayaran;
-import View.All_panel.panel_insert_layanan;
+import View.All_panel.Panel_Insert_Layanan;
 import View.Login.Splash_Screen;
 import View.Menu_Dashboard;
 import java.awt.Graphics;

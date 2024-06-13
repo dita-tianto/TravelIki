@@ -14,11 +14,11 @@ import javax.swing.border.EmptyBorder;
 
 import Model.Enums;
 // import Backup_Restore.BackUpFrame;
-import View.All_panel.panel_insert_layanan;
+import View.All_panel.Panel_Insert_Layanan;
 // import View.All_panel.Create_Purchase;
 import View.All_panel.Create_Sale;
 // import View.All_panel.Create_bill;
-
+import View.All_panel.Panel_Insert_Layanan;
 import View.All_panel.Product_name;
 import View.All_panel.Units;
 import View.Login.Splash_Screen;
@@ -221,7 +221,7 @@ public class Menu_Dashboard extends JFrame {
 			// Buat JInternalFrame baru
 			JInternalFrame JIF = new JInternalFrame("Tambahkan Layanan", false, true, false, true);
 			// Buat panel Add_category
-			panel_insert_layanan addCategoryPanel = new panel_insert_layanan();
+			Panel_Insert_Layanan addCategoryPanel = new Panel_Insert_Layanan();
 			// Tambahkan panel ke content pane JInternalFrame
 			JIF.getContentPane().add(addCategoryPanel);
 			// Pack JInternalFrame agar sesuai dengan ukuran komponennya
@@ -246,7 +246,7 @@ public class Menu_Dashboard extends JFrame {
 			// Buat JInternalFrame baru
 			JInternalFrame JIF = new JInternalFrame("Tambahkan Layanan", false, true, false, true);
 			// Buat panel Add_category
-			panel_insert_layanan addCategoryPanel = new panel_insert_layanan();
+			Panel_Insert_Layanan addCategoryPanel = new Panel_Insert_Layanan();
 			// Tambahkan panel ke content pane JInternalFrame
 			JIF.getContentPane().add(addCategoryPanel);
 			// Pack JInternalFrame agar sesuai dengan ukuran komponennya
