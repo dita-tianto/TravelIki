@@ -27,7 +27,7 @@ import java.awt.Color;
 public class Add_category extends JPanel {
 	private JTextField name;
 	public static JTable table;
-	Product_category is = new Product_category();
+	// Product_category is = new Product_category();
 	private JComboBox cmb;
 
 	/**
@@ -52,17 +52,17 @@ public class Add_category extends JPanel {
 		save.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 
-				String Cat_name = name.getText();
-				String Cat_status = cmb.getSelectedItem().toString();
+				// String Cat_name = name.getText();
+				// String Cat_status = cmb.getSelectedItem().toString();
 
-				if (cmb.getSelectedIndex() == 0) {
-					JOptionPane.showMessageDialog(null, "Select Status");
-				} else {
-					Get_Category_data Get_Category_data = new Get_Category_data(Cat_name, Cat_status);
+				// if (cmb.getSelectedIndex() == 0) {
+				// 	JOptionPane.showMessageDialog(null, "Select Status");
+				// } else {
+				// 	Get_Category_data Get_Category_data = new Get_Category_data(Cat_name, Cat_status);
 
-					Product_category.load();
+				// 	Product_category.load();
 
-				}
+				// }
 			}
 		});
 
@@ -84,25 +84,25 @@ public class Add_category extends JPanel {
 		table.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				int row = table.getSelectedRow();
+				// int row = table.getSelectedRow();
 
-				String get1stColumeValue_name = table.getModel().getValueAt(row, 0).toString();
-				String get2ndColumeValue_st = table.getModel().getValueAt(row, 1).toString();
+				// String get1stColumeValue_name = table.getModel().getValueAt(row, 0).toString();
+				// String get2ndColumeValue_st = table.getModel().getValueAt(row, 1).toString();
 
-				Layanan layanan = new Layanan();
-				layanan.set_data_layanan(get1stColumeValue_name, get2ndColumeValue_st, row, row);;
+				// Layanan layanan = new Layanan();
+				// layanan.set_data_layanan(get1stColumeValue_name, get2ndColumeValue_st, row, row);;
 
-				Cat_update = new Cat_update(id);
+				// Cat_update = new Cat_update(id);
 
-				Cat_update.textField.setText(get1stColumeValue_name);
-				Cat_update.comboBox.setSelectedItem(get2ndColumeValue_st);
+				// Cat_update.textField.setText(get1stColumeValue_name);
+				// Cat_update.comboBox.setSelectedItem(get2ndColumeValue_st);
 
-				Cat_update.setVisible(true);
+				// Cat_update.setVisible(true);
 
 			}
 		});
 		scrollPane.setViewportView(table);
-		is.load();
+		// is.load();
 
 	}
 

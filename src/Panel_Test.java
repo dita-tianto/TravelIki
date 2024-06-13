@@ -19,18 +19,18 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
-public class Main extends JFrame {
+public class Panel_Test extends JFrame {
 
     private JMenu mnHome;
     private JMenuItem mntmAddCategory;
     private JDesktopPane desktopPane;
 
     public static void main(String[] args) {
-        Main go = new Main();
+        Panel_Test go = new Panel_Test();
         go.setVisible(true);
     }
 
-    public Main() {
+    public Panel_Test() {
         setIconImage(Toolkit.getDefaultToolkit().getImage(Menu_Dashboard.class.getResource("/resource/sp (4).png")));
         setTitle("WWW.Traveliki.com");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -60,6 +60,9 @@ public class Main extends JFrame {
         mnHome.setIcon(new ImageIcon(Menu_Dashboard.class.getResource("/resource/home (2).png")));
         menuBar.add(mnHome);
 
+
+        // EDIT DI BAWAH
+
         mntmAddCategory = new JMenuItem("Tambahkan Layanan");
         mntmAddCategory.setMnemonic(KeyEvent.VK_O);
         mntmAddCategory.setIcon(new ImageIcon(Menu_Dashboard.class.getResource("/resource/cat.png")));
@@ -73,6 +76,8 @@ public class Main extends JFrame {
         });
 
         mnHome.add(mntmAddCategory);
+
+        // SAMPAI DI SINI
 
         setContentPane(desktopPane);
     }

@@ -25,4 +25,20 @@ public class Database {
 
 		return con;
     }
+
+    public static Connection getconnection(){
+        Connection con = null;
+
+		try {
+			Class.forName(JDBC_DRIVER);
+
+			con = DriverManager.getConnection("jdbc:mysql://Localhost:3306/shop_management", USER, PASS);
+
+            System.out.println("[ KONEKSI BERHASIL ]");
+		} catch (ClassNotFoundException | SQLException e) {
+            System.err.println(e);
+        }
+
+		return con;
+    }
 }
