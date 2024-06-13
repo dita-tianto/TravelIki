@@ -1,6 +1,7 @@
-package View.All_panel;
+package View.All_Panel;
 
 import Controller.*;
+
 import Model.*;
 import View.Login.Login_Pengguna;
 import java.awt.*;
