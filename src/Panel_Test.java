@@ -1,7 +1,8 @@
 import View.Menu_Dashboard;
+import View.All_panel.Panel_Insert_Layanan;
 import View.All_panel.Panel_Insert_Pembayaran;
 import View.All_panel.Panel_Insert_Pembayaran;
-import View.All_panel.panel_insert_layanan;
+import View.All_panel.Panel_Insert_Layanan;
 import View.Login.Splash_Screen;
 
 import java.awt.Color;
