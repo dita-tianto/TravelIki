@@ -151,16 +151,7 @@ public class Menu_Dashboard extends JFrame {
 			}
 
 			default -> throw new AssertionError();
-		}
-
-		// isi method yang akan digunakan dalam menu
-		// home_insert_layanan();
-		// home_insert_kategori();
-		// home_insert_product();
-		// home_insert_unit();
-
-		// billingInfo_insert();
-		
+		}	
 
 
 		// ini tampilan yang ada di awal :)
@@ -182,7 +173,6 @@ public class Menu_Dashboard extends JFrame {
 			}
 
 			@Override
-
 			protected void paintComponent(Graphics g) {
 				super.paintComponent(g);
 				g.drawImage(image, 0, 0, getWidth(), getHeight(), this);

@@ -1,18 +1,17 @@
 import View.Menu_Dashboard;
 import View.All_panel.Panel_Insert_Layanan;
 import View.All_panel.Panel_Insert_Pembayaran;
+import View.All_panel.Panel_Insert_Pemesanan;
 import View.All_panel.Panel_Insert_Pembayaran;
 import View.All_panel.Panel_Insert_Layanan;
 import View.Login.Splash_Screen;
-
-import java.awt.Color;
+import View.Menu_Dashboard;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
-
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JDesktopPane;
@@ -86,7 +85,7 @@ public class Panel_Test extends JFrame {
         mntmAddCategory.setIcon(new ImageIcon(Menu_Dashboard.class.getResource("/resource/cat.png")));
         mntmAddCategory.addActionListener((ActionEvent arg0) -> {
             JInternalFrame JIF = new JInternalFrame("Tambahkan Kategori", false, true, false, true);
-            Panel_Insert_Pembayaran addCategoryPanel = new Panel_Insert_Pembayaran();
+            Panel_Insert_Pemesanan addCategoryPanel = new Panel_Insert_Pemesanan();
             JIF.getContentPane().add(addCategoryPanel);
             JIF.pack();
             desktopPane.add(JIF);
