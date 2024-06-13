@@ -19,6 +19,10 @@ public class Get_Category_data {
 		Product_category.snd_to_db_cat();
 		
 	}
+
+    public Get_Category_data(String cat_name, String payment_Date, String amount_Paid, String order_ID) {
+        //TODO Auto-generated constructor stub
+    }
 	
 	
 
