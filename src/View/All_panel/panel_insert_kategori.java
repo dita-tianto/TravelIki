@@ -7,6 +7,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import Controller.Get_Category_data;
+import Model.Kategori;
 import Model.Product_category;
 import View.Dialogue.Cat_update;
 
@@ -40,19 +41,15 @@ public class Panel_Insert_Kategori extends JPanel {
 		name.setColumns(10);
 
 		JButton save = new JButton("Save");
-		save.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-
-				String Cat_name = name.getText();
-
-				if (Cat_name.isEmpty()) {
-					JOptionPane.showMessageDialog(null, "Nama Kategori tidak boleh kosong");
-				} else {
-					Get_Category_data get_Category_data = new Get_Category_data(Cat_name);
-					is.load();
-				}
-			} 
-		});
+		save.addActionListener((ActionEvent arg0) -> {
+                    String nama_kategori = name.getText();
+                    
+                    if (nama_kategori.isEmpty()) {
+                        JOptionPane.showMessageDialog(null, "Nama Kategori tidak boleh kosong");
+                    } else {
+                        Kategori.load_data_kategori();
+                    }
+                });
 
 		add(save, "cell 4 2");
 

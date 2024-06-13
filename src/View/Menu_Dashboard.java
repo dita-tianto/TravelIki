@@ -131,8 +131,8 @@ public class Menu_Dashboard extends JFrame {
 
 		switch (give_role) {
 			case ADMIN -> {
+				System.out.println("[ LOGIN ADMIN ]");
 
-				home_insert_kategori();
 				// LOGIN MENU 
 
 			}
@@ -154,7 +154,9 @@ public class Menu_Dashboard extends JFrame {
 			default -> throw new AssertionError();
 		}	
 
-		home_insert_layanan();
+		// SEMENTARA
+		menu_insert_layanan();
+
 
 
 		// ini tampilan yang ada di awal :)
@@ -215,9 +217,9 @@ public class Menu_Dashboard extends JFrame {
 
 	//====================================================================
 
-	// HOME
-	private void home_insert_layanan() {
-		mntmAddCategory = new JMenuItem("Tambahkan Layanan");
+	// MENU
+	private void menu_insert_layanan() {
+		mntmAddCategory = new JMenuItem("Tambahkan Kategori");
         mntmAddCategory.setMnemonic(KeyEvent.VK_O);
         mntmAddCategory.setIcon(new ImageIcon(Menu_Dashboard.class.getResource("/resource/cat.png")));
         mntmAddCategory.addActionListener((ActionEvent arg0) -> {
@@ -232,28 +234,20 @@ public class Menu_Dashboard extends JFrame {
         mnHome.add(mntmAddCategory);
 	}
 
-	private void home_insert_kategori() {
-		mntmAddCategory = new JMenuItem("Tambahkan Layanan");
-		mntmAddCategory.setMnemonic(KeyEvent.VK_O);
-		mntmAddCategory.setIcon(new ImageIcon(Menu_Dashboard.class.getResource("/resource/cat.png")));
-		mntmAddCategory.addActionListener((ActionEvent arg0) -> {
-			// Buat JInternalFrame baru
-			JInternalFrame JIF = new JInternalFrame("Tambahkan Layanan", false, true, false, true);
-			// Buat panel Add_category
-			Panel_Insert_Layanan addCategoryPanel = new Panel_Insert_Layanan();
-			// Tambahkan panel ke content pane JInternalFrame
-			JIF.getContentPane().add(addCategoryPanel);
-			// Pack JInternalFrame agar sesuai dengan ukuran komponennya
-			JIF.pack();
-			// Tambahkan JInternalFrame ke desktopPane
-			desktopPane.add(JIF);
-			// Atur background warna desktopPane
-			desktopPane.setBackground(new Color(0, 51, 153));
-			// Set JInternalFrame menjadi terlihat
-			JIF.setVisible(true);
-		});
+	private void menu_insert_kategori() {
+		mntmAddCategory = new JMenuItem("Tambahkan Kategori");
+        mntmAddCategory.setMnemonic(KeyEvent.VK_O);
+        mntmAddCategory.setIcon(new ImageIcon(Menu_Dashboard.class.getResource("/resource/cat.png")));
+        mntmAddCategory.addActionListener((ActionEvent arg0) -> {
+            JInternalFrame JIF = new JInternalFrame("Tambahkan Layanan", false, true, false, true);
+            Panel_Insert_Kategori addCategoryPanel = new Panel_Insert_Kategori();
+            JIF.getContentPane().add(addCategoryPanel);
+            JIF.pack();
+            desktopPane.add(JIF);
+            JIF.setVisible(true);
+        });
 
-		mnHome.add(mntmAddCategory);
+        mnHome.add(mntmAddCategory);
 	}
 
 	private void home_insert_product() {
