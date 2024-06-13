@@ -37,14 +37,30 @@ public class panel_insert_layanan extends JPanel {
 		setForeground(new Color(0, 51, 204));
 		setLayout(new MigLayout("", "[grow][][][][grow]", "[][][][][grow]"));
 
-		JLabel lblCategoryName = new JLabel("Nama Kategory : ");
+		JLabel lblCategoryName = new JLabel("Nama Layanan : ");
 		add(lblCategoryName, "cell 1 0");
 
 		name = new JTextField();
 		add(name, "cell 4 0,growx");
 		name.setColumns(10);
 
-		JLabel lblStatus = new JLabel("Status ::");
+		//==
+		JLabel lblCategoryName1 = new JLabel("Nama Deskripsi : ");
+		add(lblCategoryName, "cell 1 0");
+
+		name = new JTextField();
+		add(name, "cell 4 0,growx");
+		name.setColumns(10);
+		
+		//=
+		JLabel lblCategoryName2 = new JLabel("Harga : ");
+		add(lblCategoryName, "cell 1 0");
+
+		name = new JTextField();
+		add(name, "cell 4 0,growx");
+		name.setColumns(10);
+
+		JLabel lblStatus = new JLabel("Status pembayaran : ");
 		add(lblStatus, "cell 1 1");
 
 		JButton save = new JButton("Save");
