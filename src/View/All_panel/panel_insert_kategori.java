@@ -51,7 +51,7 @@ public class panel_insert_kategori extends JPanel {
 					Get_Category_data get_Category_data = new Get_Category_data(Cat_name);
 					is.load();
 				}
-			}
+			} 
 		});
 
 		add(save, "cell 4 2");
