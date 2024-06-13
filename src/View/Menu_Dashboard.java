@@ -131,27 +131,21 @@ public class Menu_Dashboard extends JFrame {
 		switch (give_role) {
 			case ADMIN -> {
 				System.out.println("[ LOGIN ADMIN ]");
-				setupAdminMenu();
-				home_insert_layanan();
 				home_insert_kategori();
-				home_insert_product();
-
 				// LOGIN MENU 
 
 			}
 
 			case EMPLOYEE -> {
 				System.out.println("[ LOGIN EMPLOYEE ]");
-
+				home_insert_layanan();
 				// LOGIN MENU
 
 			}
 
 			case CUSTOMER -> {
 				System.out.println("[ LOGIN CUSTOMER ]");
-				home_insert_kategori();
-				setupCustomerMenu();
-
+				home_insert_unit();
 				// LOGIN MENU
 
 			}
@@ -161,12 +155,12 @@ public class Menu_Dashboard extends JFrame {
 
 
 		// isi method yang akan digunakan dalam menu
-		home_insert_layanan();
-		home_insert_kategori();
-		home_insert_product();
-		home_insert_unit();
+		// home_insert_layanan();
+		// home_insert_kategori();
+		// home_insert_product();
+		// home_insert_unit();
 
-		billingInfo_insert();
+		// billingInfo_insert();
 		
 
 
@@ -226,69 +220,8 @@ public class Menu_Dashboard extends JFrame {
 		keluar.add(keluarItem);
 	}
 
-	// METHOD DALAM APLIKASI
-	// Menu khusus untuk ADMIN
-	private void setupAdminMenu() {
-		JMenu adminMenu = new JMenu("Admin");
-		adminMenu.setIcon(new ImageIcon(Menu_Dashboard.class.getResource("/resource/dash.png")));
 
-		JMenuItem manageUsers = new JMenuItem("Manage Users");
-		manageUsers.setIcon(new ImageIcon(Menu_Dashboard.class.getResource("/resource/cat.png")));
-		manageUsers.addActionListener(e -> {
-			// Tambahkan logika untuk manajemen pengguna di sini
-			JInternalFrame manageUsersFrame = new JInternalFrame("Manage Users", true, true, true, true);
-			// Panel khusus manajemen pengguna, contoh Add_category untuk sementara
-			Add_category manageUsersPanel = new Add_category();
-			manageUsersFrame.getContentPane().add(manageUsersPanel);
-			manageUsersFrame.pack();
-			desktopPane.add(manageUsersFrame);
-			manageUsersFrame.setVisible(true);
-		});
-		adminMenu.add(manageUsers);
-		menuBar.add(adminMenu);
-	}
-
-	// Menu khusus untuk EMPLOYEE
-	private void setupEmployeeMenu() {
-		JMenu employeeMenu = new JMenu("Employee");
-		employeeMenu.setIcon(new ImageIcon(Menu_Dashboard.class.getResource("/resource/employee.png")));
-
-		JMenuItem manageTasks = new JMenuItem("Manage Tasks");
-		manageTasks.setIcon(new ImageIcon(Menu_Dashboard.class.getResource("/resource/task.png")));
-		manageTasks.addActionListener(e -> {
-			// Tambahkan logika untuk manajemen tugas di sini
-			JInternalFrame manageTasksFrame = new JInternalFrame("Manage Tasks", true, true, true, true);
-			// Panel khusus manajemen tugas, contoh Add_category untuk sementara
-			Add_category manageTasksPanel = new Add_category();
-			manageTasksFrame.getContentPane().add(manageTasksPanel);
-			manageTasksFrame.pack();
-			desktopPane.add(manageTasksFrame);
-			manageTasksFrame.setVisible(true);
-		});
-		employeeMenu.add(manageTasks);
-		menuBar.add(employeeMenu);
-	}
-
-	// Menu khusus untuk CUSTOMER
-	public void setupCustomerMenu() {
-		JMenu customerMenu = new JMenu("Customer");
-		customerMenu.setIcon(new ImageIcon(Menu_Dashboard.class.getResource("/resource/customer.png")));
-
-		JMenuItem viewServices = new JMenuItem("View Services");
-		viewServices.setIcon(new ImageIcon(Menu_Dashboard.class.getResource("/resource/service.png")));
-		viewServices.addActionListener(e -> {
-			// Tambahkan logika untuk melihat layanan di sini
-			JInternalFrame viewServicesFrame = new JInternalFrame("View Services", true, true, true, true);
-			// Panel khusus layanan, contoh Add_category untuk sementara
-			Add_category viewServicesPanel = new Add_category();
-			viewServicesFrame.getContentPane().add(viewServicesPanel);
-			viewServicesFrame.pack();
-			desktopPane.add(viewServicesFrame);
-			viewServicesFrame.setVisible(true);
-		});
-		customerMenu.add(viewServices);
-		menuBar.add(customerMenu);
-	}
+	//====================================================================
 
 	// HOME
 	private void home_insert_layanan() {
