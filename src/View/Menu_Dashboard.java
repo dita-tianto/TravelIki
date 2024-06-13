@@ -17,6 +17,7 @@ import Model.Enums;
 import View.All_panel.Panel_Insert_Layanan;
 // import View.All_panel.Create_Purchase;
 import View.All_panel.Create_Sale;
+import View.All_panel.Panel_Insert_Kategori;
 // import View.All_panel.Create_bill;
 import View.All_panel.Panel_Insert_Layanan;
 import View.All_panel.Product_name;
@@ -62,7 +63,7 @@ public class Menu_Dashboard extends JFrame {
 	private JDesktopPane desktopPane;
 	private final JMenu mnHome;
 	// private JMenu mnHomeEmp;
-	private JMenuItem mntmAddCatagory;
+	private JMenuItem mntmAddCategory;
 	private JMenuItem mntmAddProduct;
 	private JMenuItem mntmAddUnit;
 	private final JMenu mnBillingInfo;
@@ -130,7 +131,7 @@ public class Menu_Dashboard extends JFrame {
 
 		switch (give_role) {
 			case ADMIN -> {
-				System.out.println("[ LOGIN ADMIN ]");
+
 				home_insert_kategori();
 				// LOGIN MENU 
 
@@ -138,20 +139,22 @@ public class Menu_Dashboard extends JFrame {
 
 			case EMPLOYEE -> {
 				System.out.println("[ LOGIN EMPLOYEE ]");
-				home_insert_layanan();
+
 				// LOGIN MENU
 
 			}
 
 			case CUSTOMER -> {
 				System.out.println("[ LOGIN CUSTOMER ]");
-				home_insert_unit();
+				
 				// LOGIN MENU
 
 			}
 
 			default -> throw new AssertionError();
 		}	
+
+		home_insert_layanan();
 
 
 		// ini tampilan yang ada di awal :)
@@ -214,35 +217,26 @@ public class Menu_Dashboard extends JFrame {
 
 	// HOME
 	private void home_insert_layanan() {
-		mntmAddCatagory = new JMenuItem("Tambahkan Layanan");
-		mntmAddCatagory.setMnemonic(KeyEvent.VK_O);
-		mntmAddCatagory.setIcon(new ImageIcon(Menu_Dashboard.class.getResource("/resource/cat.png")));
-		mntmAddCatagory.addActionListener((ActionEvent arg0) -> {
-			// Buat JInternalFrame baru
-			JInternalFrame JIF = new JInternalFrame("Tambahkan Layanan", false, true, false, true);
-			// Buat panel Add_category
-			Panel_Insert_Layanan addCategoryPanel = new Panel_Insert_Layanan();
-			// Tambahkan panel ke content pane JInternalFrame
-			JIF.getContentPane().add(addCategoryPanel);
-			// Pack JInternalFrame agar sesuai dengan ukuran komponennya
-			JIF.pack();
-			// Tambahkan JInternalFrame ke desktopPane
-			desktopPane.add(JIF);
-			// Atur background warna desktopPane
-			desktopPane.setBackground(new Color(0, 51, 153));
-			// Set JInternalFrame menjadi terlihat
-			JIF.setVisible(true);
-		});
+		mntmAddCategory = new JMenuItem("Tambahkan Layanan");
+        mntmAddCategory.setMnemonic(KeyEvent.VK_O);
+        mntmAddCategory.setIcon(new ImageIcon(Menu_Dashboard.class.getResource("/resource/cat.png")));
+        mntmAddCategory.addActionListener((ActionEvent arg0) -> {
+            JInternalFrame JIF = new JInternalFrame("Tambahkan Layanan", false, true, false, true);
+            Panel_Insert_Kategori addCategoryPanel = new Panel_Insert_Kategori();
+            JIF.getContentPane().add(addCategoryPanel);
+            JIF.pack();
+            desktopPane.add(JIF);
+            JIF.setVisible(true);
+        });
 
-		mnHome.add(mntmAddCatagory);
-
+        mnHome.add(mntmAddCategory);
 	}
 
 	private void home_insert_kategori() {
-		mntmAddCatagory = new JMenuItem("Tambahkan Layanan");
-		mntmAddCatagory.setMnemonic(KeyEvent.VK_O);
-		mntmAddCatagory.setIcon(new ImageIcon(Menu_Dashboard.class.getResource("/resource/cat.png")));
-		mntmAddCatagory.addActionListener((ActionEvent arg0) -> {
+		mntmAddCategory = new JMenuItem("Tambahkan Layanan");
+		mntmAddCategory.setMnemonic(KeyEvent.VK_O);
+		mntmAddCategory.setIcon(new ImageIcon(Menu_Dashboard.class.getResource("/resource/cat.png")));
+		mntmAddCategory.addActionListener((ActionEvent arg0) -> {
 			// Buat JInternalFrame baru
 			JInternalFrame JIF = new JInternalFrame("Tambahkan Layanan", false, true, false, true);
 			// Buat panel Add_category
@@ -259,7 +253,7 @@ public class Menu_Dashboard extends JFrame {
 			JIF.setVisible(true);
 		});
 
-		mnHome.add(mntmAddCatagory);
+		mnHome.add(mntmAddCategory);
 	}
 
 	private void home_insert_product() {
