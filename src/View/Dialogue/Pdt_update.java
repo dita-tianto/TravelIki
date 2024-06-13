@@ -55,6 +55,7 @@ public class Pdt_update extends JDialog {
 			contentPanel.add(pn, "cell 3 1,growx");
 			pn.setColumns(10);
 		}
+		
 		{
 			JLabel lblCategory = new JLabel("Category ::");
 			contentPanel.add(lblCategory, "cell 1 2");

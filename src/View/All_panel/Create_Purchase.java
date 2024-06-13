@@ -109,7 +109,7 @@ public class Create_Purchase extends JPanel {
 				int ex_pd_id=temp.ck_existing_pdt(pd_id);
 				System.out.println(pd_id);
 				System.out.println(ex_pd_id);
-				if(pd_id==ex_pd_id){
+				if(pd_id == ex_pd_id){
 					JOptionPane.showMessageDialog(null,"This Product Already Exist !!!");
 				}
 				else{

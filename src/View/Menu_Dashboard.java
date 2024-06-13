@@ -39,6 +39,7 @@ import java.awt.event.KeyEvent;
 import java.io.IOException;
 // import java.net.URL;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.Toolkit;
 
 import javax.imageio.ImageIO;
@@ -127,6 +128,21 @@ public class Menu_Dashboard extends JFrame {
 		mnBillingInfo.setIcon(new ImageIcon(Menu_Dashboard.class.getResource("/resource/bill.png")));
 		menuBar.add(mnBillingInfo);
 
+		mntmCreateCashMemo = new JMenuItem("Create Bill");
+		mntmCreateCashMemo.setIcon(new ImageIcon(Menu_Dashboard.class.getResource("/resource/sp (11).png")));
+		mntmCreateCashMemo.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent arg0) {
+				JInternalFrame JIF = new JInternalFrame("All Units", false, true, false, true);
+				Create_Sale Create_Sale = new Create_Sale();
+				JIF.getContentPane().add(Create_Sale);
+				JIF.pack();
+
+				desktopPane.add(JIF);
+				JIF.setVisible(true);
+			}
+		});
+
 		mnExtra = new JMenu("About");
 		mnExtra.setLocation(new Point(43, 100));
 		menuBar.add(mnExtra);
@@ -161,11 +177,6 @@ public class Menu_Dashboard extends JFrame {
 		menu_insert_layanan();
 		menu_insert_ulasan();
 		menu_insert_paketi();
-
-		
-		
-
-
 
 		// ini tampilan yang ada di awal :)
 		contentPane = new JPanel();
@@ -291,8 +302,8 @@ public class Menu_Dashboard extends JFrame {
         mntmAddCategory.setIcon(new ImageIcon(Menu_Dashboard.class.getResource("/resource/cat.png")));
         mntmAddCategory.addActionListener((ActionEvent arg0) -> {
             JInternalFrame JIF = new JInternalFrame("Tambahkan Ulasan", false, true, false, true);
-            Panel_Insert_Ulasan addCategoryPanel = new Panel_Insert_Ulasan();
-            JIF.getContentPane().add(addCategoryPanel);
+            Panel_Insert_Ulasan addCategoryPanel = new Panel_Insert_Ulasan();	
+            JIF.getContentPane().add(addCategoryPanel); 
             JIF.pack();
             desktopPane.add(JIF);
             JIF.setVisible(true);
@@ -325,7 +336,7 @@ public class Menu_Dashboard extends JFrame {
 			JIF.getContentPane().add(Create_Sale);
 			JIF.pack();
 
-			desktopPane.add(JIF);
+			desktopPane.add(JIF); 
 			JIF.setVisible(true);
 		});
 
