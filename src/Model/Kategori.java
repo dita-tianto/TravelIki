@@ -54,7 +54,7 @@ public class Kategori {
 
     // CEK KATEGORI
 
-    public static TableModel load_data_kategori(){
+    public static void load_data_kategori(){
         String cmd = "SELECT * FROM `kategori_layanan` WHERE 1;";
 
         TableModel tm = null;
@@ -69,6 +69,5 @@ public class Kategori {
             System.err.println(e);
         }
 
-        return tm;
     }
 }

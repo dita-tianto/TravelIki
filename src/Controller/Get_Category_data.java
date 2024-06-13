@@ -23,6 +23,10 @@ public class Get_Category_data {
     public Get_Category_data(String cat_name, String payment_Date, String amount_Paid, String order_ID) {
         //TODO Auto-generated constructor stub
     }
+
+    public Get_Category_data(String user_Id, String service_Id, String package_Id, String review_Date, String comment) {
+        //TODO Auto-generated constructor stub
+    }
 	
 	
 

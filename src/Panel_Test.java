@@ -2,6 +2,7 @@ import View.Menu_Dashboard;
 import View.All_panel.Panel_Insert_Layanan;
 import View.All_panel.Panel_Insert_Pembayaran;
 import View.All_panel.Panel_Insert_Pemesanan;
+import View.All_panel.Panel_Insert_Ulasan;
 import View.All_panel.Panel_Insert_Pembayaran;
 import View.All_panel.Panel_Insert_Layanan;
 import View.Login.Splash_Screen;
@@ -85,7 +86,7 @@ public class Panel_Test extends JFrame {
         mntmAddCategory.setIcon(new ImageIcon(Menu_Dashboard.class.getResource("/resource/cat.png")));
         mntmAddCategory.addActionListener((ActionEvent arg0) -> {
             JInternalFrame JIF = new JInternalFrame("Tambahkan Kategori", false, true, false, true);
-            Panel_Insert_Pemesanan addCategoryPanel = new Panel_Insert_Pemesanan();
+            Panel_Insert_Ulasan addCategoryPanel = new Panel_Insert_Ulasan();
             JIF.getContentPane().add(addCategoryPanel);
             JIF.pack();
             desktopPane.add(JIF);
@@ -100,7 +101,7 @@ public class Panel_Test extends JFrame {
         mntmAddCategory.setIcon(new ImageIcon(Menu_Dashboard.class.getResource("/resource/cat.png")));
         mntmAddCategory.addActionListener((ActionEvent arg0) -> {
             JInternalFrame JIF = new JInternalFrame("Tambahkan Paket", false, true, false, true);
-            Panel_Insert_Layanan addCategoryPanel = new Panel_Insert_Layanan();
+            Panel_Insert_Pemesanan addCategoryPanel = new Panel_Insert_Pemesanan();
             JIF.getContentPane().add(addCategoryPanel);
             JIF.pack();
             desktopPane.add(JIF);
