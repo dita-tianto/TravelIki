@@ -14,7 +14,7 @@ import javax.swing.border.EmptyBorder;
 import Controller.Update_cat;
 import Model.Product_category;
 import Model.Status;
-import View.All_panel.Add_category;
+import View.All_panel.panel_insert_layanan;
 import net.miginfocom.swing.MigLayout;
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
@@ -25,15 +25,14 @@ import java.awt.Color;
 
 public class Cat_update extends JDialog {
 
-	 private final JPanel contentPanel = new JPanel();
+	private final JPanel contentPanel = new JPanel();
 	public static JTextField textField;
 	public JComboBox comboBox;
 	private JButton okButton;
-	
+
 	/**
 	 * Launch the application.
 	 */
-	
 
 	/**
 	 * Create the dialog.
@@ -59,13 +58,12 @@ public class Cat_update extends JDialog {
 			contentPanel.add(lblStatus, "cell 0 2");
 		}
 		{
-			Status Status=new Status();
-			ArrayList<String>status=new ArrayList<>();
-			status=Status.return_status();
-			
-			
+			Status Status = new Status();
+			ArrayList<String> status = new ArrayList<>();
+			status = Status.return_status();
+
 			comboBox = new JComboBox();
-			
+
 			contentPanel.add(comboBox, "cell 2 2 2 1,growx");
 			comboBox.setModel(new DefaultComboBoxModel<>(status.toArray()));
 		}
@@ -77,18 +75,17 @@ public class Cat_update extends JDialog {
 				JButton btnNewButton = new JButton("Update");
 				btnNewButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						
-						String Cat_name=textField.getText();
-						String st=comboBox.getSelectedItem().toString();
-						
-						//Add_category Add_categor=new Add_category();
-						
-						
-						new Update_cat(Cat_name,st,id);
+
+						String Cat_name = textField.getText();
+						String st = comboBox.getSelectedItem().toString();
+
+						// Add_category Add_categor=new Add_category();
+
+						new Update_cat(Cat_name, st, id);
 						Product_category.load();
-						
+
 						Cat_update.this.dispose();
-						
+
 					}
 				});
 				buttonPane.add(btnNewButton);
@@ -102,9 +99,9 @@ public class Cat_update extends JDialog {
 						Cat_update.this.dispose();
 					}
 				});
-				
+
 				buttonPane.add(okButton);
-				
+
 			}
 			{
 				JButton cancelButton = new JButton("Cancel");

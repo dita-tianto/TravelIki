@@ -23,21 +23,21 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.Color;
 
-public class Add_category extends JPanel {
+public class panel_insert_layanan extends JPanel {
 	private JTextField name;
 	public static JTable table;
-	// Product_category is = new Product_category();
+	Product_category is = new Product_category();
 	private JComboBox cmb;
 
 	/**
 	 * Create the panel.
 	 */
-	public Add_category() {
+	public panel_insert_layanan() {
 
 		setForeground(new Color(0, 51, 204));
 		setLayout(new MigLayout("", "[grow][][][][grow]", "[][][][][grow]"));
 
-		JLabel lblCategoryName = new JLabel("Category Name ::");
+		JLabel lblCategoryName = new JLabel("Nama Kategory : ");
 		add(lblCategoryName, "cell 1 0");
 
 		name = new JTextField();
@@ -51,17 +51,17 @@ public class Add_category extends JPanel {
 		save.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 
-				// String Cat_name = name.getText();
-				// String Cat_status = cmb.getSelectedItem().toString();
+				String Cat_name = name.getText();
+				String Cat_status = cmb.getSelectedItem().toString();
 
-				// if (cmb.getSelectedIndex() == 0) {
-				// 	JOptionPane.showMessageDialog(null, "Select Status");
-				// } else {
-				// 	Get_Category_data Get_Category_data = new Get_Category_data(Cat_name, Cat_status);
+				if (cmb.getSelectedIndex() == 0) {
+					JOptionPane.showMessageDialog(null, "Select Status");
+				} else {
+					Get_Category_data Get_Category_data = new Get_Category_data(Cat_name, Cat_status);
 
-				// 	is.load();
+					is.load();
 
-				// }
+				}
 			}
 		});
 
@@ -82,20 +82,20 @@ public class Add_category extends JPanel {
 		table.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				// int row = table.getSelectedRow();
+				int row = table.getSelectedRow();
 
-				// String get1stColumeValue_name = table.getModel().getValueAt(row, 0).toString();
-				// String get2ndColumeValue_st = table.getModel().getValueAt(row, 1).toString();
+				String get1stColumeValue_name = table.getModel().getValueAt(row, 0).toString();
+				String get2ndColumeValue_st = table.getModel().getValueAt(row, 1).toString();
 
-				// Product_category Product_category = new Product_category();
-				// int id = Product_category.get_cat_id(get1stColumeValue_name);
+				Product_category Product_category = new Product_category();
+				int id = Product_category.get_cat_id(get1stColumeValue_name);
 
-				// Cat_update = new Cat_update(id);
+				Cat_update Cat_update = new Cat_update(id);
 
-				// Cat_update.textField.setText(get1stColumeValue_name);
-				// Cat_update.comboBox.setSelectedItem(get2ndColumeValue_st);
+				Cat_update.textField.setText(get1stColumeValue_name);
+				Cat_update.comboBox.setSelectedItem(get2ndColumeValue_st);
 
-				// Cat_update.setVisible(true);
+				Cat_update.setVisible(true);
 
 			}
 		});

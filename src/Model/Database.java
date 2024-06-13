@@ -32,7 +32,7 @@ public class Database {
 		try {
 			Class.forName(JDBC_DRIVER);
 
-			con = DriverManager.getConnection("jdbc:mysql://Localhost:3306/shop_management", USER, PASS);
+			con = DriverManager.getConnection("jdbc:mysql://Localhost:3306/traveliki", USER, PASS);
 
             System.out.println("[ KONEKSI BERHASIL ]");
 		} catch (ClassNotFoundException | SQLException e) {

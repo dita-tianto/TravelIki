@@ -14,7 +14,7 @@ import javax.swing.border.EmptyBorder;
 
 import Model.Enums;
 // import Backup_Restore.BackUpFrame;
-import View.All_panel.Add_category;
+import View.All_panel.panel_insert_layanan;
 // import View.All_panel.Create_Purchase;
 import View.All_panel.Create_Sale;
 // import View.All_panel.Create_bill;
@@ -111,11 +111,11 @@ public class Menu_Dashboard extends JFrame {
 		titleLabel.setForeground(Color.BLACK); // Atur warna teks sesuai keinginan
 		titleLabel.setHorizontalAlignment(JLabel.CENTER);
 
-		//Tambahkan label ke menu bar
+		// Tambahkan label ke menu bar
 		menuBar.add(Box.createHorizontalGlue()); // Glue untuk menyebarkan komponen ke tepi
 		menuBar.add(titleLabel);
 		menuBar.add(Box.createHorizontalGlue()); // Glue untuk menyebarkan komponen ke tepi lainnya
-		
+
 		mnHome = new JMenu("Home");
 		mnHome.setIcon(new ImageIcon(Menu_Dashboard.class.getResource("/resource/home (2).png")));
 		menuBar.add(mnHome);
@@ -136,7 +136,7 @@ public class Menu_Dashboard extends JFrame {
 				home_insert_kategori();
 				home_insert_product();
 
-				// LOGIN MENU 
+				// LOGIN MENU
 
 			}
 
@@ -159,7 +159,6 @@ public class Menu_Dashboard extends JFrame {
 			default -> throw new AssertionError();
 		}
 
-
 		// isi method yang akan digunakan dalam menu
 		home_insert_layanan();
 		home_insert_kategori();
@@ -167,8 +166,6 @@ public class Menu_Dashboard extends JFrame {
 		home_insert_unit();
 
 		billingInfo_insert();
-		
-
 
 		// ini tampilan yang ada di awal :)
 		contentPane = new JPanel();
@@ -238,7 +235,7 @@ public class Menu_Dashboard extends JFrame {
 			// Tambahkan logika untuk manajemen pengguna di sini
 			JInternalFrame manageUsersFrame = new JInternalFrame("Manage Users", true, true, true, true);
 			// Panel khusus manajemen pengguna, contoh Add_category untuk sementara
-			Add_category manageUsersPanel = new Add_category();
+			panel_insert_layanan manageUsersPanel = new panel_insert_layanan();
 			manageUsersFrame.getContentPane().add(manageUsersPanel);
 			manageUsersFrame.pack();
 			desktopPane.add(manageUsersFrame);
@@ -259,7 +256,7 @@ public class Menu_Dashboard extends JFrame {
 			// Tambahkan logika untuk manajemen tugas di sini
 			JInternalFrame manageTasksFrame = new JInternalFrame("Manage Tasks", true, true, true, true);
 			// Panel khusus manajemen tugas, contoh Add_category untuk sementara
-			Add_category manageTasksPanel = new Add_category();
+			panel_insert_layanan manageTasksPanel = new panel_insert_layanan();
 			manageTasksFrame.getContentPane().add(manageTasksPanel);
 			manageTasksFrame.pack();
 			desktopPane.add(manageTasksFrame);
@@ -280,7 +277,7 @@ public class Menu_Dashboard extends JFrame {
 			// Tambahkan logika untuk melihat layanan di sini
 			JInternalFrame viewServicesFrame = new JInternalFrame("View Services", true, true, true, true);
 			// Panel khusus layanan, contoh Add_category untuk sementara
-			Add_category viewServicesPanel = new Add_category();
+			panel_insert_layanan viewServicesPanel = new panel_insert_layanan();
 			viewServicesFrame.getContentPane().add(viewServicesPanel);
 			viewServicesFrame.pack();
 			desktopPane.add(viewServicesFrame);
@@ -299,7 +296,7 @@ public class Menu_Dashboard extends JFrame {
 			// Buat JInternalFrame baru
 			JInternalFrame JIF = new JInternalFrame("Tambahkan Layanan", false, true, false, true);
 			// Buat panel Add_category
-			Add_category addCategoryPanel = new Add_category();
+			panel_insert_layanan addCategoryPanel = new panel_insert_layanan();
 			// Tambahkan panel ke content pane JInternalFrame
 			JIF.getContentPane().add(addCategoryPanel);
 			// Pack JInternalFrame agar sesuai dengan ukuran komponennya
@@ -324,7 +321,7 @@ public class Menu_Dashboard extends JFrame {
 			// Buat JInternalFrame baru
 			JInternalFrame JIF = new JInternalFrame("Tambahkan Layanan", false, true, false, true);
 			// Buat panel Add_category
-			Add_category addCategoryPanel = new Add_category();
+			panel_insert_layanan addCategoryPanel = new panel_insert_layanan();
 			// Tambahkan panel ke content pane JInternalFrame
 			JIF.getContentPane().add(addCategoryPanel);
 			// Pack JInternalFrame agar sesuai dengan ukuran komponennya

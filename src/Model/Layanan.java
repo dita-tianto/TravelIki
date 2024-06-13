@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.table.TableModel;
 
+import View.All_panel.panel_insert_layanan;
 import net.proteanit.sql.DbUtils;
 
 public class Layanan {
@@ -66,21 +67,22 @@ public class Layanan {
 
     // CEK LAYANAN
 
-    public static TableModel load_data_layanan(){
+    public static void load_data_layanan(){
         String cmd = "SELECT a.nama_layanan as Nama, b.nama_kategori as Kategori, a.harga_layanan as Harga, a.status_layanan FROM layanan a, kategori_layanan b WHERE a.id_kategori=b.id_kategori;";
 
-        TableModel tm = null;
+        // TableModel tm = null;
 
         try(Connection con = Database.getConnection();
             PreparedStatement stmt = con.prepareStatement(cmd)){
 
             ResultSet rs = stmt.executeQuery();
-            tm = DbUtils.resultSetToTableModel(rs); // konversi rs ke TableModel
+            panel_insert_layanan.table.setModel(DbUtils.resultSetToTableModel(rs));
+            // tm = DbUtils.resultSetToTableModel(rs); // konversi rs ke TableModel
             
         } catch (SQLException e) {
             System.err.println(e);
         }
 
-        return tm;
+        // return tm;
     }
 }
