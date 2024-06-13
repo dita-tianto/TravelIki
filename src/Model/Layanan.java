@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import javax.swing.table.TableModel;
 
 import View.All_panel.panel_insert_layanan;
 import net.proteanit.sql.DbUtils;

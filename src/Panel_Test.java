@@ -1,16 +1,13 @@
-import View.Menu_Dashboard;
 import View.All_panel.Panel_Insert_Kategori;
 import View.All_panel.panel_insert_layanan;
 import View.Login.Splash_Screen;
-
-import java.awt.Color;
+import View.Menu_Dashboard;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
-
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JDesktopPane;

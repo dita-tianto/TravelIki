@@ -18,7 +18,7 @@ import javax.swing.border.MatteBorder;
 import java.awt.Color;
 import javax.swing.UIManager;
 
-public class Create_bill extends JPanel {
+public class Panel_Insert_Pembayaran extends JPanel {
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTable table;
@@ -29,7 +29,7 @@ public class Create_bill extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public Create_bill() {
+	public Panel_Insert_Pembayaran() {
 		setBackground(SystemColor.activeCaption);
 		setLayout(new MigLayout("", "[][grow][][96.00,grow][][grow][][grow][][grow]", "[grow][][][grow][][][grow]"));
 		
