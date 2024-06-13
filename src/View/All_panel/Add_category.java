@@ -7,7 +7,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import Controller.Get_Category_data;
-import Model.Layanan;
 import Model.Product_category;
 import Model.Status;
 import View.Dialogue.Cat_update;
@@ -60,7 +59,7 @@ public class Add_category extends JPanel {
 				// } else {
 				// 	Get_Category_data Get_Category_data = new Get_Category_data(Cat_name, Cat_status);
 
-				// 	Product_category.load();
+				// 	is.load();
 
 				// }
 			}
@@ -79,7 +78,6 @@ public class Add_category extends JPanel {
 
 		add(scrollPane, "cell 0 4 5 1,grow");
 
-		// untuk table
 		table = new JTable();
 		table.addMouseListener(new MouseAdapter() {
 			@Override
@@ -89,8 +87,8 @@ public class Add_category extends JPanel {
 				// String get1stColumeValue_name = table.getModel().getValueAt(row, 0).toString();
 				// String get2ndColumeValue_st = table.getModel().getValueAt(row, 1).toString();
 
-				// Layanan layanan = new Layanan();
-				// layanan.set_data_layanan(get1stColumeValue_name, get2ndColumeValue_st, row, row);;
+				// Product_category Product_category = new Product_category();
+				// int id = Product_category.get_cat_id(get1stColumeValue_name);
 
 				// Cat_update = new Cat_update(id);
 
