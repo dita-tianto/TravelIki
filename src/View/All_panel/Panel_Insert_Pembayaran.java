@@ -124,7 +124,7 @@ public class Panel_Insert_Pembayaran extends JPanel {
 		panel.add(btnSave);
 
 	}
-=======
+
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
