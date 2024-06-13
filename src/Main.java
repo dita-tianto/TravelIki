@@ -14,14 +14,17 @@ public class Main {
         try (Connection con = Database.getConnection();
                 PreparedStatement stmt = con.prepareStatement(cmd)) {
 
-            stmt.setString(1, "admin");
+            stmt.setString(1, "a");
 
             ResultSet rs = stmt.executeQuery();
 
+            if(rs.next())
             user = rs.getString("username");
 
         } catch (SQLException e) {
             System.err.println(e);
         }
+
+        System.out.println(user);
     }
 }

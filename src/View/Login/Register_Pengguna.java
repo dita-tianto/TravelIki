@@ -16,7 +16,7 @@ public class Register_Pengguna {
 	private JTextField email;
 	private JTextField notelpon;
 	private JPasswordField passw;
-	private JComboBox<String> rol;
+	// private JComboBox<String> rol;
 	private JButton btnRegister;
 	private JLabel user_lbl;
 	private JDesktopPane desktopPane;
@@ -154,20 +154,18 @@ public class Register_Pengguna {
 
 		btnRegister = new JButton("Register");
 		btnRegister.addActionListener((ActionEvent arg0) -> {
-                    if (rol.getSelectedItem().toString().equals("Select")) {
-                        JOptionPane.showMessageDialog(null, "Select Your Role");
-                    } else {
                         String username = user.getText();
                         String password = new String(passw.getPassword());
-                        String emailText = email.getText();
-                        String phone = notelpon.getText();
-                        String role = rol.getSelectedItem().toString();
+                        String emailt = email.getText();
+                        String no_telepon = notelpon.getText();
+						
+						Register.run_register(username, emailt, no_telepon, password, Enums.role.CUSTOMER);
                         
-						// Register.run_register(username, email, no_telepon, password, role);
                         JOptionPane.showMessageDialog(null, "Registration Successful");
                         
+						Login.run_login(username, password);
+
                         frmLoginPanel.dispose();
-                    }
                 });
 		btnRegister.setBounds(885, 220, 100, 30);
 		desktopPane.add(btnRegister);
@@ -178,9 +176,10 @@ public class Register_Pengguna {
                     email.setText("");
                     notelpon.setText("");
                     passw.setText("");
-                    rol.setSelectedIndex(0);
+                    // rol.setSelectedIndex(0);
                 });
-		btnReset.setBounds(1035, 220, 100, 30);
-		desktopPane.add(btnReset);		
-	}
-}
+				btnReset.setBounds(1035, 220, 100, 30);
+				desktopPane.add(btnReset);		
+			}
+		}
+		

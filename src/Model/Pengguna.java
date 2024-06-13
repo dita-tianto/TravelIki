@@ -74,7 +74,7 @@ public class Pengguna {
     }
 
     public static String cek_user_data(String give_username) {
-        String cmd = "SELECT username FROM pengguna WHERE username LIKE '?'";
+        String cmd = "SELECT username FROM pengguna WHERE username LIKE ?";
 
         String user = null;
 
@@ -83,7 +83,9 @@ public class Pengguna {
 
             stmt.setString(1, give_username);
 
-            try (ResultSet rs = stmt.executeQuery(cmd)) {
+            ResultSet rs = stmt.executeQuery();
+
+            if(rs.next()){
                 user = rs.getString("username");
             }
 
