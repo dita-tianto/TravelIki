@@ -160,6 +160,7 @@ public class Menu_Dashboard extends JFrame {
 		menu_insert_kategori();
 		menu_insert_layanan();
 		menu_insert_ulasan();
+		menu_insert_paketi();
 
 		
 		
