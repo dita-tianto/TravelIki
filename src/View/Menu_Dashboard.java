@@ -155,7 +155,11 @@ public class Menu_Dashboard extends JFrame {
 		}	
 
 		// SEMENTARA
+		menu_insert_kategori();
 		menu_insert_layanan();
+
+		
+		
 
 
 
@@ -190,14 +194,6 @@ public class Menu_Dashboard extends JFrame {
 		desktopPane.setLayout(new MigLayout("", "[][]", "[][]"));
 
 		// // Tambahkan panel untuk menampilkan deskripsi produk di tengah desktopPane
-		// JPanel productDescriptionPanel = new JPanel();
-		// productDescriptionPanel.setBackground(Color.WHITE); // Ubah warna latar belakang sesuai kebutuhan
-		// productDescriptionPanel.setBounds(100, 100, 300, 200); // Atur ukuran dan posisi panel
-		// desktopPane.add(productDescriptionPanel);
-
-		// // Tambahkan label untuk menampilkan deskripsi produk
-		// JLabel productDescriptionLabel = new JLabel("apalah tubes iki jancuk milik si Admin 👌");
-		// productDescriptionPanel.add(productDescriptionLabel);
 
 		// Tambahkan menu keluar
 		JMenu keluar = new JMenu("Log-out");
@@ -218,12 +214,12 @@ public class Menu_Dashboard extends JFrame {
 	//====================================================================
 
 	// MENU
-	private void menu_insert_layanan() {
+	private void menu_insert_kategori() {
 		mntmAddCategory = new JMenuItem("Tambahkan Kategori");
         mntmAddCategory.setMnemonic(KeyEvent.VK_O);
         mntmAddCategory.setIcon(new ImageIcon(Menu_Dashboard.class.getResource("/resource/cat.png")));
         mntmAddCategory.addActionListener((ActionEvent arg0) -> {
-            JInternalFrame JIF = new JInternalFrame("Tambahkan Layanan", false, true, false, true);
+            JInternalFrame JIF = new JInternalFrame("Tambahkan Kategori", false, true, false, true);
             Panel_Insert_Kategori addCategoryPanel = new Panel_Insert_Kategori();
             JIF.getContentPane().add(addCategoryPanel);
             JIF.pack();
@@ -234,13 +230,29 @@ public class Menu_Dashboard extends JFrame {
         mnHome.add(mntmAddCategory);
 	}
 
-	private void menu_insert_kategori() {
-		mntmAddCategory = new JMenuItem("Tambahkan Kategori");
+	private void menu_insert_layanan() {
+		mntmAddCategory = new JMenuItem("Tambahkan layanan");
         mntmAddCategory.setMnemonic(KeyEvent.VK_O);
         mntmAddCategory.setIcon(new ImageIcon(Menu_Dashboard.class.getResource("/resource/cat.png")));
         mntmAddCategory.addActionListener((ActionEvent arg0) -> {
             JInternalFrame JIF = new JInternalFrame("Tambahkan Layanan", false, true, false, true);
-            Panel_Insert_Kategori addCategoryPanel = new Panel_Insert_Kategori();
+            Panel_Insert_Layanan addCategoryPanel = new Panel_Insert_Layanan();
+            JIF.getContentPane().add(addCategoryPanel);
+            JIF.pack();
+            desktopPane.add(JIF);
+            JIF.setVisible(true);
+        });
+
+        mnHome.add(mntmAddCategory);
+	}
+
+	private void menu_insert_paket() {
+		mntmAddCategory = new JMenuItem("Tambahkan layanan");
+        mntmAddCategory.setMnemonic(KeyEvent.VK_O);
+        mntmAddCategory.setIcon(new ImageIcon(Menu_Dashboard.class.getResource("/resource/cat.png")));
+        mntmAddCategory.addActionListener((ActionEvent arg0) -> {
+            JInternalFrame JIF = new JInternalFrame("Tambahkan Layanan", false, true, false, true);
+            Panel_Insert_Layanan addCategoryPanel = new Panel_Insert_Layanan();
             JIF.getContentPane().add(addCategoryPanel);
             JIF.pack();
             desktopPane.add(JIF);
