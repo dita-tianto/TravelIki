@@ -1,7 +1,8 @@
-package View.Login;
+package View.All_panel;
 
 import Controller.*;
 import Model.*;
+import View.Login.Login_Pengguna;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.IOException;
