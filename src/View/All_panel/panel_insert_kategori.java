@@ -19,7 +19,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.Color;
 
-public class panel_insert_kategori extends JPanel {
+public class Panel_Insert_Kategori extends JPanel {
 	private JTextField name;
 	public static JTable table;
 	Product_category is = new Product_category();
@@ -27,7 +27,7 @@ public class panel_insert_kategori extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public panel_insert_kategori() {
+	public Panel_Insert_Kategori() {
 
 		setForeground(new Color(0, 51, 204));
 		setLayout(new MigLayout("", "[grow][][][][grow]", "[][][][][grow]"));
