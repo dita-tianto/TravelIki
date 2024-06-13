@@ -5,7 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
-import View.All_panel.panel_insert_layanan;
+import View.All_panel.Panel_Insert_Layanan;
 import net.proteanit.sql.DbUtils;
 
 public class Product_category {
@@ -47,7 +47,7 @@ public class Product_category {
 		try {
 			PreparedStatement ps = is.prepareStatement(command);
 			ResultSet rs = ps.executeQuery();
-			panel_insert_layanan.table.setModel(DbUtils.resultSetToTableModel(rs));
+			Panel_Insert_Layanan.table.setModel(DbUtils.resultSetToTableModel(rs));
 		} catch (Exception x) {
 			x.printStackTrace();
 		}

@@ -14,7 +14,7 @@ import javax.swing.border.EmptyBorder;
 import Controller.Update_cat;
 import Model.Product_category;
 import Model.Status;
-import View.All_panel.panel_insert_layanan;
+import View.All_panel.Panel_Insert_Layanan;
 import net.miginfocom.swing.MigLayout;
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
@@ -29,7 +29,7 @@ public class Cat_update extends JDialog {
 	public static JTextField textField;
 	public JComboBox comboBox;
 	private JButton okButton;
-    public Object descriptionField;
+	public Object descriptionField;
 
 	/**
 	 * Launch the application.
