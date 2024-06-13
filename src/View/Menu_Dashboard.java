@@ -14,7 +14,7 @@ import javax.swing.border.EmptyBorder;
 
 import Model.Enums;
 // import Backup_Restore.BackUpFrame;
-import View.All_panel.panel_insert_layanan;
+import View.All_panel.Panel_Insert_Layanan;
 // import View.All_panel.Create_Purchase;
 import View.All_panel.Create_Sale;
 // import View.All_panel.Create_bill;
@@ -235,7 +235,7 @@ public class Menu_Dashboard extends JFrame {
 			// Tambahkan logika untuk manajemen pengguna di sini
 			JInternalFrame manageUsersFrame = new JInternalFrame("Manage Users", true, true, true, true);
 			// Panel khusus manajemen pengguna, contoh Add_category untuk sementara
-			panel_insert_layanan manageUsersPanel = new panel_insert_layanan();
+			Panel_Insert_Layanan manageUsersPanel = new Panel_Insert_Layanan();
 			manageUsersFrame.getContentPane().add(manageUsersPanel);
 			manageUsersFrame.pack();
 			desktopPane.add(manageUsersFrame);
@@ -256,7 +256,7 @@ public class Menu_Dashboard extends JFrame {
 			// Tambahkan logika untuk manajemen tugas di sini
 			JInternalFrame manageTasksFrame = new JInternalFrame("Manage Tasks", true, true, true, true);
 			// Panel khusus manajemen tugas, contoh Add_category untuk sementara
-			panel_insert_layanan manageTasksPanel = new panel_insert_layanan();
+			Panel_Insert_Layanan manageTasksPanel = new Panel_Insert_Layanan();
 			manageTasksFrame.getContentPane().add(manageTasksPanel);
 			manageTasksFrame.pack();
 			desktopPane.add(manageTasksFrame);
@@ -277,7 +277,7 @@ public class Menu_Dashboard extends JFrame {
 			// Tambahkan logika untuk melihat layanan di sini
 			JInternalFrame viewServicesFrame = new JInternalFrame("View Services", true, true, true, true);
 			// Panel khusus layanan, contoh Add_category untuk sementara
-			panel_insert_layanan viewServicesPanel = new panel_insert_layanan();
+			Panel_Insert_Layanan viewServicesPanel = new Panel_Insert_Layanan();
 			viewServicesFrame.getContentPane().add(viewServicesPanel);
 			viewServicesFrame.pack();
 			desktopPane.add(viewServicesFrame);
@@ -296,7 +296,7 @@ public class Menu_Dashboard extends JFrame {
 			// Buat JInternalFrame baru
 			JInternalFrame JIF = new JInternalFrame("Tambahkan Layanan", false, true, false, true);
 			// Buat panel Add_category
-			panel_insert_layanan addCategoryPanel = new panel_insert_layanan();
+			Panel_Insert_Layanan addCategoryPanel = new Panel_Insert_Layanan();
 			// Tambahkan panel ke content pane JInternalFrame
 			JIF.getContentPane().add(addCategoryPanel);
 			// Pack JInternalFrame agar sesuai dengan ukuran komponennya
@@ -321,7 +321,7 @@ public class Menu_Dashboard extends JFrame {
 			// Buat JInternalFrame baru
 			JInternalFrame JIF = new JInternalFrame("Tambahkan Layanan", false, true, false, true);
 			// Buat panel Add_category
-			panel_insert_layanan addCategoryPanel = new panel_insert_layanan();
+			Panel_Insert_Layanan addCategoryPanel = new Panel_Insert_Layanan();
 			// Tambahkan panel ke content pane JInternalFrame
 			JIF.getContentPane().add(addCategoryPanel);
 			// Pack JInternalFrame agar sesuai dengan ukuran komponennya
