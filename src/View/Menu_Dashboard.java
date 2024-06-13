@@ -14,7 +14,7 @@ import javax.swing.border.EmptyBorder;
 
 import Model.Enums;
 // import Backup_Restore.BackUpFrame;
-import View.All_panel.Panel_Insert_Layanan;
+import View.All_panel.panel_insert_layanan;
 // import View.All_panel.Create_Purchase;
 import View.All_panel.Create_Sale;
 // import View.All_panel.Create_bill;
@@ -219,69 +219,8 @@ public class Menu_Dashboard extends JFrame {
 		keluar.add(keluarItem);
 	}
 
-	// METHOD DALAM APLIKASI
-	// Menu khusus untuk ADMIN
-	private void setupAdminMenu() {
-		JMenu adminMenu = new JMenu("Admin");
-		adminMenu.setIcon(new ImageIcon(Menu_Dashboard.class.getResource("/resource/dash.png")));
 
-		JMenuItem manageUsers = new JMenuItem("Manage Users");
-		manageUsers.setIcon(new ImageIcon(Menu_Dashboard.class.getResource("/resource/cat.png")));
-		manageUsers.addActionListener(e -> {
-			// Tambahkan logika untuk manajemen pengguna di sini
-			JInternalFrame manageUsersFrame = new JInternalFrame("Manage Users", true, true, true, true);
-			// Panel khusus manajemen pengguna, contoh Add_category untuk sementara
-			panel_insert_layanan manageUsersPanel = new panel_insert_layanan();
-			manageUsersFrame.getContentPane().add(manageUsersPanel);
-			manageUsersFrame.pack();
-			desktopPane.add(manageUsersFrame);
-			manageUsersFrame.setVisible(true);
-		});
-		adminMenu.add(manageUsers);
-		menuBar.add(adminMenu);
-	}
-
-	// Menu khusus untuk EMPLOYEE
-	private void setupEmployeeMenu() {
-		JMenu employeeMenu = new JMenu("Employee");
-		employeeMenu.setIcon(new ImageIcon(Menu_Dashboard.class.getResource("/resource/employee.png")));
-
-		JMenuItem manageTasks = new JMenuItem("Manage Tasks");
-		manageTasks.setIcon(new ImageIcon(Menu_Dashboard.class.getResource("/resource/task.png")));
-		manageTasks.addActionListener(e -> {
-			// Tambahkan logika untuk manajemen tugas di sini
-			JInternalFrame manageTasksFrame = new JInternalFrame("Manage Tasks", true, true, true, true);
-			// Panel khusus manajemen tugas, contoh Add_category untuk sementara
-			panel_insert_layanan manageTasksPanel = new panel_insert_layanan();
-			manageTasksFrame.getContentPane().add(manageTasksPanel);
-			manageTasksFrame.pack();
-			desktopPane.add(manageTasksFrame);
-			manageTasksFrame.setVisible(true);
-		});
-		employeeMenu.add(manageTasks);
-		menuBar.add(employeeMenu);
-	}
-
-	// Menu khusus untuk CUSTOMER
-	public void setupCustomerMenu() {
-		JMenu customerMenu = new JMenu("Customer");
-		customerMenu.setIcon(new ImageIcon(Menu_Dashboard.class.getResource("/resource/customer.png")));
-
-		JMenuItem viewServices = new JMenuItem("View Services");
-		viewServices.setIcon(new ImageIcon(Menu_Dashboard.class.getResource("/resource/service.png")));
-		viewServices.addActionListener(e -> {
-			// Tambahkan logika untuk melihat layanan di sini
-			JInternalFrame viewServicesFrame = new JInternalFrame("View Services", true, true, true, true);
-			// Panel khusus layanan, contoh Add_category untuk sementara
-			panel_insert_layanan viewServicesPanel = new panel_insert_layanan();
-			viewServicesFrame.getContentPane().add(viewServicesPanel);
-			viewServicesFrame.pack();
-			desktopPane.add(viewServicesFrame);
-			viewServicesFrame.setVisible(true);
-		});
-		customerMenu.add(viewServices);
-		menuBar.add(customerMenu);
-	}
+	//====================================================================
 
 	// HOME
 	private void home_insert_layanan() {
@@ -292,7 +231,7 @@ public class Menu_Dashboard extends JFrame {
 			// Buat JInternalFrame baru
 			JInternalFrame JIF = new JInternalFrame("Tambahkan Layanan", false, true, false, true);
 			// Buat panel Add_category
-			Panel_Insert_Layanan addCategoryPanel = new Panel_Insert_Layanan();
+			panel_insert_layanan addCategoryPanel = new panel_insert_layanan();
 			// Tambahkan panel ke content pane JInternalFrame
 			JIF.getContentPane().add(addCategoryPanel);
 			// Pack JInternalFrame agar sesuai dengan ukuran komponennya
@@ -317,7 +256,7 @@ public class Menu_Dashboard extends JFrame {
 			// Buat JInternalFrame baru
 			JInternalFrame JIF = new JInternalFrame("Tambahkan Layanan", false, true, false, true);
 			// Buat panel Add_category
-			Panel_Insert_Layanan addCategoryPanel = new Panel_Insert_Layanan();
+			panel_insert_layanan addCategoryPanel = new panel_insert_layanan();
 			// Tambahkan panel ke content pane JInternalFrame
 			JIF.getContentPane().add(addCategoryPanel);
 			// Pack JInternalFrame agar sesuai dengan ukuran komponennya
