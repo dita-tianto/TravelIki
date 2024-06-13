@@ -4,7 +4,7 @@ import Model.Product_category;
 
 public class Get_Category_data {
 	
-	public Get_Category_data(String get_cat_name,String get_catST){
+	public Get_Category_data(String get_cat_name){
 		int status;
 		
 		if(get_catST.equals("Enable")){

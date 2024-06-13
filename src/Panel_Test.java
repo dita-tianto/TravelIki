@@ -62,7 +62,7 @@ public class Panel_Test extends JFrame {
 
         // EDIT DI BAWAH
 
-        // layanan
+        // layanan riski
         mntmAddCategory = new JMenuItem("Tambahkan Layanan");
         mntmAddCategory.setMnemonic(KeyEvent.VK_O);
         mntmAddCategory.setIcon(new ImageIcon(Menu_Dashboard.class.getResource("/resource/cat.png")));
@@ -77,7 +77,7 @@ public class Panel_Test extends JFrame {
 
         mnHome.add(mntmAddCategory);
 
-        // Tambah kategori
+        // Tambah kategori ik
         mntmAddCategory = new JMenuItem("Tambahkan Kategori");
         mntmAddCategory.setMnemonic(KeyEvent.VK_O);
         mntmAddCategory.setIcon(new ImageIcon(Menu_Dashboard.class.getResource("/resource/cat.png")));

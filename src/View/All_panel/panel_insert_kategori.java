@@ -1,0 +1,81 @@
+package View.All_panel;
+
+import javax.swing.JPanel;
+import net.miginfocom.swing.MigLayout;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+
+import Controller.Get_Category_data;
+import Model.Product_category;
+import View.Dialogue.Cat_update;
+
+import javax.swing.JButton;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.Color;
+
+public class panel_insert_kategori extends JPanel {
+	private JTextField name;
+	public static JTable table;
+	Product_category is = new Product_category();
+
+	/**
+	 * Create the panel.
+	 */
+	public panel_insert_kategori() {
+
+		setForeground(new Color(0, 51, 204));
+		setLayout(new MigLayout("", "[grow][][][][grow]", "[][][][][grow]"));
+
+		JLabel lblCategoryName = new JLabel("Nama Kategori : ");
+		add(lblCategoryName, "cell 1 0");
+
+		name = new JTextField();
+		add(name, "cell 4 0,growx");
+		name.setColumns(10);
+
+		JButton save = new JButton("Save");
+		save.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+
+				String Cat_name = name.getText();
+
+				if (Cat_name.isEmpty()) {
+					JOptionPane.showMessageDialog(null, "Nama Kategori tidak boleh kosong");
+				} else {
+					Get_Category_data get_Category_data = new Get_Category_data(Cat_name);
+					is.load();
+				}
+			}
+		});
+
+		add(save, "cell 4 2");
+
+		JScrollPane scrollPane = new JScrollPane();
+		add(scrollPane, "cell 0 4 5 1,grow");
+
+		table = new JTable();
+		table.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				int row = table.getSelectedRow();
+
+				String get1stColumeValue_name = table.getModel().getValueAt(row, 0).toString();
+
+				Product_category product_category = new Product_category();
+				int id = product_category.get_cat_id(get1stColumeValue_name);
+
+				Cat_update cat_update = new Cat_update(id);
+				cat_update.textField.setText(get1stColumeValue_name);
+
+				cat_update.setVisible(true);
+			}
+		});
+		scrollPane.setViewportView(table);
+	}
+}
