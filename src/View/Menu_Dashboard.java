@@ -127,7 +127,7 @@ public class Menu_Dashboard extends JFrame {
 		menuBar.add(mnHome);
 
 		mnBillingInfo = new JMenu("Info Pembayaran");
-		mnBillingInfo.setIcon(new ImageIcon(Menu_Dashboard.class.getResource("/resource/bill.png")));
+		mnBillingInfo.setIcon(new ImageIcon(Menu_Dashboard.class.getResource("/resource/ingpo.png")));
 		menuBar.add(mnBillingInfo);
 
 		mntmCreateCashMemo = new JMenuItem("Create Bill");
@@ -142,13 +142,14 @@ public class Menu_Dashboard extends JFrame {
 
 				desktopPane.add(JIF);
 				JIF.setVisible(true);
-			}
+				}
 		});
 
 		// cut
 		mnBillingInfo.add(mntmCreateCashMemo);
 
 		mnExtra = new JMenu("About");
+		mnExtra.setIcon(new ImageIcon(Menu_Dashboard.class.getResource("/resource/sp (11).png")));
 		mnExtra.setLocation(new Point(43, 100));
 		menuBar.add(mnExtra);
 
