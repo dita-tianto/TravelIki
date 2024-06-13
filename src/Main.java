@@ -1,5 +1,5 @@
 import View.Menu_Dashboard;
-import View.All_panel.Add_category;
+import View.All_panel.panel_insert_layanan;
 import View.Login.Splash_Screen;
 
 import java.awt.Color;
@@ -65,7 +65,7 @@ public class Main extends JFrame {
         mntmAddCategory.setIcon(new ImageIcon(Menu_Dashboard.class.getResource("/resource/cat.png")));
         mntmAddCategory.addActionListener((ActionEvent arg0) -> {
             JInternalFrame JIF = new JInternalFrame("Tambahkan Layanan", false, true, false, true);
-            Add_category addCategoryPanel = new Add_category();
+            panel_insert_layanan addCategoryPanel = new panel_insert_layanan();
             JIF.getContentPane().add(addCategoryPanel);
             JIF.pack();
             desktopPane.add(JIF);
