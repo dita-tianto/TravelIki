@@ -54,7 +54,7 @@ public class Register_Pengguna {
 		frmLoginPanel.setExtendedState(JFrame.MAXIMIZED_BOTH);
 
 		JPanel contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setBorder(new EmptyBorder(10, 10, 10, 10));
 		frmLoginPanel.setContentPane(contentPane);
 		contentPane.setLayout(new BorderLayout(0, 0));
 
@@ -102,29 +102,6 @@ public class Register_Pengguna {
 		user_lbl.setBounds(886, 37, 250, 30); // ubah ini
 		desktopPane.add(user_lbl);
 
-		user.addKeyListener(new KeyAdapter() {
-			@Override
-			public void keyReleased(KeyEvent arg0) {
-				String username = user.getText();
-				String email = user.getText();
-				String no_telepon = user.getText();
-				String password = user.getText();
-				Enums.role role = Enums.role.CUSTOMER;
-
-				Register.run_register(username, email, no_telepon, password, role);
-
-				if (username == null && email == null && no_telepon == null && password == null) {
-					user.setBorder(null);
-					user_lbl.setVisible(false);
-					btnRegister.setEnabled(true);
-				} else {
-					user.setBorder(new LineBorder(new Color(255, 0, 0)));
-					user_lbl.setVisible(true);
-					btnRegister.setEnabled(false);
-				}
-			}
-		});
-
 		JLabel lblEmail = new JLabel("Email : ");
 		lblEmail.setFont(new Font("Poppins", Font.BOLD, 16));
 		lblEmail.setBounds(785, 55, 120, 30);
@@ -155,6 +132,26 @@ public class Register_Pengguna {
 		passw.setBounds(885, 135, 250, 30);
 		desktopPane.add(passw);
 
+		user.addKeyListener(new KeyAdapter() {
+			
+			@Override
+			public void keyReleased(KeyEvent arg0) {
+				String username = user.getText();
+				String cek_user = Pengguna.cek_user_data(username);
+
+
+				if (cek_user == null) {
+					user.setBorder(null);
+					user_lbl.setVisible(false);
+					btnRegister.setEnabled(true);
+				} else {
+					user.setBorder(new LineBorder(new Color(255, 0, 0)));
+					user_lbl.setVisible(true);
+					btnRegister.setEnabled(false);
+				}
+			}
+		});
+
 		btnRegister = new JButton("Register");
 		btnRegister.addActionListener((ActionEvent arg0) -> {
                     if (rol.getSelectedItem().toString().equals("Select")) {
@@ -162,11 +159,11 @@ public class Register_Pengguna {
                     } else {
                         String username = user.getText();
                         String password = new String(passw.getPassword());
-                        // String emailText = email.getText();
-                        // String phone = notelpon.getText();
-                        // String role = rol.getSelectedItem().toString();
+                        String emailText = email.getText();
+                        String phone = notelpon.getText();
+                        String role = rol.getSelectedItem().toString();
                         
-                        Login.run_login(username, password);
+						// Register.run_register(username, email, no_telepon, password, role);
                         JOptionPane.showMessageDialog(null, "Registration Successful");
                         
                         frmLoginPanel.dispose();
