@@ -41,9 +41,7 @@ public class Login_Pengguna extends JFrame {
         });
     }
 
-    /**
-     * Initialize the contents of the frame.
-     */
+
     private void initialize() {
         setTitle("Welcome To, Traveliki🦇");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
