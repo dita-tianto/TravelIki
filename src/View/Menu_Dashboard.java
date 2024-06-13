@@ -131,27 +131,21 @@ public class Menu_Dashboard extends JFrame {
 		switch (give_role) {
 			case ADMIN -> {
 				System.out.println("[ LOGIN ADMIN ]");
-				setupAdminMenu();
-				home_insert_layanan();
 				home_insert_kategori();
-				home_insert_product();
-
-				// LOGIN MENU
+				// LOGIN MENU 
 
 			}
 
 			case EMPLOYEE -> {
 				System.out.println("[ LOGIN EMPLOYEE ]");
-
+				home_insert_layanan();
 				// LOGIN MENU
 
 			}
 
 			case CUSTOMER -> {
 				System.out.println("[ LOGIN CUSTOMER ]");
-				home_insert_kategori();
-				setupCustomerMenu();
-
+				home_insert_unit();
 				// LOGIN MENU
 
 			}
@@ -160,12 +154,14 @@ public class Menu_Dashboard extends JFrame {
 		}
 
 		// isi method yang akan digunakan dalam menu
-		home_insert_layanan();
-		home_insert_kategori();
-		home_insert_product();
-		home_insert_unit();
+		// home_insert_layanan();
+		// home_insert_kategori();
+		// home_insert_product();
+		// home_insert_unit();
 
-		billingInfo_insert();
+		// billingInfo_insert();
+		
+
 
 		// ini tampilan yang ada di awal :)
 		contentPane = new JPanel();
@@ -235,7 +231,7 @@ public class Menu_Dashboard extends JFrame {
 			// Tambahkan logika untuk manajemen pengguna di sini
 			JInternalFrame manageUsersFrame = new JInternalFrame("Manage Users", true, true, true, true);
 			// Panel khusus manajemen pengguna, contoh Add_category untuk sementara
-			Panel_Insert_Layanan manageUsersPanel = new Panel_Insert_Layanan();
+			panel_insert_layanan manageUsersPanel = new panel_insert_layanan();
 			manageUsersFrame.getContentPane().add(manageUsersPanel);
 			manageUsersFrame.pack();
 			desktopPane.add(manageUsersFrame);
@@ -256,7 +252,7 @@ public class Menu_Dashboard extends JFrame {
 			// Tambahkan logika untuk manajemen tugas di sini
 			JInternalFrame manageTasksFrame = new JInternalFrame("Manage Tasks", true, true, true, true);
 			// Panel khusus manajemen tugas, contoh Add_category untuk sementara
-			Panel_Insert_Layanan manageTasksPanel = new Panel_Insert_Layanan();
+			panel_insert_layanan manageTasksPanel = new panel_insert_layanan();
 			manageTasksFrame.getContentPane().add(manageTasksPanel);
 			manageTasksFrame.pack();
 			desktopPane.add(manageTasksFrame);
@@ -277,7 +273,7 @@ public class Menu_Dashboard extends JFrame {
 			// Tambahkan logika untuk melihat layanan di sini
 			JInternalFrame viewServicesFrame = new JInternalFrame("View Services", true, true, true, true);
 			// Panel khusus layanan, contoh Add_category untuk sementara
-			Panel_Insert_Layanan viewServicesPanel = new Panel_Insert_Layanan();
+			panel_insert_layanan viewServicesPanel = new panel_insert_layanan();
 			viewServicesFrame.getContentPane().add(viewServicesPanel);
 			viewServicesFrame.pack();
 			desktopPane.add(viewServicesFrame);
