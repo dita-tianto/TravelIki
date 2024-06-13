@@ -21,6 +21,8 @@ import View.All_panel.Create_Sale;
 import View.All_panel.Panel_Insert_Kategori;
 // import View.All_panel.Create_bill;
 import View.All_panel.Panel_Insert_Layanan;
+import View.All_panel.Panel_Insert_Pembayaran;
+import View.All_panel.Panel_Insert_Pemesanan;
 import View.All_panel.Panel_Insert_Ulasan;
 import View.All_panel.Product_name;
 import View.All_panel.Units;
@@ -175,8 +177,15 @@ public class Menu_Dashboard extends JFrame {
 		// SEMENTARA
 		menu_insert_kategori();
 		menu_insert_layanan();
+		menu_insert_pembayaran();
+		menu_insert_pemesanan(); // salah
+		menu_insert_paket();
 		menu_insert_ulasan();
-		menu_insert_paketi();
+
+		
+		
+
+
 
 		// ini tampilan yang ada di awal :)
 		contentPane = new JPanel();
@@ -261,7 +270,7 @@ public class Menu_Dashboard extends JFrame {
         mnHome.add(mntmAddCategory);
 	}
 
-	private void menu_insert_paketi() {
+	private void menu_insert_paket() {
 		mntmAddCategory = new JMenuItem("Tambahkan Paket");
 		mntmAddCategory.setMnemonic(KeyEvent.VK_O);
 		mntmAddCategory.setIcon(new ImageIcon(Menu_Dashboard.class.getResource("/resource/cat.png")));
@@ -275,25 +284,6 @@ public class Menu_Dashboard extends JFrame {
 		});
 
 		mnHome.add(mntmAddCategory);
-	}
- 
-
-	
-	//sini
-	private void menu_insert_paket() {
-		mntmAddCategory = new JMenuItem("Tambahkan layanan");
-        mntmAddCategory.setMnemonic(KeyEvent.VK_O);
-        mntmAddCategory.setIcon(new ImageIcon(Menu_Dashboard.class.getResource("/resource/cat.png")));
-        mntmAddCategory.addActionListener((ActionEvent arg0) -> {
-            JInternalFrame JIF = new JInternalFrame("Tambahkan Layanan", false, true, false, true);
-            Panel_Insert_Layanan addCategoryPanel = new Panel_Insert_Layanan();
-            JIF.getContentPane().add(addCategoryPanel);
-            JIF.pack();
-            desktopPane.add(JIF);
-            JIF.setVisible(true);
-        });
-
-        mnHome.add(mntmAddCategory);
 	}
 
 	private void menu_insert_ulasan() {
@@ -312,35 +302,36 @@ public class Menu_Dashboard extends JFrame {
         mnHome.add(mntmAddCategory);
 	}
 
-	private void home_insert_unit() {
-		mntmAddUnit = new JMenuItem("Tambah Pemesanan");
-		mntmAddUnit.setIcon(new ImageIcon(Menu_Dashboard.class.getResource("/resource/cat.png")));
-		mntmAddUnit.addActionListener((ActionEvent arg0) -> {
-			JInternalFrame JIF = new JInternalFrame("Add Units", false, true, false, true);
-			Units unit = new Units();
-			JIF.getContentPane().add(unit);
-			JIF.pack();
+	private void menu_insert_pemesanan() {
+		mntmAddCategory = new JMenuItem("Tambahkan Pesanan");
+        mntmAddCategory.setMnemonic(KeyEvent.VK_O);
+        mntmAddCategory.setIcon(new ImageIcon(Menu_Dashboard.class.getResource("/resource/cat.png")));
+        mntmAddCategory.addActionListener((ActionEvent arg0) -> {
+            JInternalFrame JIF = new JInternalFrame("Tambahkan Pesanan", false, true, false, true);
+            Panel_Insert_Pemesanan addCategoryPanel = new Panel_Insert_Pemesanan();
+            JIF.getContentPane().add(addCategoryPanel);
+            JIF.pack();
+            desktopPane.add(JIF);
+            JIF.setVisible(true);
+        });
 
-			desktopPane.add(JIF);
-			JIF.setVisible(true);
-		});
-		mnHome.add(mntmAddUnit);
+        mnHome.add(mntmAddCategory);
 	}
 
-	private void billingInfo_insert() {
-		mntmCreateCashMemo = new JMenuItem("Create Bill");
-		mntmCreateCashMemo.setIcon(new ImageIcon(Menu_Dashboard.class.getResource("/resource/sp (11).png")));
-		mntmCreateCashMemo.addActionListener((ActionEvent arg0) -> {
-			JInternalFrame JIF = new JInternalFrame("All Units", false, true, false, true);
-			Create_Sale Create_Sale = new Create_Sale();
-			JIF.getContentPane().add(Create_Sale);
-			JIF.pack();
+	private void menu_insert_pembayaran() {
+		mntmAddCategory = new JMenuItem("Tambahkan Pembayaran");
+        mntmAddCategory.setMnemonic(KeyEvent.VK_O);
+        mntmAddCategory.setIcon(new ImageIcon(Menu_Dashboard.class.getResource("/resource/cat.png")));
+        mntmAddCategory.addActionListener((ActionEvent arg0) -> {
+            JInternalFrame JIF = new JInternalFrame("Tambahkan Pembayaran", false, true, false, true);
+            Panel_Insert_Pembayaran addCategoryPanel = new Panel_Insert_Pembayaran();
+            JIF.getContentPane().add(addCategoryPanel);
+            JIF.pack();
+            desktopPane.add(JIF);
+            JIF.setVisible(true);
+        });
 
-			desktopPane.add(JIF); 
-			JIF.setVisible(true);
-		});
-
-		mnBillingInfo.add(mntmCreateCashMemo);
+        mnHome.add(mntmAddCategory);
 	}
 
 }
