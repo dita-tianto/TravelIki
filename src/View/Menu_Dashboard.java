@@ -15,6 +15,7 @@ import javax.swing.border.EmptyBorder;
 import Model.Enums;
 // import Backup_Restore.BackUpFrame;
 import View.All_panel.Panel_Insert_Layanan;
+import View.All_panel.Panel_Insert_Paket;
 // import View.All_panel.Create_Purchase;
 import View.All_panel.Create_Sale;
 import View.All_panel.Panel_Insert_Kategori;
@@ -157,6 +158,7 @@ public class Menu_Dashboard extends JFrame {
 		// SEMENTARA
 		menu_insert_kategori();
 		menu_insert_layanan();
+		menu_insert_paketi();
 
 		
 		
@@ -246,6 +248,25 @@ public class Menu_Dashboard extends JFrame {
         mnHome.add(mntmAddCategory);
 	}
 
+	private void menu_insert_paketi() {
+		mntmAddCategory = new JMenuItem("Tambahkan Paket");
+		mntmAddCategory.setMnemonic(KeyEvent.VK_O);
+		mntmAddCategory.setIcon(new ImageIcon(Menu_Dashboard.class.getResource("/resource/cat.png")));
+		mntmAddCategory.addActionListener((ActionEvent arg0) -> {
+			JInternalFrame JIF = new JInternalFrame("Tambahkan Paket", false, true, false, true);
+			Panel_Insert_Paket addCategoryPanel = new Panel_Insert_Paket();
+			JIF.getContentPane().add(addCategoryPanel);
+			JIF.pack();
+			desktopPane.add(JIF);
+			JIF.setVisible(true);
+		});
+
+		mnHome.add(mntmAddCategory);
+	}
+ 
+
+	
+	//sini
 	private void menu_insert_paket() {
 		mntmAddCategory = new JMenuItem("Tambahkan layanan");
         mntmAddCategory.setMnemonic(KeyEvent.VK_O);
