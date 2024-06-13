@@ -8,7 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.JProgressBar;
 import javax.swing.JWindow;
 
-public class LOG_Splash {
+public class Splash_Screen {
 	public static void main(String[] args) throws InterruptedException {
 		showSplashAndRunMainApp();
 	}
@@ -16,8 +16,8 @@ public class LOG_Splash {
 	public static void showSplashAndRunMainApp() throws InterruptedException {
 		showSplash();
 		// Tampilkan aplikasi utama (misal JFrame)
-		// Login_Jfrm log = new Login_Jfrm();
-		Login_Jfrm.main(null);
+		// Login_Pengguna log = new Login_Pengguna();
+		Login_Pengguna.main(null);
 	}
 
 	public static void showSplash() throws InterruptedException {
@@ -28,7 +28,7 @@ public class LOG_Splash {
 		JPanel content = new JPanel(new BorderLayout());
 
 		// Gambar splash
-		JLabel splashLabel = new JLabel(new ImageIcon(LOG_Splash.class.getResource("/resource/landingpage.png")));
+		JLabel splashLabel = new JLabel(new ImageIcon(Splash_Screen.class.getResource("/resource/landingpage.png")));
 		splash.setBounds(480, 250, 625, 350);
 		content.add(splashLabel, BorderLayout.CENTER);
 

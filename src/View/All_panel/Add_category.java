@@ -60,7 +60,7 @@ public class Add_category extends JPanel {
 				} else {
 					Get_Category_data Get_Category_data = new Get_Category_data(Cat_name, Cat_status);
 
-					is.load();
+					Product_category.load();
 
 				}
 			}

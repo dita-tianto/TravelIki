@@ -66,7 +66,7 @@ public class Dashboard_JFrm extends JFrame {
 	private JMenuItem mntmAddProduct;
 	private JMenuItem mntmAddUnit;
 	private final JMenu mnBillingInfo;
-	private JMenuItem mntmCreateCashMemo;
+	private  JMenuItem mntmCreateCashMemo;
 	// private JMenuItem mntmP;
 	private final JMenu mnExtra;
 	// private JMenu Logout;
@@ -109,41 +109,12 @@ public class Dashboard_JFrm extends JFrame {
 		titleLabel.setFont(new Font("Arial", Font.BOLD, 18));
 		titleLabel.setForeground(Color.BLACK); // Atur warna teks sesuai keinginan
 		titleLabel.setHorizontalAlignment(JLabel.CENTER);
-		
 
 		// Tambahkan label ke menu bar
 		menuBar.add(Box.createHorizontalGlue()); // Glue untuk menyebarkan komponen ke tepi
 		menuBar.add(titleLabel);
 		menuBar.add(Box.createHorizontalGlue()); // Glue untuk menyebarkan komponen ke tepi lainnya
-
-		switch (give_role) {
-			case ADMIN -> {
-				System.out.println("[\n LOGIN ADMIN ]");
-				// LOGIN MENU
-
-			}
-
-			case EMPLOYEE -> {
-				System.out.println("[\n LOGIN EMPLOYEE ]");
-
-				// LOGIN MENU
-
-			}
-
-			case CUSTOMER -> {
-				System.out.println("[\n LOGIN CUSTOMER ]");
-
-				home_insert_layanan();
-
-				// LOGIN MENU
-
-			}
-
-			default -> throw new AssertionError();
-		}
-
 		
-
 		mnHome = new JMenu("Home");
 		mnHome.setIcon(new ImageIcon(Dashboard_JFrm.class.getResource("/resource/home (2).png")));
 		menuBar.add(mnHome);
@@ -156,6 +127,32 @@ public class Dashboard_JFrm extends JFrame {
 		mnExtra.setLocation(new Point(43, 100));
 		menuBar.add(mnExtra);
 
+		switch (give_role) {
+			case ADMIN -> {
+				System.out.println("[ LOGIN ADMIN ]");
+
+				// LOGIN MENU 
+
+			}
+
+			case EMPLOYEE -> {
+				System.out.println("[ LOGIN EMPLOYEE ]");
+
+				// LOGIN MENU
+
+			}
+
+			case CUSTOMER -> {
+				System.out.println("[ LOGIN CUSTOMER ]");
+
+				// LOGIN MENU
+
+			}
+
+			default -> throw new AssertionError();
+		}
+
+
 		// isi method yang akan digunakan dalam menu
 		home_insert_layanan();
 		home_insert_kategori();
@@ -163,6 +160,8 @@ public class Dashboard_JFrm extends JFrame {
 		home_insert_unit();
 
 		billingInfo_insert();
+		
+
 
 		// ini tampilan yang ada di awal :)
 		contentPane = new JPanel();
@@ -223,7 +222,7 @@ public class Dashboard_JFrm extends JFrame {
 	// METHOD DALAM APLIKASI
 
 	// HOME
-	private void home_insert_layanan() {
+	private void home_insert_layanan(){
 		mntmAddCatagory = new JMenuItem("Tambahkan Layanan");
 		mntmAddCatagory.setMnemonic(KeyEvent.VK_O);
 		mntmAddCatagory.setIcon(new ImageIcon(Dashboard_JFrm.class.getResource("/resource/cat.png")));
@@ -248,8 +247,8 @@ public class Dashboard_JFrm extends JFrame {
 
 	}
 
-	private void home_insert_kategori() {
-		mntmAddCatagory = new JMenuItem("Tambahkan Layanan");
+    private void home_insert_kategori() {
+        mntmAddCatagory = new JMenuItem("Tambahkan Layanan");
 		mntmAddCatagory.setMnemonic(KeyEvent.VK_O);
 		mntmAddCatagory.setIcon(new ImageIcon(Dashboard_JFrm.class.getResource("/resource/cat.png")));
 		mntmAddCatagory.addActionListener((ActionEvent arg0) -> {
@@ -270,7 +269,7 @@ public class Dashboard_JFrm extends JFrame {
 		});
 
 		mnHome.add(mntmAddCatagory);
-	}
+    }
 
 	private void home_insert_product() {
 		mntmAddProduct = new JMenuItem("Tambah Kategori");
@@ -289,8 +288,8 @@ public class Dashboard_JFrm extends JFrame {
 
 		mnHome.add(mntmAddProduct);
 	}
-
-	private void home_insert_unit() {
+	
+	private void home_insert_unit(){
 		mntmAddUnit = new JMenuItem("Tambah Pemesanan");
 		mntmAddUnit.setIcon(new ImageIcon(Dashboard_JFrm.class.getResource("/resource/cat.png")));
 		mntmAddUnit.addActionListener((ActionEvent arg0) -> {
@@ -317,8 +316,9 @@ public class Dashboard_JFrm extends JFrame {
 			desktopPane.add(JIF);
 			JIF.setVisible(true);
 		});
-
+		
 		mnBillingInfo.add(mntmCreateCashMemo);
 	}
 
+	
 }
