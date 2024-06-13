@@ -21,8 +21,8 @@ import View.All_panel.Create_Sale;
 
 import View.All_panel.Product_name;
 import View.All_panel.Units;
-import View.Login.LOG_Splash;
-import View.Login.Login_Jfrm;
+import View.Login.Splash_Screen;
+import View.Login.Login_Pengguna;
 
 import javax.swing.JDesktopPane;
 import java.awt.Color;
@@ -174,7 +174,7 @@ public class Menu_Dashboard extends JFrame {
 			{
 				try {
 					// URL
-					image = ImageIO.read(LOG_Splash.class.getResource("/resource/LatarBelakang.png")); // ganti :)
+					image = ImageIO.read(Splash_Screen.class.getResource("/resource/LatarBelakang.png")); // ganti :)
 
 				} catch (IOException e) {
 					System.err.println(e);
@@ -213,7 +213,7 @@ public class Menu_Dashboard extends JFrame {
 		JMenuItem keluarItem = new JMenuItem("Keluar");
 		keluarItem.setIcon(new ImageIcon(Menu_Dashboard.class.getResource("/resource/home (3).png")));
 		keluarItem.addActionListener((ActionEvent arg0) -> {
-			Login_Jfrm.frmLoginPanel.setVisible(true);
+			Login_Pengguna.frmLoginPanel.setVisible(true);
 			dispose();
 		});
 		keluar.add(keluarItem);
