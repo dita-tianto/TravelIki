@@ -55,7 +55,7 @@ import java.awt.Point;
 // import javax.swing.JCheckBoxMenuItem;
 import javax.swing.UnsupportedLookAndFeelException;
 
-public class Dashboard_JFrm extends JFrame {
+public class Menu_Dashboard extends JFrame {
 
 	// ini penginisialisasikan apapun itu nantinya yang di buat :)
 	private final JPanel contentPane;
@@ -82,7 +82,7 @@ public class Dashboard_JFrm extends JFrame {
 		EventQueue.invokeLater(() -> {
 			try {
 				// UIManager.setLookAndFeel("de.javasoft.plaf.synthetica.SyntheticaAluOxideLookAndFeel");
-				Dashboard_JFrm frame = new Dashboard_JFrm(Enums.role.CUSTOMER);
+				Menu_Dashboard frame = new Menu_Dashboard(Enums.role.CUSTOMER);
 				frame.setVisible(true);
 			} catch (Exception e) {
 				System.err.println(e);
@@ -90,12 +90,12 @@ public class Dashboard_JFrm extends JFrame {
 		});
 	}
 
-	public Dashboard_JFrm(Enums.role give_role) {
+	public Menu_Dashboard(Enums.role give_role) {
 
 		System.out.println(give_role);
 
 		setModalExclusionType(ModalExclusionType.APPLICATION_EXCLUDE);
-		setIconImage(Toolkit.getDefaultToolkit().getImage(Dashboard_JFrm.class.getResource("/resource/sp (4).png")));
+		setIconImage(Toolkit.getDefaultToolkit().getImage(Menu_Dashboard.class.getResource("/resource/sp (4).png")));
 		setBackground(new Color(0, 51, 153));
 		setTitle("WWW.Traveliki.com");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -116,11 +116,11 @@ public class Dashboard_JFrm extends JFrame {
 		menuBar.add(Box.createHorizontalGlue()); // Glue untuk menyebarkan komponen ke tepi lainnya
 		
 		mnHome = new JMenu("Home");
-		mnHome.setIcon(new ImageIcon(Dashboard_JFrm.class.getResource("/resource/home (2).png")));
+		mnHome.setIcon(new ImageIcon(Menu_Dashboard.class.getResource("/resource/home (2).png")));
 		menuBar.add(mnHome);
 
 		mnBillingInfo = new JMenu("Billing Info");
-		mnBillingInfo.setIcon(new ImageIcon(Dashboard_JFrm.class.getResource("/resource/bill.png")));
+		mnBillingInfo.setIcon(new ImageIcon(Menu_Dashboard.class.getResource("/resource/bill.png")));
 		menuBar.add(mnBillingInfo);
 
 		mnExtra = new JMenu("Extra");
@@ -206,12 +206,12 @@ public class Dashboard_JFrm extends JFrame {
 
 		// Tambahkan menu keluar
 		JMenu keluar = new JMenu("Log-out");
-		keluar.setIcon(new ImageIcon(Dashboard_JFrm.class.getResource("/resource/home (3).png")));
+		keluar.setIcon(new ImageIcon(Menu_Dashboard.class.getResource("/resource/home (3).png")));
 		menuBar.add(keluar);
 
 		// Keluar dari aplikasi
 		JMenuItem keluarItem = new JMenuItem("Keluar");
-		keluarItem.setIcon(new ImageIcon(Dashboard_JFrm.class.getResource("/resource/home (3).png")));
+		keluarItem.setIcon(new ImageIcon(Menu_Dashboard.class.getResource("/resource/home (3).png")));
 		keluarItem.addActionListener((ActionEvent arg0) -> {
 			Login_Jfrm.frmLoginPanel.setVisible(true);
 			dispose();
@@ -225,7 +225,7 @@ public class Dashboard_JFrm extends JFrame {
 	private void home_insert_layanan(){
 		mntmAddCatagory = new JMenuItem("Tambahkan Layanan");
 		mntmAddCatagory.setMnemonic(KeyEvent.VK_O);
-		mntmAddCatagory.setIcon(new ImageIcon(Dashboard_JFrm.class.getResource("/resource/cat.png")));
+		mntmAddCatagory.setIcon(new ImageIcon(Menu_Dashboard.class.getResource("/resource/cat.png")));
 		mntmAddCatagory.addActionListener((ActionEvent arg0) -> {
 			// Buat JInternalFrame baru
 			JInternalFrame JIF = new JInternalFrame("Tambahkan Layanan", false, true, false, true);
@@ -250,7 +250,7 @@ public class Dashboard_JFrm extends JFrame {
     private void home_insert_kategori() {
         mntmAddCatagory = new JMenuItem("Tambahkan Layanan");
 		mntmAddCatagory.setMnemonic(KeyEvent.VK_O);
-		mntmAddCatagory.setIcon(new ImageIcon(Dashboard_JFrm.class.getResource("/resource/cat.png")));
+		mntmAddCatagory.setIcon(new ImageIcon(Menu_Dashboard.class.getResource("/resource/cat.png")));
 		mntmAddCatagory.addActionListener((ActionEvent arg0) -> {
 			// Buat JInternalFrame baru
 			JInternalFrame JIF = new JInternalFrame("Tambahkan Layanan", false, true, false, true);
@@ -275,7 +275,7 @@ public class Dashboard_JFrm extends JFrame {
 		mntmAddProduct = new JMenuItem("Tambah Kategori");
 		mntmAddProduct.setMnemonic('b');
 		mntmAddProduct.setMnemonic(KeyEvent.VK_D);
-		mntmAddProduct.setIcon(new ImageIcon(Dashboard_JFrm.class.getResource("/resource/cat.png")));
+		mntmAddProduct.setIcon(new ImageIcon(Menu_Dashboard.class.getResource("/resource/cat.png")));
 		mntmAddProduct.addActionListener((ActionEvent e) -> {
 			JInternalFrame JIF = new JInternalFrame("Product Category", false, true, false, true);
 			Product_name Product_name = new Product_name();
@@ -291,7 +291,7 @@ public class Dashboard_JFrm extends JFrame {
 	
 	private void home_insert_unit(){
 		mntmAddUnit = new JMenuItem("Tambah Pemesanan");
-		mntmAddUnit.setIcon(new ImageIcon(Dashboard_JFrm.class.getResource("/resource/cat.png")));
+		mntmAddUnit.setIcon(new ImageIcon(Menu_Dashboard.class.getResource("/resource/cat.png")));
 		mntmAddUnit.addActionListener((ActionEvent arg0) -> {
 			JInternalFrame JIF = new JInternalFrame("Add Units", false, true, false, true);
 			Units unit = new Units();
@@ -306,7 +306,7 @@ public class Dashboard_JFrm extends JFrame {
 
 	private void billingInfo_insert() {
 		mntmCreateCashMemo = new JMenuItem("Create Bill");
-		mntmCreateCashMemo.setIcon(new ImageIcon(Dashboard_JFrm.class.getResource("/resource/sp (11).png")));
+		mntmCreateCashMemo.setIcon(new ImageIcon(Menu_Dashboard.class.getResource("/resource/sp (11).png")));
 		mntmCreateCashMemo.addActionListener((ActionEvent arg0) -> {
 			JInternalFrame JIF = new JInternalFrame("All Units", false, true, false, true);
 			Create_Sale Create_Sale = new Create_Sale();
