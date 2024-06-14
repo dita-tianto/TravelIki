@@ -99,12 +99,10 @@ public class Cat_update extends JDialog {
 			}
 			{
 				okButton = new JButton("Delete");
-				okButton.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent arg0) {
-						Kategori.delete_kategori(ID);
-						Kategori.load_data_kategori();
-						Cat_update.this.dispose();
-					}
+				okButton.addActionListener((ActionEvent arg0) -> {
+					Kategori.delete_kategori(ID);
+					Kategori.load_data_kategori();
+					Cat_update.this.dispose();
 				});
 
 				buttonPane.add(okButton);
@@ -112,11 +110,9 @@ public class Cat_update extends JDialog {
 			}
 			{
 				JButton cancelButton = new JButton("Cancel");
-				cancelButton.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						Product_category.load();
-						Cat_update.this.dispose();
-					}
+				cancelButton.addActionListener((ActionEvent e) -> {
+					Kategori.load_data_kategori();
+					Cat_update.this.dispose();
 				});
 				cancelButton.setActionCommand("Cancel");
 				buttonPane.add(cancelButton);

@@ -1,9 +1,11 @@
 package Model;
 
+import View.All_Panel.Panel_Insert_Layanan;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import View.All_panel.Panel_Insert_Layanan;
 import net.proteanit.sql.DbUtils;
@@ -67,21 +69,36 @@ public class Layanan {
     // CEK LAYANAN
 
     public static void load_data_layanan() {
-        String cmd = "SELECT a.nama_layanan as Nama, b.nama_kategori as Kategori, a.harga_layanan as Harga, a.status_layanan FROM layanan a, kategori_layanan b WHERE a.id_kategori=b.id_kategori;";
-
-        // TableModel tm = null;
+        String cmd = "SELECT nama_layanan, kategori_layanan.nama_kategori, harga_layanan, status_layanan FROM layanan, kategori_layanan";
 
         try (Connection con = Database.getConnection();
                 PreparedStatement stmt = con.prepareStatement(cmd)) {
 
             ResultSet rs = stmt.executeQuery();
             Panel_Insert_Layanan.table.setModel(DbUtils.resultSetToTableModel(rs));
-            // tm = DbUtils.resultSetToTableModel(rs); // konversi rs ke TableModel
+
+        } catch (SQLException e) {
+            System.err.println(e);
+        }
+    }
+
+    public static ArrayList<String> get_status_layanan() {
+        ArrayList<String> status = new ArrayList<>();
+
+        String cmd = "SELECT status_layanan FROM layanan";
+
+        try (Connection con = Database.getConnection();
+                PreparedStatement stmt = con.prepareStatement(cmd)) {
+
+			ResultSet rs = stmt.executeQuery();
+			while (rs.next()) {
+				status.add(rs.getString("status_layanan"));
+			}
 
         } catch (SQLException e) {
             System.err.println(e);
         }
 
-        // return tm;
-    }
+		return status;
+	}
 }

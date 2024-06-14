@@ -1,5 +1,6 @@
 package View;
 
+import Controller.Login;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.Font;
@@ -201,8 +202,8 @@ public class Menu_Dashboard extends JFrame {
 		JMenuItem keluarItem = new JMenuItem("Keluar");
 		keluarItem.setIcon(new ImageIcon(Menu_Dashboard.class.getResource("/resource/home (3).png")));
 		keluarItem.addActionListener((ActionEvent arg0) -> {
-
 			dispose();
+			Login_Pengguna.main(null);;
 		});
 		keluar.add(keluarItem);
 	}

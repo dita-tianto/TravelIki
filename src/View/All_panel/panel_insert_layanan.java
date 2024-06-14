@@ -7,7 +7,9 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import Controller.Get_Category_data;
+import Model.Enums;
 import Model.Kategori;
+import Model.Layanan;
 import Model.Product_category;
 import Model.Status;
 import View.Dialogue.Cat_update;
@@ -29,21 +31,21 @@ public class Panel_Insert_Layanan extends JPanel {
 	private JTextField description;
 	private JTextField price;
 	public static JTable table;
-	Product_category is = new Product_category();
+	// Product_category is = new Product_category();
 	private JComboBox cmb;
 
 	/**
 	 * Create the panel.
 	 */
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public Panel_Insert_Layanan() {
 
 		setForeground(new Color(0, 51, 204));
 		setLayout(new MigLayout("", "[grow][][][][grow]", "[][][][][grow]"));
 
-		
 		JLabel lblCategoryName = new JLabel("Name Kategori :");
 		add(lblCategoryName, "cell 1 0");
-		
+
 		name = new JTextField();
 		add(name, "cell 4 0,growx");
 		name.setColumns(10);
@@ -66,39 +68,34 @@ public class Panel_Insert_Layanan extends JPanel {
 		add(lblStatus, "cell 1 3");
 
 		JButton save = new JButton("Save");
-		save.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
+		save.addActionListener((ActionEvent arg0) -> {
+			
+			if (false) {
+			} else {
+				// Lakukan sesuatu dengan data yang disimpan
 
-				String serviceName = name.getText();
-				String descriptionText = description.getText();
-				String priceText = price.getText();
-				String paymentStatus = cmb.getSelectedItem().toString();
-
-				if (cmb.getSelectedIndex() == 0) {
-					JOptionPane.showMessageDialog(null, "Pilih Status Pembayaran");
-				} else {
-					// Lakukan sesuatu dengan data yang disimpan
-															
-
-					is.load(); // Memuat ulang data yang mungkin diperlukan
-
-				}
+				// is.load(); // Memuat ulang data yang mungkin diperlukan
+				Layanan.load_data_layanan();
+				
 			}
 		});
-
-		Status status = new Status();
-		ArrayList<String> paymentStatuses = new ArrayList<>(status.return_status());
-
+		
+		// Status status = new Status();
+		ArrayList<String> status_layanan = new ArrayList<>(Layanan.get_status_layanan());
+		
 		cmb = new JComboBox();
-		cmb.setModel(new DefaultComboBoxModel<>(paymentStatuses.toArray()));
+		cmb.setModel(new DefaultComboBoxModel<>(Enums.status.values()));
 		add(cmb, "cell 4 3,growx");
 		add(save, "cell 4 3");
-
+		
 		JScrollPane scrollPane = new JScrollPane();
-
+		
 		add(scrollPane, "cell 0 4 5 1,grow");
-
+		
 		table = new JTable();
+
+		Layanan.load_data_layanan();
+
 		table.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
