@@ -72,33 +72,62 @@ public class Menu_Dashboard extends JFrame {
 	// private JMenu keluar;
 
 	/**
-	 * Launch the application.
+	 * Launch the application. || Pemanggilan aplikasi 
+	 * ===============================================
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(() -> {
-			try {
-				// UIManager.setLookAndFeel(new SyntheticaAluOxideLookAndFeel());
-				Menu_Dashboard frame = new Menu_Dashboard(Enums.role.CUSTOMER);
-				frame.setVisible(true);
-			} catch (Exception e) {
-				System.err.println(e);
-			}
-		});
-	}
+	    public static void main(String[] args) {
+        EventQueue.invokeLater(() -> {
+            try {
+                // UIManager.setLookAndFeel(new SyntheticaAluOxideLookAndFeel());
+                Menu_Dashboard frame = new Menu_Dashboard(Enums.role.CUSTOMER);
+                frame.setVisible(true);
+            } catch (Exception e) {
+                System.err.println(e);
+            }
+        });
+    }
 
-	public Menu_Dashboard(Enums.role give_role) {
+    public Menu_Dashboard(Enums.role give_role) {
+        setTitle("WWW.Traveliki.com");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setExtendedState(JFrame.MAXIMIZED_BOTH); // Maksimalkan JFrame saat dijalankan
+        setIconImage(Toolkit.getDefaultToolkit().getImage(Menu_Dashboard.class.getResource("/resource/sp (4).png")));
+        setBackground(new Color(0, 51, 153));
 
-		System.out.println(give_role);
+        JPanel contentPane = new JPanel();
+        contentPane.setBorder(new EmptyBorder(0, 0, 0, 0));
+        setContentPane(contentPane);
+        contentPane.setLayout(new BorderLayout(0, 0));
 
-		setModalExclusionType(ModalExclusionType.APPLICATION_EXCLUDE);
-		setIconImage(Toolkit.getDefaultToolkit().getImage(Menu_Dashboard.class.getResource("/resource/sp (4).png")));
-		setBackground(new Color(0, 51, 153));
-		setTitle("WWW.Traveliki.com");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(0, 0, 850, 550);
+        desktopPane = new JDesktopPane() {
+            private Image image;
+            {
+                try {
+                    // Load the background image
+                    image = ImageIO.read(Menu_Dashboard.class.getResource("/resource/RevDoneAcc1.png"));
+                } catch (IOException e) {
+                    System.err.println(e);
+                }
+            }
 
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                if (image != null) {
+                    g.drawImage(image, 0, 0, getWidth(), getHeight(), this);
+                }
+            }
+        };
+
+        contentPane.add(desktopPane, BorderLayout.CENTER);
+        desktopPane.setLayout(null);
+
+		// Add menu bar
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
+
+		// Add components to the desktop pane
+		// addLoginComponents();
 
 		// Buat label untuk menampilkan teks "WWW.Traveliki.com" di tengah
 		JLabel titleLabel = new JLabel("WWW.Traveliki.com");
@@ -110,6 +139,7 @@ public class Menu_Dashboard extends JFrame {
 		menuBar.add(Box.createHorizontalGlue()); // Glue untuk menyebarkan komponen ke tepi
 		menuBar.add(titleLabel);
 		menuBar.add(Box.createHorizontalGlue()); // Glue untuk menyebarkan komponen ke tepi lainnya
+		this.contentPane = new JPanel();
 
 		mnHome = new JMenu("Home");
 		mnHome.setIcon(new ImageIcon(Menu_Dashboard.class.getResource("/resource/home (2).png")));
