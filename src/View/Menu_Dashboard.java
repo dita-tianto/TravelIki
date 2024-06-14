@@ -93,7 +93,7 @@ public class Menu_Dashboard extends JFrame {
 		setBackground(new Color(0, 51, 153));
 		setTitle("WWW.Traveliki.com");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(445, 100, 850, 550);
+		setBounds(0, 0, 850, 550);
 
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);

@@ -90,8 +90,7 @@ public class Kategori {
         try (Connection con = Database.getConnection();
                 PreparedStatement stmt = con.prepareStatement(cmd)) {
             stmt.setInt(1, give_id_kategori);
-            ResultSet rs = stmt.executeQuery();// konversi rs ke TableModel
-            Panel_Insert_Kategori.table.setModel(DbUtils.resultSetToTableModel(rs));
+            stmt.execute();
     
         } catch (SQLException e) {
             System.err.println(e);

@@ -48,9 +48,8 @@ public class Panel_Insert_Kategori extends JPanel {
 			if (nama_kategori.isEmpty()) {
 				JOptionPane.showMessageDialog(null, "Nama Kategori tidak boleh kosong");
 			} else {
-				// new Insert_Kategori(nama_kategori);
-				// Kategori.load_data_kategori();
-				Kategori.get_nama_kategori(nama_kategori);
+				new Insert_Kategori(nama_kategori);
+				Kategori.load_data_kategori();
 			}
 		});
 

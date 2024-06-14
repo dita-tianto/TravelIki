@@ -101,8 +101,8 @@ public class Cat_update extends JDialog {
 				okButton = new JButton("Delete");
 				okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent arg0) {
-						Product_category.delete_cat(ID);
-						Product_category.load();
+						Kategori.delete_kategori(ID);
+						Kategori.load_data_kategori();
 						Cat_update.this.dispose();
 					}
 				});
