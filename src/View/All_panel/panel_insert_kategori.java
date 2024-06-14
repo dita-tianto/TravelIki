@@ -47,7 +47,7 @@ public class Panel_Insert_Kategori extends JPanel {
                     if (nama_kategori.isEmpty()) {
                         JOptionPane.showMessageDialog(null, "Nama Kategori tidak boleh kosong");
                     } else {
-                        Kategori.load_data_kategori();
+                        load_data_kategori();
                     }
                 });
 
@@ -56,19 +56,21 @@ public class Panel_Insert_Kategori extends JPanel {
 		JScrollPane scrollPane = new JScrollPane();
 		add(scrollPane, "cell 0 4 5 1,grow");
 
-		table = new JTable(Kategori.load_data_kategori());
+		table = new JTable();
 		table.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				int row = table.getSelectedRow();
 
-				String get1stColumeValue_name = table.getModel().getValueAt(row, 0).toString();
+				String index_1 = table.getModel().getValueAt(row, 0).toString();
+				String index_2 = table.getModel().getValueAt(row, 1).toString();
 
-				Product_category product_category = new Product_category();
-				int id = product_category.get_cat_id(get1stColumeValue_name);
+				// Kategori kategori = new Kategori();
+				int id = Integer.parseInt(index_1);
 
 				Cat_update cat_update = new Cat_update(id);
-				cat_update.textField.setText(get1stColumeValue_name);
+				cat_update.txf_id.setText(index_1);
+				cat_update.txf_kategori.setText(index_2);
 
 				cat_update.setVisible(true);
 			}

@@ -98,7 +98,7 @@ public class Panel_Insert_Pemesanan extends JPanel {
                 int id = product_category.get_cat_id(get1stColumeValue_name);
 
                 Cat_update cat_update = new Cat_update(id);
-                cat_update.textField.setText(get1stColumeValue_name);
+                cat_update.txf_id.setText(get1stColumeValue_name);
 
                 cat_update.setVisible(true);
             }

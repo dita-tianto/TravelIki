@@ -112,7 +112,7 @@ public class Panel_Insert_Layanan extends JPanel {
 
 				Cat_update catUpdate = new Cat_update(id);
 
-				catUpdate.textField.setText(serviceName);
+				catUpdate.txf_id.setText(serviceName);
 				catUpdate.comboBox.setSelectedItem(paymentStatus);
 
 				catUpdate.setVisible(true);

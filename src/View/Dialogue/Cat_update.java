@@ -1,5 +1,6 @@
 package View.Dialogue;
 
+import Controller.Update_Kategori;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.Frame;
@@ -10,8 +11,11 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
 
 import Controller.Update_cat;
+import Model.Kategori;
+import Model.Pengguna;
 import Model.Product_category;
 import Model.Status;
 import View.All_panel.Panel_Insert_Layanan;
@@ -26,7 +30,8 @@ import java.awt.Color;
 public class Cat_update extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
-	public static JTextField textField;
+	public static JTextField txf_id;
+	public static JTextField txf_kategori;
 	public JComboBox comboBox;
 	private JButton okButton;
 	public Object descriptionField;
@@ -38,56 +43,57 @@ public class Cat_update extends JDialog {
 	/**
 	 * Create the dialog.
 	 */
-	public Cat_update(int id) {
+	public Cat_update(int ID) {
 		setBackground(new Color(0, 51, 153));
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(new MigLayout("", "[][grow][grow][][][][grow]", "[][][][][][]"));
-		{
-			JLabel lblCategoryName = new JLabel("Category Name ::");
-			contentPanel.add(lblCategoryName, "cell 0 1,alignx trailing");
-		}
-		{
-			textField = new JTextField();
-			contentPanel.add(textField, "cell 2 1 2 1,growx");
-			textField.setColumns(10);
-		}
-		{
-			JLabel lblStatus = new JLabel("Status ::");
-			contentPanel.add(lblStatus, "cell 0 2");
-		}
-		{
-			Status Status = new Status();
-			ArrayList<String> status = new ArrayList<>();
-			status = Status.return_status();
 
-			comboBox = new JComboBox();
+		JLabel lbl_id = new JLabel("ID Kategori ::");
+		contentPanel.add(lbl_id, "cell 0 1,alignx trailing");
 
-			contentPanel.add(comboBox, "cell 2 2 2 1,growx");
-			comboBox.setModel(new DefaultComboBoxModel<>(status.toArray()));
-		}
+		txf_id = new JTextField();
+		contentPanel.add(txf_id, "cell 2 1 2 1,growx");
+		txf_id.setColumns(10);
+		txf_id.setEditable(false);
+
+		JLabel lbl_kategori = new JLabel("Nama Kategori ::");
+		contentPanel.add(lbl_kategori, "cell 0 2,align trailing");
+
+		txf_kategori = new JTextField();
+		contentPanel.add(txf_kategori, "cell 2 2 2 1,growx");
+		txf_kategori.setColumns(10);
+
+		// {
+		// Status Status = new Status();
+		// ArrayList<String> status = new ArrayList<>();
+		// status = Status.return_status();
+
+		// comboBox = new JComboBox();
+
+		// contentPanel.add(comboBox, "cell 2 2 2 1,growx");
+		// comboBox.setModel(new DefaultComboBoxModel<>(status.toArray()));
+		// }
 		{
+
 			JPanel buttonPane = new JPanel();
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
 				JButton btnNewButton = new JButton("Update");
-				btnNewButton.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
+				btnNewButton.addActionListener((ActionEvent e) -> {
+					// String Cat_name = txf_id.getText();
+					String nama_kategori = txf_kategori.getText();
 
-						String Cat_name = textField.getText();
-						String st = comboBox.getSelectedItem().toString();
+					// Add_category Add_categor=new Add_category();
 
-						// Add_category Add_categor=new Add_category();
+					new Update_Kategori(ID, nama_kategori);
 
-						new Update_cat(Cat_name, st, id);
-						Product_category.load();
+					Kategori.load_data_kategori();
 
-						Cat_update.this.dispose();
-
-					}
+					Cat_update.this.dispose();
 				});
 				buttonPane.add(btnNewButton);
 			}
@@ -95,7 +101,7 @@ public class Cat_update extends JDialog {
 				okButton = new JButton("Delete");
 				okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent arg0) {
-						Product_category.delete_cat(id);
+						Product_category.delete_cat(ID);
 						Product_category.load();
 						Cat_update.this.dispose();
 					}
