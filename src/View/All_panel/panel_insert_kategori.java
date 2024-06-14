@@ -7,6 +7,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import Controller.Get_Category_data;
+import Controller.Insert_Kategori;
 import Model.Kategori;
 import Model.Product_category;
 import View.Dialogue.Cat_update;
@@ -47,6 +48,8 @@ public class Panel_Insert_Kategori extends JPanel {
 			if (nama_kategori.isEmpty()) {
 				JOptionPane.showMessageDialog(null, "Nama Kategori tidak boleh kosong");
 			} else {
+				// new Insert_Kategori(nama_kategori);
+				// Kategori.load_data_kategori();
 				Kategori.get_nama_kategori(nama_kategori);
 			}
 		});

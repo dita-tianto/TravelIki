@@ -73,34 +73,29 @@ public class Kategori {
     public static void get_nama_kategori(String give_kategori) {
         String cmd = "SELECT * FROM kategori_layanan WHERE nama_kategori = ?";
 
-        // int id = 0;
-
         try (Connection con = Database.getConnection();
                 PreparedStatement stmt = con.prepareStatement(cmd)) {
             stmt.setString(1, give_kategori);
-            stmt.execute();
             ResultSet rs = stmt.executeQuery();// konversi rs ke TableModel
             Panel_Insert_Kategori.table.setModel(DbUtils.resultSetToTableModel(rs));
 
         } catch (SQLException e) {
             System.err.println(e);
         }
-
-        // try (Connection con = Database.getConnection();
-        //         PreparedStatement stmt = con.prepareStatement(cmd)) {
-
-        //     stmt.setString(1, give_kategori);
-        //     stmt.execute();
-        //     ResultSet rs = stmt.executeQuery();
-
-        //     while (rs.next()) {
-        //         id = rs.getInt("id");
-        //     }
-
-        // } catch (Exception e) {
-
-        // }
-
-        // return id;
+    }
+    
+    public static void delete_kategori(int give_id_kategori){
+        String cmd = "DELETE FROM `kategori_layanan` WHERE id_kategori = ?";
+    
+        try (Connection con = Database.getConnection();
+                PreparedStatement stmt = con.prepareStatement(cmd)) {
+            stmt.setInt(1, give_id_kategori);
+            ResultSet rs = stmt.executeQuery();// konversi rs ke TableModel
+            Panel_Insert_Kategori.table.setModel(DbUtils.resultSetToTableModel(rs));
+    
+        } catch (SQLException e) {
+            System.err.println(e);
+        }
+        
     }
 }
