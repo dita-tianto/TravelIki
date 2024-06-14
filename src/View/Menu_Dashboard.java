@@ -117,27 +117,6 @@ public class Menu_Dashboard extends JFrame {
 		mnBillingInfo.setIcon(new ImageIcon(Menu_Dashboard.class.getResource("/resource/ingpo.png")));
 		menuBar.add(mnBillingInfo);
 
-<<<<<<< HEAD
-		mntmCreateCashMemo = new JMenuItem("Create Bill");
-		mntmCreateCashMemo.setIcon(new ImageIcon(Menu_Dashboard.class.getResource("/resource/sp (11).png")));
-		mntmCreateCashMemo.addActionListener(new ActionListener() {
-
-			public void actionPerformed(ActionEvent arg0) {
-				JInternalFrame JIF = new JInternalFrame("All Units", false, true, false, true);
-				Create_Sale Create_Sale = new Create_Sale();
-				JIF.getContentPane().add(Create_Sale);
-				JIF.pack();
-
-				desktopPane.add(JIF);
-				JIF.setVisible(true);
-				}
-		});
-
-		// cut
-		mnBillingInfo.add(mntmCreateCashMemo);
-
-=======
->>>>>>> 52bdcf3826544976cb75dce6751f69a101fd79bc
 		mnExtra = new JMenu("About");
 		mnExtra.setIcon(new ImageIcon(Menu_Dashboard.class.getResource("/resource/sp (11).png")));
 		mnExtra.setLocation(new Point(43, 100));
