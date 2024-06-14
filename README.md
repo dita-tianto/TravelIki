@@ -1,6 +1,9 @@
-## Getting Started
+## Seripih Kata
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+Project ini di buat dengan perasaan sepenuh hati di lubuk hati yang dalam, Malam bertemu malam
+pagi ketemu pagi sampai lupa tidur dan makan itu apa? 
+
+Tapi pada intinya project Tugas Besar asuuu
 
 ## Folder Structure
 
