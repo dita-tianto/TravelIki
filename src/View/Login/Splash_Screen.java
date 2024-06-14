@@ -51,7 +51,7 @@ public class Splash_Screen {
 
 		// affff
 		splash.setVisible(false);
-		// splash.dispose();
+		splash.dispose();
 	}
 }
 
