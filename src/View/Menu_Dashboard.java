@@ -37,6 +37,7 @@ import javax.swing.Box;
 import javax.swing.ImageIcon;
 
 import de.javasoft.plaf.synthetica.SyntheticaAluOxideLookAndFeel;
+// import net.miginfocom.swing.MigLayout;
 import net.miginfocom.swing.MigLayout;
 import javax.swing.JLabel;
 // import java.awt.GridLayout;

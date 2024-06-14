@@ -45,7 +45,6 @@ public class Panel_Insert_Layanan extends JPanel {
 
 		JLabel lblCategoryName = new JLabel("Name Kategori :");
 		add(lblCategoryName, "cell 1 0");
-
 		name = new JTextField();
 		add(name, "cell 4 0,growx");
 		name.setColumns(10);
@@ -81,7 +80,6 @@ public class Panel_Insert_Layanan extends JPanel {
 		});
 		
 		// Status status = new Status();
-		ArrayList<String> status_layanan = new ArrayList<>(Layanan.get_status_layanan());
 		
 		cmb = new JComboBox();
 		cmb.setModel(new DefaultComboBoxModel<>(Enums.status.values()));
