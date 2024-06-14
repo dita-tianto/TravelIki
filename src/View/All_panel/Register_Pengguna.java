@@ -1,4 +1,4 @@
-package View.All_panel;
+package View.All_Panel;
 
 import Controller.*;
 import Model.*;

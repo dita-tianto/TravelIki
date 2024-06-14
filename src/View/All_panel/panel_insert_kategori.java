@@ -1,4 +1,4 @@
-package View.All_panel;
+package View.All_Panel;
 
 import javax.swing.JPanel;
 import net.miginfocom.swing.MigLayout;
@@ -56,7 +56,7 @@ public class Panel_Insert_Kategori extends JPanel {
 		JScrollPane scrollPane = new JScrollPane();
 		add(scrollPane, "cell 0 4 5 1,grow");
 
-		table = new JTable();
+		table = new JTable(Kategori.load_data_kategori());
 		table.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {

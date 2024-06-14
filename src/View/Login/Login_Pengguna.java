@@ -144,7 +144,7 @@ public class Login_Pengguna extends JFrame {
         desktopPane.add(tglbtnNewToggleButton);
 
         // Label for "Already have an account?"
-        JLabel lblNotRegisterYet = new JLabel("Sudah punya akun?");
+        JLabel lblNotRegisterYet = new JLabel("Belum punya akun?");
         lblNotRegisterYet.setFont(new Font("Tahoma", Font.BOLD, 14));
         lblNotRegisterYet.setBounds(885, 195, 150, 20); // Adjusted position
         desktopPane.add(lblNotRegisterYet);
@@ -159,6 +159,7 @@ public class Login_Pengguna extends JFrame {
             @Override
             public void mouseClicked(MouseEvent arg0) {
                 // Register_Pengguna loginReg = new Register_Pengguna();
+                window.dispose();
                 Register_Pengguna.main(null);
             }
         });

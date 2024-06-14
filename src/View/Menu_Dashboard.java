@@ -13,21 +13,8 @@ import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 
 import Model.Enums;
-// import Backup_Restore.BackUpFrame;
-import View.All_panel.Panel_Insert_Layanan;
-import View.All_panel.Panel_Insert_Paket;
-// import View.All_panel.Create_Purchase;
-import View.All_panel.Create_Sale;
-import View.All_panel.Panel_Insert_Kategori;
-// import View.All_panel.Create_bill;
-import View.All_panel.Panel_Insert_Layanan;
-import View.All_panel.Panel_Insert_Pembayaran;
-import View.All_panel.Panel_Insert_Pemesanan;
-import View.All_panel.Panel_Insert_Ulasan;
-import View.All_panel.Product_name;
-import View.All_panel.Units;
-import View.Login.Splash_Screen;
-import View.Login.Login_Pengguna;
+import View.All_Panel.*;
+import View.Login.*;
 
 import javax.swing.JDesktopPane;
 import java.awt.Color;
@@ -130,6 +117,7 @@ public class Menu_Dashboard extends JFrame {
 		mnBillingInfo.setIcon(new ImageIcon(Menu_Dashboard.class.getResource("/resource/ingpo.png")));
 		menuBar.add(mnBillingInfo);
 
+<<<<<<< HEAD
 		mntmCreateCashMemo = new JMenuItem("Create Bill");
 		mntmCreateCashMemo.setIcon(new ImageIcon(Menu_Dashboard.class.getResource("/resource/sp (11).png")));
 		mntmCreateCashMemo.addActionListener(new ActionListener() {
@@ -148,6 +136,8 @@ public class Menu_Dashboard extends JFrame {
 		// cut
 		mnBillingInfo.add(mntmCreateCashMemo);
 
+=======
+>>>>>>> 52bdcf3826544976cb75dce6751f69a101fd79bc
 		mnExtra = new JMenu("About");
 		mnExtra.setIcon(new ImageIcon(Menu_Dashboard.class.getResource("/resource/sp (11).png")));
 		mnExtra.setLocation(new Point(43, 100));

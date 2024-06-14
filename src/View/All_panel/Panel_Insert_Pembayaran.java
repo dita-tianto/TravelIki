@@ -1,4 +1,4 @@
-package View.All_panel;
+package View.All_Panel;
 
 import javax.swing.JPanel;
 import net.miginfocom.swing.MigLayout;

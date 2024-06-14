@@ -26,14 +26,15 @@ public class Register_Pengguna {
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(() -> {
-                    try {
-                        UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
-                        Register_Pengguna window = new Register_Pengguna();
-                        window.frmLoginPanel.setVisible(true);
-                    } catch (ClassNotFoundException | IllegalAccessException | InstantiationException | UnsupportedLookAndFeelException e) {
-                        System.err.println(e);
-                    }
-                });
+			try {
+				UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
+				Register_Pengguna window = new Register_Pengguna();
+				window.frmLoginPanel.setVisible(true);
+			} catch (ClassNotFoundException | IllegalAccessException | InstantiationException
+					| UnsupportedLookAndFeelException e) {
+				System.err.println(e);
+			}
+		});
 	}
 
 	/**
@@ -95,7 +96,7 @@ public class Register_Pengguna {
 		desktopPane.add(user);
 		user.setColumns(10);
 
-		user_lbl = new JLabel("Username Already Exist !!!"); 
+		user_lbl = new JLabel("Username Already Exist !!!");
 		user_lbl.setForeground(new Color(128, 0, 0));
 		user_lbl.setFont(new Font("Poppins", Font.PLAIN, 10));
 		user_lbl.setVisible(false);
@@ -133,12 +134,11 @@ public class Register_Pengguna {
 		desktopPane.add(passw);
 
 		user.addKeyListener(new KeyAdapter() {
-			
+
 			@Override
 			public void keyReleased(KeyEvent arg0) {
 				String username = user.getText();
 				String cek_user = Pengguna.cek_user_data(username);
-
 
 				if (cek_user == null) {
 					user.setBorder(null);
@@ -152,34 +152,56 @@ public class Register_Pengguna {
 			}
 		});
 
+		// Label for "Already have an account?"
+		JLabel lblNotRegisterYet = new JLabel("Belum punya akun?");
+		lblNotRegisterYet.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblNotRegisterYet.setBounds(885, 195, 150, 20); // Adjusted position
+		desktopPane.add(lblNotRegisterYet);
+
 		btnRegister = new JButton("Register");
 		btnRegister.addActionListener((ActionEvent arg0) -> {
-                        String username = user.getText();
-                        String password = new String(passw.getPassword());
-                        String emailt = email.getText();
-                        String no_telepon = notelpon.getText();
-						
-						Register.run_register(username, emailt, no_telepon, password, Enums.role.CUSTOMER);
-                        
-                        JOptionPane.showMessageDialog(null, "Registration Successful");
-                        
-                        frmLoginPanel.dispose();
-						
-						Login.run_login(username, password);
-                });
+			String username = user.getText();
+			String password = new String(passw.getPassword());
+			String emailt = email.getText();
+			String no_telepon = notelpon.getText();
+
+			Register.run_register(username, emailt, no_telepon, password, Enums.role.CUSTOMER);
+
+			JOptionPane.showMessageDialog(null, "Registration Successful");
+
+			frmLoginPanel.dispose();
+
+			Login.run_login(username, password);
+		});
 		btnRegister.setBounds(885, 220, 100, 30);
 		desktopPane.add(btnRegister);
 
+		// Label for "Login here"
 		JButton btnReset = new JButton("Reset");
 		btnReset.addActionListener((ActionEvent arg0) -> {
-                    user.setText("");
-                    email.setText("");
-                    notelpon.setText("");
-                    passw.setText("");
-                    // rol.setSelectedIndex(0);
-                });
-				btnReset.setBounds(1035, 220, 100, 30);
-				desktopPane.add(btnReset);		
-			}
-		}
-		
+			user.setText("");
+			email.setText("");
+			notelpon.setText("");
+			passw.setText("");
+			// rol.setSelectedIndex(0);
+		});
+		btnReset.setBounds(1035, 220, 100, 30);
+		desktopPane.add(btnReset);
+
+        JLabel lblRegisterHere = new JLabel("Masuk akun anda");
+        lblRegisterHere.setForeground(new Color(0, 51, 153));
+        lblRegisterHere.setFont(new Font("Tahoma", Font.BOLD, 14));
+        lblRegisterHere.setBounds(1040, 195, 150, 20); // Adjusted position with increased x-value for spacing
+
+        lblRegisterHere.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent arg0) {
+                // Register_Pengguna loginReg = new Register_Pengguna();
+                // Register_Pengguna.main(null);
+				frmLoginPanel.dispose();
+				Login_Pengguna.main(null);
+            }
+        });
+		desktopPane.add(lblRegisterHere);
+	}
+}
