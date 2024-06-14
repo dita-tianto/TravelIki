@@ -64,32 +64,43 @@ public class Kategori {
 
             ResultSet rs = stmt.executeQuery();// konversi rs ke TableModel
             Panel_Insert_Kategori.table.setModel(DbUtils.resultSetToTableModel(rs));
- 
+
         } catch (SQLException e) {
             System.err.println(e);
         }
     }
 
-    public static int get_id_kategori(String give_kategori) {
-        String cmd = "SELECT id_kategori FROM kategori_layanan WHERE nama_kategori = ?";
+    public static void get_nama_kategori(String give_kategori) {
+        String cmd = "SELECT * FROM kategori_layanan WHERE nama_kategori = ?";
 
-        int id = 0;
+        // int id = 0;
 
         try (Connection con = Database.getConnection();
                 PreparedStatement stmt = con.prepareStatement(cmd)) {
-
             stmt.setString(1, give_kategori);
             stmt.execute();
-            ResultSet rs = stmt.executeQuery();
+            ResultSet rs = stmt.executeQuery();// konversi rs ke TableModel
+            Panel_Insert_Kategori.table.setModel(DbUtils.resultSetToTableModel(rs));
 
-            while (rs.next()) {
-                id = rs.getInt("id");
-            }
-
-        } catch (Exception e) {
-
+        } catch (SQLException e) {
+            System.err.println(e);
         }
 
-        return id;
+        // try (Connection con = Database.getConnection();
+        //         PreparedStatement stmt = con.prepareStatement(cmd)) {
+
+        //     stmt.setString(1, give_kategori);
+        //     stmt.execute();
+        //     ResultSet rs = stmt.executeQuery();
+
+        //     while (rs.next()) {
+        //         id = rs.getInt("id");
+        //     }
+
+        // } catch (Exception e) {
+
+        // }
+
+        // return id;
     }
 }

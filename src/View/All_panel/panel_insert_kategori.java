@@ -23,7 +23,7 @@ import java.awt.Color;
 public class Panel_Insert_Kategori extends JPanel {
 	private JTextField name;
 	public static JTable table;
-	Product_category is = new Product_category();
+	// Kategori kategori = new Kategori();
 
 	/**
 	 * Create the panel.
@@ -42,14 +42,14 @@ public class Panel_Insert_Kategori extends JPanel {
 
 		JButton save = new JButton("Save");
 		save.addActionListener((ActionEvent arg0) -> {
-                    String nama_kategori = name.getText();
-                    
-                    if (nama_kategori.isEmpty()) {
-                        JOptionPane.showMessageDialog(null, "Nama Kategori tidak boleh kosong");
-                    } else {
-                        load_data_kategori();
-                    }
-                });
+			String nama_kategori = name.getText();
+
+			if (nama_kategori.isEmpty()) {
+				JOptionPane.showMessageDialog(null, "Nama Kategori tidak boleh kosong");
+			} else {
+				Kategori.get_nama_kategori(nama_kategori);
+			}
+		});
 
 		add(save, "cell 4 2");
 
@@ -57,6 +57,9 @@ public class Panel_Insert_Kategori extends JPanel {
 		add(scrollPane, "cell 0 4 5 1,grow");
 
 		table = new JTable();
+
+		Kategori.load_data_kategori();
+		
 		table.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
@@ -65,12 +68,12 @@ public class Panel_Insert_Kategori extends JPanel {
 				String index_1 = table.getModel().getValueAt(row, 0).toString();
 				String index_2 = table.getModel().getValueAt(row, 1).toString();
 
-				// Kategori kategori = new Kategori();
+				// kategori kategori = new kategori();
 				int id = Integer.parseInt(index_1);
 
 				Cat_update cat_update = new Cat_update(id);
-				cat_update.txf_id.setText(index_1);
-				cat_update.txf_kategori.setText(index_2);
+				Cat_update.txf_id.setText(index_1);
+				Cat_update.txf_kategori.setText(index_2);
 
 				cat_update.setVisible(true);
 			}
