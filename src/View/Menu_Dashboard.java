@@ -72,17 +72,17 @@ public class Menu_Dashboard extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(() -> {
-			try {
-				// UIManager.setLookAndFeel(new SyntheticaAluOxideLookAndFeel());
-				Menu_Dashboard frame = new Menu_Dashboard(Enums.role.CUSTOMER);
-				frame.setVisible(true);
-			} catch (Exception e) {
-				System.err.println(e);
-			}
-		});
-	}
+	// public static void main(String[] args) {
+	// 	EventQueue.invokeLater(() -> {
+	// 		try {
+	// 			// UIManager.setLookAndFeel(new SyntheticaAluOxideLookAndFeel());
+	// 			Menu_Dashboard frame = new Menu_Dashboard(Enums.role.CUSTOMER);
+	// 			frame.setVisible(true);
+	// 		} catch (Exception e) {
+	// 			System.err.println(e);
+	// 		}
+	// 	});
+	// }
 
 	public Menu_Dashboard(Enums.role give_role) {
 

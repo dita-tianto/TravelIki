@@ -3,7 +3,6 @@ package Controller;
 import Model.Enums;
 import Model.Pengguna;
 import View.Menu_Dashboard;
-import View.Login.Login_Pengguna;
 import javax.swing.JOptionPane;
 
 public class Login {
@@ -18,7 +17,7 @@ public class Login {
             System.out.println("[LOGIN AS " + user_role + " ]");
             Menu_Dashboard Dashboard_JFrm = new Menu_Dashboard(user_role); // ini langsung masuk ke dashboard sesuai role
             Dashboard_JFrm.setVisible(true);
-            Login_Pengguna.frmLoginPanel.dispose();
+            // Login_Pengguna.frmLoginPanel.dispose();
 		}
     }
 }

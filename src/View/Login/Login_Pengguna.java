@@ -109,6 +109,7 @@ public class Login_Pengguna extends JFrame {
             String give_username = username.getText();
             String give_password = new String(password.getPassword());
 
+            window.dispose();
             Login.run_login(give_username, give_password);
         });
         btnLogin.setBounds(885, 165, 100, 30); // Adjusted position and size
