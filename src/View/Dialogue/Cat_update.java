@@ -18,7 +18,7 @@ import Model.Kategori;
 import Model.Pengguna;
 import Model.Product_category;
 import Model.Status;
-import View.All_panel.Panel_Insert_Layanan;
+import View.All_Panel.Panel_Insert_Layanan;
 import net.miginfocom.swing.MigLayout;
 import javax.swing.JComboBox;
 import javax.swing.JTextField;

@@ -20,7 +20,7 @@ import Model.Products;
 import Model.Status;
 import Model.Unit_t;
 import Model.temp;
-import View.All_panel.Create_Purchase;
+import View.All_Panel.Create_Purchase;
 
 import javax.swing.JLabel;
 import javax.swing.JTextField;

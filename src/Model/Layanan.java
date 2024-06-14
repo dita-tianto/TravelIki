@@ -7,7 +7,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import View.All_panel.Panel_Insert_Layanan;
 import net.proteanit.sql.DbUtils;
 
 public class Layanan {

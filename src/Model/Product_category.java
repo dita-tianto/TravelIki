@@ -5,7 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
-import View.All_panel.Panel_Insert_Layanan;
+import View.All_Panel.Panel_Insert_Layanan;
 import net.proteanit.sql.DbUtils;
 
 public class Product_category {

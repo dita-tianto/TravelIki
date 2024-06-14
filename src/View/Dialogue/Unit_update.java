@@ -12,8 +12,8 @@ import javax.swing.border.EmptyBorder;
 
 import Controller.Update_unit;
 import Model.Unit_t;
+import View.All_Panel.Units;
 import Model.Status;
-import View.All_panel.Units;
 
 import javax.swing.JLabel;
 import javax.swing.JTextField;
