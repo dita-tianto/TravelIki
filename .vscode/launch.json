@@ -1,14 +1,27 @@
 {
-    "version": "0.2.0",
-    "configurations": [
-      {
-        "type": "java",
-        "name": "Run Bin File",
-        "request": "launch",
-        "program": "${workspaceFolder}/path/to/your/bin/file",
-        "args": [],
-        "cwd": "${workspaceFolder}"
-      }
-    ]
-  }
-  
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Panel_Test",
+      "request": "launch",
+      "mainClass": "Panel_Test",
+      "projectName": "TravelIki_78ecfa10"
+    },
+    {
+      "type": "java",
+      "name": "Menu_Dashboard",
+      "request": "launch",
+      "mainClass": "View.Menu_Dashboard",
+      "projectName": "TravelIki_78ecfa10"
+    },
+    {
+      "type": "java",
+      "name": "Run Bin File",
+      "request": "launch",
+      "program": "${workspaceFolder}/path/to/your/bin/file",
+      "args": [],
+      "cwd": "${workspaceFolder}"
+    }
+  ]
+}

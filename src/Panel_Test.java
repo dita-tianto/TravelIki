@@ -55,56 +55,11 @@ public class Panel_Test extends JFrame {
             }
         };
 
-        mnHome = new JMenu("Home");
-        mnHome.setIcon(new ImageIcon(Menu_Dashboard.class.getResource("/resource/home (2).png")));
-        menuBar.add(mnHome);
+        
+        // EDIT DI BAWAH untuk Login Register..
 
-        // EDIT DI BAWAH
+        
 
-        // layanan riski
-        mntmAddCategory = new JMenuItem("Tambahkan Layanan");
-        mntmAddCategory.setMnemonic(KeyEvent.VK_O);
-        mntmAddCategory.setIcon(new ImageIcon(Menu_Dashboard.class.getResource("/resource/cat.png")));
-        mntmAddCategory.addActionListener((ActionEvent arg0) -> {
-            JInternalFrame JIF = new JInternalFrame("Tambahkan Layanan", false, true, false, true);
-            Panel_Insert_Layanan addCategoryPanel = new Panel_Insert_Layanan();
-            JIF.getContentPane().add(addCategoryPanel);
-            JIF.pack();
-            desktopPane.add(JIF);
-            JIF.setVisible(true);
-        });
-
-        mnHome.add(mntmAddCategory);
-
-        // Tambah kategori ik
-        mntmAddCategory = new JMenuItem("Tambahkan Kategori");
-        mntmAddCategory.setMnemonic(KeyEvent.VK_O);
-        mntmAddCategory.setIcon(new ImageIcon(Menu_Dashboard.class.getResource("/resource/cat.png")));
-        mntmAddCategory.addActionListener((ActionEvent arg0) -> {
-            JInternalFrame JIF = new JInternalFrame("Tambahkan Kategori", false, true, false, true);
-            Panel_Insert_Paket addCategoryPanel = new Panel_Insert_Paket();
-            JIF.getContentPane().add(addCategoryPanel);
-            JIF.pack();
-            desktopPane.add(JIF);
-            JIF.setVisible(true);
-        });
-
-        mnHome.add(mntmAddCategory);
-
-        // Tambah Paket
-        mntmAddCategory = new JMenuItem("Tambahkan paket");
-        mntmAddCategory.setMnemonic(KeyEvent.VK_O);
-        mntmAddCategory.setIcon(new ImageIcon(Menu_Dashboard.class.getResource("/resource/cat.png")));
-        mntmAddCategory.addActionListener((ActionEvent arg0) -> {
-            JInternalFrame JIF = new JInternalFrame("Tambahkan Paket", false, true, false, true);
-            Panel_Insert_Pemesanan addCategoryPanel = new Panel_Insert_Pemesanan();
-            JIF.getContentPane().add(addCategoryPanel);
-            JIF.pack();
-            desktopPane.add(JIF);
-            JIF.setVisible(true);
-        });
-
-        mnHome.add(mntmAddCategory);
 
         // SAMPAI DI SINI
 
