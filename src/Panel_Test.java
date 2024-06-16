@@ -2,7 +2,7 @@ import View.All_Panel.Panel_Insert_Layanan;
 import View.All_Panel.Panel_Insert_Paket;
 import View.All_Panel.Panel_Insert_Pemesanan;
 import View.Login.Splash_Screen;
-import View.Menu_Dashboard;
+import View.nLogin_User;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Toolkit;
@@ -30,7 +30,7 @@ public class Panel_Test extends JFrame {
     }
 
     public Panel_Test() {
-        setIconImage(Toolkit.getDefaultToolkit().getImage(Menu_Dashboard.class.getResource("/resource/sp (4).png")));
+        setIconImage(Toolkit.getDefaultToolkit().getImage(nLogin_User.class.getResource("/resource/sp (4).png")));
         setTitle("WWW.Traveliki.com");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(445, 100, 850, 550);
@@ -56,7 +56,7 @@ public class Panel_Test extends JFrame {
         };
 
         mnHome = new JMenu("Home");
-        mnHome.setIcon(new ImageIcon(Menu_Dashboard.class.getResource("/resource/home (2).png")));
+        mnHome.setIcon(new ImageIcon(nLogin_User.class.getResource("/resource/home (2).png")));
         menuBar.add(mnHome);
 
         // EDIT DI BAWAH
@@ -64,7 +64,7 @@ public class Panel_Test extends JFrame {
         // layanan riski
         mntmAddCategory = new JMenuItem("Tambahkan Layanan");
         mntmAddCategory.setMnemonic(KeyEvent.VK_O);
-        mntmAddCategory.setIcon(new ImageIcon(Menu_Dashboard.class.getResource("/resource/cat.png")));
+        mntmAddCategory.setIcon(new ImageIcon(nLogin_User.class.getResource("/resource/cat.png")));
         mntmAddCategory.addActionListener((ActionEvent arg0) -> {
             JInternalFrame JIF = new JInternalFrame("Tambahkan Layanan", false, true, false, true);
             Panel_Insert_Layanan addCategoryPanel = new Panel_Insert_Layanan();
@@ -79,7 +79,7 @@ public class Panel_Test extends JFrame {
         // Tambah kategori ik
         mntmAddCategory = new JMenuItem("Tambahkan Kategori");
         mntmAddCategory.setMnemonic(KeyEvent.VK_O);
-        mntmAddCategory.setIcon(new ImageIcon(Menu_Dashboard.class.getResource("/resource/cat.png")));
+        mntmAddCategory.setIcon(new ImageIcon(nLogin_User.class.getResource("/resource/cat.png")));
         mntmAddCategory.addActionListener((ActionEvent arg0) -> {
             JInternalFrame JIF = new JInternalFrame("Tambahkan Kategori", false, true, false, true);
             Panel_Insert_Paket addCategoryPanel = new Panel_Insert_Paket();
@@ -94,7 +94,7 @@ public class Panel_Test extends JFrame {
         // Tambah Paket
         mntmAddCategory = new JMenuItem("Tambahkan paket");
         mntmAddCategory.setMnemonic(KeyEvent.VK_O);
-        mntmAddCategory.setIcon(new ImageIcon(Menu_Dashboard.class.getResource("/resource/cat.png")));
+        mntmAddCategory.setIcon(new ImageIcon(nLogin_User.class.getResource("/resource/cat.png")));
         mntmAddCategory.addActionListener((ActionEvent arg0) -> {
             JInternalFrame JIF = new JInternalFrame("Tambahkan Paket", false, true, false, true);
             Panel_Insert_Pemesanan addCategoryPanel = new Panel_Insert_Pemesanan();

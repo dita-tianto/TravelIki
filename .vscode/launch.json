@@ -3,6 +3,13 @@
     "configurations": [
       {
         "type": "java",
+        "name": "nDashboard",
+        "request": "launch",
+        "mainClass": "View.nDashboard",
+        "projectName": "TravelIki_63906394"
+      },
+      {
+        "type": "java",
         "name": "Run Bin File",
         "request": "launch",
         "program": "${workspaceFolder}/path/to/your/bin/file",
