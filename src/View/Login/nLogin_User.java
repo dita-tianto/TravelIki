@@ -1,4 +1,4 @@
-package View;
+package View.Login;
 
 import java.awt.*;
 import java.awt.event.*;
