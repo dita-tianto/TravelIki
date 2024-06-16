@@ -27,7 +27,7 @@ public class nDashboard_Admin extends JFrame {
         frame.setTitle("Traveliki");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(810, 485); // Ubah ukuran sesuai kebutuhan
-        // frame.setResizable(false);
+        frame.setResizable(false);
 
         // Membuat desktopPane sebagai content pane utama
         desktopPane = new JDesktopPane();
@@ -47,56 +47,59 @@ public class nDashboard_Admin extends JFrame {
         // KOMPONEN GUI
 
         // Panel Button
-        btn_panel_1 = new JButton("Login1");
-        btn_panel_1.setFont(new Font("Poppins", Font.PLAIN, 10));
-        btn_panel_1.setBackground(new Color(13, 108, 176));
+        ImageIcon icon_1 = new ImageIcon("src/resource/spls.png");
+        Image scld_icon_1 = icon_1.getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH);
+        
+        btn_panel_1 = new JButton("Login1", new ImageIcon(scld_icon_1));
+        
+        btn_panel_1.setHorizontalTextPosition(JButton.CENTER);
+        btn_panel_1.setVerticalTextPosition(JButton.BOTTOM);
+
+        btn_panel_1.setFont(new Font("Poppins", Font.PLAIN, 12));
+        btn_panel_1.setBackground(new Color(43, 150, 227));
         btn_panel_1.setForeground(Color.WHITE);
-        btn_panel_1.setBackground(Color.RED);
         btn_panel_1.setBounds(50, 150, 200, 120);
+
+        
 
         desktopPane.add(btn_panel_1);
 
         btn_panel_2 = new JButton("Login2");
-        btn_panel_2.setFont(new Font("Poppins", Font.PLAIN, 10));
-        btn_panel_2.setBackground(new Color(13, 108, 176));
+        btn_panel_2.setFont(new Font("Poppins", Font.PLAIN, 12));
+        btn_panel_2.setBackground(new Color(43, 150, 227));
         btn_panel_2.setForeground(Color.WHITE);
-        btn_panel_2.setBackground(Color.RED);
         btn_panel_2.setBounds(300, 150, 200, 120);
 
         desktopPane.add(btn_panel_2);
 
         btn_panel_3 = new JButton("Login3");
-        btn_panel_3.setFont(new Font("Poppins", Font.PLAIN, 10));
-        btn_panel_3.setBackground(new Color(13, 108, 176));
+        btn_panel_3.setFont(new Font("Poppins", Font.PLAIN, 12));
+        btn_panel_3.setBackground(new Color(43, 150, 227));
         btn_panel_3.setForeground(Color.WHITE);
-        btn_panel_3.setBackground(Color.RED);
         btn_panel_3.setBounds(550, 150, 200, 120);
 
         desktopPane.add(btn_panel_3);
 
         btn_panel_4 = new JButton("Login4");
-        btn_panel_4.setFont(new Font("Poppins", Font.PLAIN, 10));
-        btn_panel_4.setBackground(new Color(13, 108, 176));
+        btn_panel_4.setFont(new Font("Poppins", Font.PLAIN, 12));
+        btn_panel_4.setBackground(new Color(43, 150, 227));
         btn_panel_4.setForeground(Color.WHITE);
-        btn_panel_4.setBackground(Color.RED);
         btn_panel_4.setBounds(50, 300, 200, 120);
 
         desktopPane.add(btn_panel_4);
 
         btn_panel_5 = new JButton("Login5");
-        btn_panel_5.setFont(new Font("Poppins", Font.PLAIN, 10));
-        btn_panel_5.setBackground(new Color(13, 108, 176));
+        btn_panel_5.setFont(new Font("Poppins", Font.PLAIN, 12));
+        btn_panel_5.setBackground(new Color(43, 150, 227));
         btn_panel_5.setForeground(Color.WHITE);
-        btn_panel_5.setBackground(Color.RED);
         btn_panel_5.setBounds(300, 300, 200, 120);
 
         desktopPane.add(btn_panel_5);
 
         btn_panel_6 = new JButton("Login6");
-        btn_panel_6.setFont(new Font("Poppins", Font.PLAIN, 10));
-        btn_panel_6.setBackground(new Color(13, 108, 176));
+        btn_panel_6.setFont(new Font("Poppins", Font.PLAIN, 12));
+        btn_panel_6.setBackground(new Color(43, 150, 227));
         btn_panel_6.setForeground(Color.WHITE);
-        btn_panel_6.setBackground(Color.RED);
         btn_panel_6.setBounds(550, 300, 200, 120);
 
         desktopPane.add(btn_panel_6);
@@ -141,27 +144,27 @@ public class nDashboard_Admin extends JFrame {
         frame.setVisible(true);
     }
 
-    private static void btn_panel_1(){
+    private static void btn_panel_1() {
         System.out.println("btn_panel_1");
     }
 
-    private static void btn_panel_2(){
+    private static void btn_panel_2() {
         System.out.println("btn_panel_2");
     }
 
-    private static void btn_panel_3(){
+    private static void btn_panel_3() {
         System.out.println("btn_panel_3");
     }
 
-    private static void btn_panel_4(){
+    private static void btn_panel_4() {
         System.out.println("btn_panel_4");
     }
 
-    private static void btn_panel_5(){
+    private static void btn_panel_5() {
         System.out.println("btn_panel_5");
     }
 
-    private static void btn_panel_6(){
+    private static void btn_panel_6() {
         System.out.println("btn_panel_6");
     }
 

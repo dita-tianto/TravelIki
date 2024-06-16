@@ -1,42 +1,57 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
 
 public class Main {
 
-    private JFrame frame;
-
     public Main() {
         // Membuat JFrame
-        frame = new JFrame("JFrame Tanpa Title Bar");
-        frame.setSize(400, 300);
-        frame.setUndecorated(true); // Mengatur JFrame menjadi undecorated
+        JFrame frame = new JFrame("Button dengan Gambar");
+        frame.setSize(500, 500);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setLayout(new FlowLayout());
         
-        // Membuat panel sederhana untuk ditampilkan di JFrame
-        JPanel panel = new JPanel();
-        JLabel label = new JLabel("JFrame tanpa title bar");
-        panel.add(label);
+        // Memuat gambar dari file (ganti dengan path file gambar Anda)
+        ImageIcon icon = createImageIcon("src/resource/spls.png");
         
-        // Membuat tombol close
-        JButton closeButton = new JButton("Close");
-        closeButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                // Menutup JFrame saat tombol close diklik
-                frame.dispose();
-            }
-        });
+        // Jika gagal memuat gambar, gunakan ikon default
+        if (icon != null) {
+            // Mengatur ukuran gambar
+            Image scaledImage = icon.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+            ImageIcon scaledIcon = new ImageIcon(scaledImage);
+
+            // Membuat tombol dengan teks dan gambar yang telah diatur ukurannya
+            JButton button = new JButton("Klik Disini", scaledIcon);
+            button.setHorizontalTextPosition(JButton.CENTER);
+            button.setVerticalTextPosition(JButton.BOTTOM);
         
-        // Menambahkan tombol close ke panel
-        panel.add(closeButton);
-        
-        // Menambahkan panel ke dalam JFrame
-        frame.add(panel, BorderLayout.CENTER);
+            // Menambahkan tombol ke dalam JFrame
+            frame.add(button);
+        } else {
+            // Jika gambar tidak dapat dimuat, tetap membuat tombol tanpa gambar
+            JButton button = new JButton("Klik Disini");
+            frame.add(button);
+        }
         
         // Menampilkan JFrame
         frame.setVisible(true);
-        
-        // Mengatur posisi JFrame ke tengah layar
-        frame.setLocationRelativeTo(null);
+    }
+
+    // Metode untuk memuat gambar dari file dan mengembalikan ImageIcon
+    protected static ImageIcon createImageIcon(String path) {
+        java.net.URL imgURL = Main.class.getResource(path);
+        if (imgURL != null) {
+            try {
+                BufferedImage img = ImageIO.read(new File(imgURL.getPath()));
+                return new ImageIcon(img);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return null;
     }
 
     public static void main(String[] args) {
