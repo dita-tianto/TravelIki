@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "version": "0.2.0",
   "configurations": [
     {
@@ -25,3 +26,25 @@
     }
   ]
 }
+=======
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "type": "java",
+        "name": "nDashboard",
+        "request": "launch",
+        "mainClass": "View.nDashboard",
+        "projectName": "TravelIki_63906394"
+      },
+      {
+        "type": "java",
+        "name": "Run Bin File",
+        "request": "launch",
+        "program": "${workspaceFolder}/path/to/your/bin/file",
+        "args": [],
+        "cwd": "${workspaceFolder}"
+      }
+    ]
+  }
+  
+>>>>>>> c685137763094a4525e4cc156117fbf25be97428

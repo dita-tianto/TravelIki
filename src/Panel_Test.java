@@ -2,7 +2,7 @@ import View.All_Panel.Panel_Insert_Layanan;
 import View.All_Panel.Panel_Insert_Paket;
 import View.All_Panel.Panel_Insert_Pemesanan;
 import View.Login.Splash_Screen;
-import View.Menu_Dashboard;
+import View.nLogin_User;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Toolkit;
@@ -30,7 +30,7 @@ public class Panel_Test extends JFrame {
     }
 
     public Panel_Test() {
-        setIconImage(Toolkit.getDefaultToolkit().getImage(Menu_Dashboard.class.getResource("/resource/sp (4).png")));
+        setIconImage(Toolkit.getDefaultToolkit().getImage(nLogin_User.class.getResource("/resource/sp (4).png")));
         setTitle("WWW.Traveliki.com");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(445, 100, 850, 550);
@@ -55,14 +55,62 @@ public class Panel_Test extends JFrame {
             }
         };
 
-        
-        // EDIT DI BAWAH untuk Login Register..
+        mnHome = new JMenu("Home");
+        mnHome.setIcon(new ImageIcon(nLogin_User.class.getResource("/resource/home (2).png")));
+        menuBar.add(mnHome);
 
-        
+        // EDIT DI BAWAH
 
+        // layanan riski
+        mntmAddCategory = new JMenuItem("Tambahkan Layanan");
+        mntmAddCategory.setMnemonic(KeyEvent.VK_O);
+        mntmAddCategory.setIcon(new ImageIcon(nLogin_User.class.getResource("/resource/cat.png")));
+        mntmAddCategory.addActionListener((ActionEvent arg0) -> {
+            JInternalFrame JIF = new JInternalFrame("Tambahkan Layanan", false, true, false, true);
+            Panel_Insert_Layanan addCategoryPanel = new Panel_Insert_Layanan();
+            JIF.getContentPane().add(addCategoryPanel);
+            JIF.pack();
+            desktopPane.add(JIF);
+            JIF.setVisible(true);
+        });
+
+        mnHome.add(mntmAddCategory);
+
+        // Tambah kategori ik
+        mntmAddCategory = new JMenuItem("Tambahkan Kategori");
+        mntmAddCategory.setMnemonic(KeyEvent.VK_O);
+        mntmAddCategory.setIcon(new ImageIcon(nLogin_User.class.getResource("/resource/cat.png")));
+        mntmAddCategory.addActionListener((ActionEvent arg0) -> {
+            JInternalFrame JIF = new JInternalFrame("Tambahkan Kategori", false, true, false, true);
+            Panel_Insert_Paket addCategoryPanel = new Panel_Insert_Paket();
+            JIF.getContentPane().add(addCategoryPanel);
+            JIF.pack();
+            desktopPane.add(JIF);
+            JIF.setVisible(true);
+        });
+
+        mnHome.add(mntmAddCategory);
+
+        // Tambah Paket
+        mntmAddCategory = new JMenuItem("Tambahkan paket");
+        mntmAddCategory.setMnemonic(KeyEvent.VK_O);
+        mntmAddCategory.setIcon(new ImageIcon(nLogin_User.class.getResource("/resource/cat.png")));
+        mntmAddCategory.addActionListener((ActionEvent arg0) -> {
+            JInternalFrame JIF = new JInternalFrame("Tambahkan Paket", false, true, false, true);
+            Panel_Insert_Pemesanan addCategoryPanel = new Panel_Insert_Pemesanan();
+            JIF.getContentPane().add(addCategoryPanel);
+            JIF.pack();
+            desktopPane.add(JIF);
+            JIF.setVisible(true);
+        });
+
+        mnHome.add(mntmAddCategory);
 
         // SAMPAI DI SINI
 
         setContentPane(desktopPane);
     }
 }
+
+
+// apalah 
