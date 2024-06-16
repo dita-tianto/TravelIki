@@ -16,11 +16,11 @@ public class nLogin_User extends JFrame {
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
-            createAndShowGUI();
+            initialize();
         });
     }
 
-    private static void createAndShowGUI() {
+    private static void initialize() {
 // ==================================================================================================================================
     // FRAME UTAMA
         frame = new nLogin_User();

@@ -1,33 +1,49 @@
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
-import javax.swing.border.EmptyBorder;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
 
-import net.miginfocom.swing.*;
+public class Main {
 
-public class Main extends JFrame {
-
-    private JPanel contentPane;
+    private JFrame frame;
 
     public Main() {
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setBounds(100, 100, 450, 300);
-        contentPane = new JPanel();
-        contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-        contentPane.setLayout(new BorderLayout(0, 0));
-        setContentPane(contentPane);
+        // Membuat JFrame
+        frame = new JFrame("JFrame Tanpa Title Bar");
+        frame.setSize(400, 300);
+        frame.setUndecorated(true); // Mengatur JFrame menjadi undecorated
+        
+        // Membuat panel sederhana untuk ditampilkan di JFrame
+        JPanel panel = new JPanel();
+        JLabel label = new JLabel("JFrame tanpa title bar");
+        panel.add(label);
+        
+        // Membuat tombol close
+        JButton closeButton = new JButton("Close");
+        closeButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                // Menutup JFrame saat tombol close diklik
+                frame.dispose();
+            }
+        });
+        
+        // Menambahkan tombol close ke panel
+        panel.add(closeButton);
+        
+        // Menambahkan panel ke dalam JFrame
+        frame.add(panel, BorderLayout.CENTER);
+        
+        // Menampilkan JFrame
+        frame.setVisible(true);
+        
+        // Mengatur posisi JFrame ke tengah layar
+        frame.setLocationRelativeTo(null);
     }
 
     public static void main(String[] args) {
-        EventQueue.invokeLater(new Runnable() {
+        SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-                Main frame = new Main();
-                frame.setVisible(true);
+                new Main();
             }
         });
     }
-
 }
