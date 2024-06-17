@@ -1,5 +1,6 @@
 package View.Login;
 
+import View.nDashboard_Admin;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -8,6 +9,7 @@ import javax.swing.*;
 
 public class nLogin_User extends JFrame {
     private static nLogin_User frame;
+    private static nDashboard_Admin dashboard;
     private static JDesktopPane desktopPane;
     private static JTextField tx_user;
     private static JPasswordField tx_pass;
@@ -16,11 +18,11 @@ public class nLogin_User extends JFrame {
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
-            initialize();
+            // initialize();
         });
     }
 
-    private static void initialize() {
+    public void initialize() {
 // ==================================================================================================================================
     // FRAME UTAMA
         frame = new nLogin_User();
@@ -115,7 +117,11 @@ public class nLogin_User extends JFrame {
             // Contoh validasi sederhana
             if (username.equals("admin") && password.equals("admin123")) { // belum di ubah
                 JOptionPane.showMessageDialog(frame, "Login Successful!");
-                // Lakukan tindakan setelah login berhasil di sini
+                
+                frame.dispose();
+                dashboard = new nDashboard_Admin();
+                dashboard.initialize();
+                
             } else {
                 JOptionPane.showMessageDialog(frame, "Login Failed. Invalid username or password.");
                 // Lakukan tindakan setelah login gagal di sini
