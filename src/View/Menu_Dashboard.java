@@ -210,10 +210,20 @@ public class Menu_Dashboard extends JFrame {
 				}
 			}
 
-			@Override
-			protected void paintComponent(Graphics g) {
-				super.paintComponent(g);
-				g.drawImage(image, 0, 0, getWidth(), getHeight(), this);
+			private void menu_insert_layanan() {
+				mntmAddCategory = new JMenuItem("Tambahkan layanan");
+				mntmAddCategory.setMnemonic(KeyEvent.VK_O);
+				mntmAddCategory.setIcon(new ImageIcon(Menu_Dashboard.class.getResource("/resource/cat.png")));
+				mntmAddCategory.addActionListener((ActionEvent arg0) -> {
+					JInternalFrame JIF = new JInternalFrame("Tambahkan Layanan", false, true, false, true);
+					Panel_Insert_Layanan addCategoryPanel = new Panel_Insert_Layanan();
+					JIF.getContentPane().add(addCategoryPanel);
+					JIF.pack();
+					desktopPane.add(JIF);
+					JIF.setVisible(true);
+				});
+				
+				mnHome.add(mntmAddCategory);
 			}
 
 		};
