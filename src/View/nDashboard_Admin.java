@@ -17,12 +17,6 @@ public class nDashboard_Admin extends JFrame {
     private static JButton btn_panel_5;
     private static JButton btn_panel_6;
 
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> {
-            // initialize();
-        });
-    }
-
     public void initialize() {
         // ==================================================================================================================================
         // FRAME UTAMA

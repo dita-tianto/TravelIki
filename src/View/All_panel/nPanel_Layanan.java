@@ -1,15 +1,13 @@
-package View.Login;
+package View.All_Panel;
 
-import View.nDashboard_Admin;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 // import java.awt.event.ActionListener;
 // import java.awt.event.MouseAdapter;
 
-public class nLogin_User extends JFrame {
-    private static nLogin_User frame;
-    private static nDashboard_Admin dashboard;
+public class nPanel_Layanan extends JFrame {
+    private static nPanel_Layanan frame;
     private static JDesktopPane desktopPane;
     private static JTextField tx_user;
     private static JPasswordField tx_pass;
@@ -19,7 +17,7 @@ public class nLogin_User extends JFrame {
     public void initialize() {
 // ==================================================================================================================================
     // FRAME UTAMA
-        frame = new nLogin_User();
+        frame = new nPanel_Layanan();
         frame.setTitle("Traveliki");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(800, 400); // Ubah ukuran sesuai kebutuhan
@@ -111,10 +109,7 @@ public class nLogin_User extends JFrame {
             // Contoh validasi sederhana
             if (username.equals("admin") && password.equals("admin123")) { // belum di ubah
                 JOptionPane.showMessageDialog(frame, "Login Successful!");
-                
-                frame.dispose();
-                dashboard = new nDashboard_Admin();
-                dashboard.initialize();
+
                 
             } else {
                 JOptionPane.showMessageDialog(frame, "Login Failed. Invalid username or password.");
