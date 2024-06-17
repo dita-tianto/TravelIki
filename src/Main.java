@@ -1,5 +1,5 @@
 
-import View.All_Panel.nPanel_Layanan;
+import View.All_Panel.nPanel_Kategori;
 import javax.swing.SwingUtilities;
 
 public class Main{
@@ -12,7 +12,7 @@ public class Main{
     }
 
     public static void test(){
-        nPanel_Layanan pl = new nPanel_Layanan();
+        nPanel_Kategori pl = new nPanel_Kategori();
         pl.initialize();
     }
 }

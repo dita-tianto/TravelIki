@@ -1,17 +1,12 @@
 package View.All_Panel;
 
+import Model.Kategori;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-// import java.awt.event.ActionListener;
-// import java.awt.event.MouseAdapter;
 
-import Model.Kategori;
-import Model.Layanan;
-import View.Dialogue.Cat_update;
-
-public class nPanel_Layanan extends JFrame {
-    private static nPanel_Layanan frame;
+public class nPanel_Kategori extends JFrame {
+    private static nPanel_Kategori frame;
     private static JDesktopPane desktopPane;
     private static JScrollPane scrollPane;
     private static JTextField tx_user;
@@ -20,16 +15,16 @@ public class nPanel_Layanan extends JFrame {
     public static JTable table;
 
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> {
-            nPanel_Layanan pl = new nPanel_Layanan();
-            pl.initialize();
-        });
-}
+            SwingUtilities.invokeLater(() -> {
+                nPanel_Kategori pk = new nPanel_Kategori();
+                pk.initialize();
+            });
+    }
 
     public void initialize() {
         // ==================================================================================================================================
         // FRAME UTAMA
-        frame = new nPanel_Layanan();
+        frame = new nPanel_Kategori();
         frame.setTitle("Traveliki");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(810, 485); // Ubah ukuran sesuai kebutuhan
@@ -53,7 +48,7 @@ public class nPanel_Layanan extends JFrame {
     // KOMPONEN GUI
 
         // Judul
-        JLabel lbl_title = new JLabel("TABEL LAYANAN");
+        JLabel lbl_title = new JLabel("TABEL KATEGORI");
         lbl_title.setFont(new Font("Poppins", Font.BOLD, 20));
         lbl_title.setForeground(Color.WHITE);
         lbl_title.setBounds(45, 20, 300, 50);
@@ -64,7 +59,7 @@ public class nPanel_Layanan extends JFrame {
         scrollPane = new JScrollPane(table);
         scrollPane.setBounds(300, 120, 460, 300);
         desktopPane.add(scrollPane);
-        Layanan.load_data_layanan();
+        Kategori.load_data_kategori();
 
         table.addMouseListener(new MouseAdapter() {
             @Override
@@ -80,7 +75,7 @@ public class nPanel_Layanan extends JFrame {
         });
 
         // Nama
-        JLabel lbl_user = new JLabel("Nama Layanan :");
+        JLabel lbl_user = new JLabel("Nama Kategori :");
         lbl_user.setFont(new Font("Poppins", Font.BOLD, 10));
         lbl_user.setForeground(Color.WHITE);
         lbl_user.setBounds(30, 100, 100, 10);
@@ -90,34 +85,12 @@ public class nPanel_Layanan extends JFrame {
         tx_user.setBounds(20, 115, 200, 20);
         desktopPane.add(tx_user);
 
-        // Kategori
-        JLabel kategori = new JLabel("Kategori :");
-        kategori.setFont(new Font("Poppins", Font.BOLD, 10));
-        kategori.setForeground(Color.WHITE);
-        kategori.setBounds(30, 140, 100, 10);
-        desktopPane.add(kategori);
-
-        tx_user = new JTextField(20);
-        tx_user.setBounds(20, 155, 200, 20);
-        desktopPane.add(tx_user);
-
-        // Harga
-        JLabel harga = new JLabel("Harga :");
-        harga.setFont(new Font("Poppins", Font.BOLD, 10));
-        harga.setForeground(Color.WHITE);
-        harga.setBounds(30, 180, 100, 10);
-        desktopPane.add(harga);
-
-        tx_user = new JTextField(20);
-        tx_user.setBounds(20, 195, 200, 20);
-        desktopPane.add(tx_user);
-
         // Save Button
         btn_save = new JButton("Save");
         btn_save.setFont(new Font("Poppins", Font.PLAIN, 10));
         btn_save.setBackground(new Color(13, 108, 176));
         btn_save.setForeground(Color.WHITE);
-        btn_save.setBounds(20, 230, 60, 20);
+        btn_save.setBounds(20, 150, 60, 20);
         
         desktopPane.add(btn_save);
 

@@ -1,6 +1,8 @@
 package Model;
 
 import View.All_Panel.Panel_Insert_Kategori;
+import View.All_Panel.nPanel_Kategori;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -62,7 +64,7 @@ public class Kategori {
                 PreparedStatement stmt = con.prepareStatement(cmd)) {
 
             ResultSet rs = stmt.executeQuery();// konversi rs ke TableModel
-            Panel_Insert_Kategori.table.setModel(DbUtils.resultSetToTableModel(rs));
+            nPanel_Kategori.table.setModel(DbUtils.resultSetToTableModel(rs));
 
         } catch (SQLException e) {
             System.err.println(e);

@@ -1,17 +1,12 @@
 package View.All_Panel;
 
+import Model.Layanan;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-// import java.awt.event.ActionListener;
-// import java.awt.event.MouseAdapter;
 
-import Model.Kategori;
-import Model.Layanan;
-import View.Dialogue.Cat_update;
-
-public class nPanel_Layanan extends JFrame {
-    private static nPanel_Layanan frame;
+public class nPanel_Pemesanan extends JFrame {
+    private static nPanel_Pemesanan frame;
     private static JDesktopPane desktopPane;
     private static JScrollPane scrollPane;
     private static JTextField tx_user;
@@ -21,7 +16,7 @@ public class nPanel_Layanan extends JFrame {
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
-            nPanel_Layanan pl = new nPanel_Layanan();
+            nPanel_Pemesanan pl = new nPanel_Pemesanan();
             pl.initialize();
         });
 }
@@ -29,7 +24,7 @@ public class nPanel_Layanan extends JFrame {
     public void initialize() {
         // ==================================================================================================================================
         // FRAME UTAMA
-        frame = new nPanel_Layanan();
+        frame = new nPanel_Pemesanan();
         frame.setTitle("Traveliki");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(810, 485); // Ubah ukuran sesuai kebutuhan
@@ -53,7 +48,7 @@ public class nPanel_Layanan extends JFrame {
     // KOMPONEN GUI
 
         // Judul
-        JLabel lbl_title = new JLabel("TABEL LAYANAN");
+        JLabel lbl_title = new JLabel("TABEL PEMESANAN");
         lbl_title.setFont(new Font("Poppins", Font.BOLD, 20));
         lbl_title.setForeground(Color.WHITE);
         lbl_title.setBounds(45, 20, 300, 50);
