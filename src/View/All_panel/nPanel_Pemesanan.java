@@ -1,6 +1,6 @@
 package View.All_Panel;
 
-import Model.Layanan;
+import Model.Pemesanan;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -59,7 +59,7 @@ public class nPanel_Pemesanan extends JFrame {
         scrollPane = new JScrollPane(table);
         scrollPane.setBounds(300, 120, 460, 300);
         desktopPane.add(scrollPane);
-        Layanan.load_data_layanan();
+        Pemesanan.load_data_pesanan();
 
         table.addMouseListener(new MouseAdapter() {
             @Override
@@ -75,7 +75,7 @@ public class nPanel_Pemesanan extends JFrame {
         });
 
         // Nama
-        JLabel lbl_user = new JLabel("Nama Layanan :");
+        JLabel lbl_user = new JLabel("Nama Pemesan :");
         lbl_user.setFont(new Font("Poppins", Font.BOLD, 10));
         lbl_user.setForeground(Color.WHITE);
         lbl_user.setBounds(30, 100, 100, 10);
@@ -85,8 +85,8 @@ public class nPanel_Pemesanan extends JFrame {
         tx_user.setBounds(20, 115, 200, 20);
         desktopPane.add(tx_user);
 
-        // Kategori
-        JLabel kategori = new JLabel("Kategori :");
+        // Tanggal
+        JLabel kategori = new JLabel("Tanggal Pemesanan :");
         kategori.setFont(new Font("Poppins", Font.BOLD, 10));
         kategori.setForeground(Color.WHITE);
         kategori.setBounds(30, 140, 100, 10);
@@ -96,23 +96,13 @@ public class nPanel_Pemesanan extends JFrame {
         tx_user.setBounds(20, 155, 200, 20);
         desktopPane.add(tx_user);
 
-        // Harga
-        JLabel harga = new JLabel("Harga :");
-        harga.setFont(new Font("Poppins", Font.BOLD, 10));
-        harga.setForeground(Color.WHITE);
-        harga.setBounds(30, 180, 100, 10);
-        desktopPane.add(harga);
-
-        tx_user = new JTextField(20);
-        tx_user.setBounds(20, 195, 200, 20);
-        desktopPane.add(tx_user);
 
         // Save Button
         btn_save = new JButton("Save");
         btn_save.setFont(new Font("Poppins", Font.PLAIN, 10));
         btn_save.setBackground(new Color(13, 108, 176));
         btn_save.setForeground(Color.WHITE);
-        btn_save.setBounds(20, 230, 60, 20);
+        btn_save.setBounds(20, 190, 60, 20);
         
         desktopPane.add(btn_save);
 
