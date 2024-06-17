@@ -2,7 +2,7 @@ import View.All_Panel.Panel_Insert_Layanan;
 import View.All_Panel.Panel_Insert_Paket;
 import View.All_Panel.Panel_Insert_Pemesanan;
 import View.Login.Splash_Screen;
-import View.nLogin_User;
+import View.Login.nLogin_User;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Toolkit;

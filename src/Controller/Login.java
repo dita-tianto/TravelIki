@@ -2,7 +2,8 @@ package Controller;
 
 import Model.Enums;
 import Model.Pengguna;
-import View.nLogin_User;
+import View.Login.nLogin_User;
+
 import javax.swing.JOptionPane;
 
 public class Login {
