@@ -269,7 +269,7 @@
 					desktopPane.add(JIF);
 					JIF.setVisible(true);
 				});
-
+				
 				mnHome.add(mntmAddCategory);
 			}
 

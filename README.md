@@ -9,8 +9,11 @@ Tapi pada intinya project Tugas Besar asuuu
 
 The workspace contains two folders by default, where:
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+- `.vscode`: the folder to save configuration sources
+- `bin`    : the folder to separate the source code from the executable file sources
+- `lib`    : the folder to save library dependencies
+- `src`    : the folder to run project dependencies
+- `readme.md`    : the folder to ingpo dependencies
 
 Meanwhile, the compiled output files will be generated in the `bin` folder by default.
 
