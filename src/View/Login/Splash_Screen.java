@@ -28,7 +28,7 @@ public class Splash_Screen {
 		JPanel content = new JPanel(new BorderLayout());
 
 		// Gambar splash
-		JLabel splashLabel = new JLabel(new ImageIcon(Splash_Screen.class.getResource("/resource/landingpage.png")));
+		JLabel splashLabel = new JLabel(new ImageIcon(Splash_Screen.class.getResource("/resource/Test_Default.png")));
 		splash.setBounds(480, 250, 625, 350);
 		content.add(splashLabel, BorderLayout.CENTER);
 
@@ -46,7 +46,7 @@ public class Splash_Screen {
 		// Simulasi proses loading
 		for (int i = 0; i <= 100; i++) {
 			progressBar.setValue(i);
-			Thread.sleep(20); // Simulasi waktu loading
+			Thread.sleep(1000); // Simulasi waktu loading
 		}
 
 		// affff

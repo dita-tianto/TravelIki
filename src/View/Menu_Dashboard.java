@@ -210,7 +210,6 @@ public class Menu_Dashboard extends JFrame {
 				}
 			}
 
-<<<<<<< HEAD
 			private void menu_insert_layanan() {
 				mntmAddCategory = new JMenuItem("Tambahkan layanan");
 				mntmAddCategory.setMnemonic(KeyEvent.VK_O);
@@ -225,12 +224,6 @@ public class Menu_Dashboard extends JFrame {
 				});
 				
 				mnHome.add(mntmAddCategory);
-=======
-			@Override
-			protected void paintComponent(Graphics g) {
-				super.paintComponent(g);
-				g.drawImage(image, 0, 0, getWidth(), getHeight(), this);
->>>>>>> 80ae4d11e4f9fd51c34b4f5c5483d1e2ee7e5cf5
 			}
 
 		};
