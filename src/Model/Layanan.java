@@ -1,6 +1,8 @@
 package Model;
 
 import View.All_Panel.Panel_Insert_Layanan;
+import View.All_Panel.nPanel_Layanan;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -68,13 +70,13 @@ public class Layanan {
     // CEK LAYANAN
 
     public static void load_data_layanan() {
-        String cmd = "SELECT nama_layanan, kategori_layanan.nama_kategori, harga_layanan, status_layanan FROM layanan, kategori_layanan";
+        String cmd = "SELECT l.nama_layanan AS 'Nama Layanan', k.nama_kategori AS 'Kategori', l.harga AS 'Harga', l.status AS 'Status' FROM layanan l JOIN kategori_layanan k ON l.id_kategori = k.id_kategori;";
 
         try (Connection con = Database.getConnection();
                 PreparedStatement stmt = con.prepareStatement(cmd)) {
 
             ResultSet rs = stmt.executeQuery();
-            Panel_Insert_Layanan.table.setModel(DbUtils.resultSetToTableModel(rs));
+            nPanel_Layanan.table.setModel(DbUtils.resultSetToTableModel(rs));
 
         } catch (SQLException e) {
             System.err.println(e);

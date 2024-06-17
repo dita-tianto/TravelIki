@@ -7,7 +7,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.table.TableModel;
 
-// import net.proteanit.sql.DbUtils;
 import net.proteanit.sql.DbUtils;
 
 public class Kategori {

@@ -6,21 +6,26 @@ import javax.swing.*;
 // import java.awt.event.ActionListener;
 // import java.awt.event.MouseAdapter;
 
+import Model.Kategori;
+import Model.Layanan;
+import View.Dialogue.Cat_update;
+
 public class nPanel_Layanan extends JFrame {
     private static nPanel_Layanan frame;
     private static JDesktopPane desktopPane;
+    private static JScrollPane scrollPane;
     private static JTextField tx_user;
-    private static JPasswordField tx_pass;
-    private static JButton btn_show_pass;
-    private static JButton btn_login;
+    private static JButton btn_save; 
+
+    public static JTable table;
 
     public void initialize() {
-// ==================================================================================================================================
-    // FRAME UTAMA
+        // ==================================================================================================================================
+        // FRAME UTAMA
         frame = new nPanel_Layanan();
         frame.setTitle("Traveliki");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(800, 400); // Ubah ukuran sesuai kebutuhan
+        frame.setSize(810, 485); // Ubah ukuran sesuai kebutuhan
         frame.setResizable(false);
 
         // Membuat desktopPane sebagai content pane utama
@@ -28,132 +33,89 @@ public class nPanel_Layanan extends JFrame {
         frame.setContentPane(desktopPane); // Menetapkan desktopPane sebagai content pane
 
         // Menampilkan gambar
-        ImageIcon imageIcon = new ImageIcon("src/resource/login.png");
-        Image image = imageIcon.getImage().getScaledInstance(800, 400, Image.SCALE_SMOOTH);
+        ImageIcon imageIcon = new ImageIcon("src/resource/panel.png");
+        Image image = imageIcon.getImage().getScaledInstance(800, 450, Image.SCALE_SMOOTH);
 
         // Menambahkan latar belakang gambar ke desktopPane
         JLabel backgroundLabel = new JLabel(new ImageIcon(image));
-        backgroundLabel.setBounds(0, 0, 800, 400);
-        desktopPane.add(backgroundLabel, Integer.valueOf(Integer.MIN_VALUE)); // Menempatkan latar belakang di lapisan terbawah
+        backgroundLabel.setBounds(0, 0, 800, 450);
+        desktopPane.add(backgroundLabel, Integer.valueOf(Integer.MIN_VALUE)); // Menempatkan latar belakang di lapisan
+                                                                              // terbawah
 
 // ==================================================================================================================================
     // KOMPONEN GUI
-        
-        // Username
-        JLabel lbl_user = new JLabel("Username:");
+
+        // Judul
+        JLabel lbl_title = new JLabel("TABEL LAYANAN");
+        lbl_title.setFont(new Font("Poppins", Font.BOLD, 20));
+        lbl_title.setForeground(Color.WHITE);
+        lbl_title.setBounds(45, 20, 300, 50);
+        desktopPane.add(lbl_title);
+
+        // Tabel
+        table = new JTable();
+        scrollPane = new JScrollPane(table);
+        scrollPane.setBounds(300, 120, 460, 300);
+        desktopPane.add(scrollPane);
+        Layanan.load_data_layanan();
+
+        table.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent arg0) {
+                int row = table.getSelectedRow();
+
+                String index_1 = table.getModel().getValueAt(row, 0).toString();
+                String index_2 = table.getModel().getValueAt(row, 1).toString();
+
+                // Tampilkan dialog box
+
+            }
+        });
+
+        // Nama
+        JLabel lbl_user = new JLabel("Nama Layanan :");
         lbl_user.setFont(new Font("Poppins", Font.BOLD, 10));
         lbl_user.setForeground(Color.WHITE);
-        lbl_user.setBounds(490, 135, 120, 10);
+        lbl_user.setBounds(30, 100, 100, 10);
         desktopPane.add(lbl_user);
 
         tx_user = new JTextField(20);
-        tx_user.setBounds(480, 150, 250, 30);
+        tx_user.setBounds(20, 115, 200, 20);
         desktopPane.add(tx_user);
 
-        // Password
-        JLabel lbl_pass = new JLabel("Password:");
-        lbl_pass.setFont(new Font("Poppins", Font.BOLD, 10));
-        lbl_pass.setForeground(Color.WHITE);
-        lbl_pass.setBounds(490, 185, 120, 10);
-        desktopPane.add(lbl_pass);
+        // Kategori
+        JLabel kategori = new JLabel("Kategori :");
+        kategori.setFont(new Font("Poppins", Font.BOLD, 10));
+        kategori.setForeground(Color.WHITE);
+        kategori.setBounds(30, 140, 100, 10);
+        desktopPane.add(kategori);
 
-        tx_pass = new JPasswordField(20);
-        tx_pass.setBounds(480, 200, 250, 30);
-        desktopPane.add(tx_pass);
+        tx_user = new JTextField(20);
+        tx_user.setBounds(20, 155, 200, 20);
+        desktopPane.add(tx_user);
 
-        // Show Password
-        JLabel lbl_show_pass = new JLabel("Show password");
-        lbl_show_pass.setFont(new Font("Poppins", Font.BOLD, 10));
-        lbl_show_pass.setForeground(Color.WHITE);
-        lbl_show_pass.setBounds(500, 240, 120, 10);
-        desktopPane.add(lbl_show_pass);
+        // Harga
+        JLabel harga = new JLabel("Harga :");
+        harga.setFont(new Font("Poppins", Font.BOLD, 10));
+        harga.setForeground(Color.WHITE);
+        harga.setBounds(30, 180, 100, 10);
+        desktopPane.add(harga);
 
-        btn_show_pass = new JButton();
-        btn_show_pass.setFont(new Font("Poppins", Font.PLAIN, 10));
-        btn_show_pass.setBackground(Color.WHITE); // Warna latar belakang tombol
-        btn_show_pass.setBounds(480, 240, 15, 15);
+        tx_user = new JTextField(20);
+        tx_user.setBounds(20, 195, 200, 20);
+        desktopPane.add(tx_user);
+
+        // Save Button
+        btn_save = new JButton("Save");
+        btn_save.setFont(new Font("Poppins", Font.PLAIN, 10));
+        btn_save.setBackground(new Color(13, 108, 176));
+        btn_save.setForeground(Color.WHITE);
+        btn_save.setBounds(20, 230, 60, 20);
         
-        desktopPane.add(btn_show_pass);        
+        desktopPane.add(btn_save);
 
-        // Login Button
-        btn_login = new JButton("Login");
-        btn_login.setFont(new Font("Poppins", Font.PLAIN, 10));
-        btn_login.setBackground(new Color(13, 108, 176));
-        btn_login.setForeground(Color.WHITE);
-        btn_login.setBounds(620, 240, 110, 30);
-        
-        desktopPane.add(btn_login);
-
-        // Register Menu
-        JLabel register = new JLabel("Don't have account?");
-        register.setFont(new Font("Poppins", Font.BOLD, 10));
-        register.setForeground(Color.WHITE);
-        register.setBounds(490, 300, 120, 10);
-        desktopPane.add(register);
-        
-        JLabel click_here = new JLabel("Click here!");
-        click_here.setFont(new Font("Poppins", Font.BOLD, 10));
-        click_here.setForeground(new Color(13, 108, 176));
-        click_here.setBounds(600, 300, 120, 10);
-        
-        desktopPane.add(click_here);
-
-// ==================================================================================================================================
-    // ACTION EVENT
-
-        // Login button
-        btn_login.addActionListener((ActionEvent e) -> {
-            String username = tx_user.getText();
-            String password = new String(tx_pass.getPassword());
-            
-            // Contoh validasi sederhana
-            if (username.equals("admin") && password.equals("admin123")) { // belum di ubah
-                JOptionPane.showMessageDialog(frame, "Login Successful!");
-
-                
-            } else {
-                JOptionPane.showMessageDialog(frame, "Login Failed. Invalid username or password.");
-                // Lakukan tindakan setelah login gagal di sini
-            }
-        });
-
-        // Show password
-        btn_show_pass.addActionListener((ActionEvent e) -> {
-            // Toggle EchoChar untuk menampilkan/menyembunyikan password
-            if (tx_pass.getEchoChar() == '\u2022') { // Jika saat ini ditampilkan dengan karakter tersembunyi
-                tx_pass.setEchoChar((char) 0); // Tampilkan teks asli
-                lbl_show_pass.setText("Hide Password");
-                btn_show_pass.setBackground(new Color(13, 108, 176)); // Warna latar belakang tombol
-            } else {
-                tx_pass.setEchoChar('\u2022'); // Gunakan karakter tersembunyi (bintang)
-                lbl_show_pass.setText("Show Password");
-                btn_show_pass.setBackground(Color.WHITE); // Warna latar belakang tombol
-            }
-        });
-
-        // Register Here
-        click_here.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mousePressed(MouseEvent e) {
-                click_here.setForeground(Color.WHITE);
-                System.out.println("CLICKED");
-
-            }
-
-            @Override
-            public void mouseReleased(MouseEvent e){
-                click_here.setForeground(new Color(13, 108, 176));
-                System.out.println("RELEASED");
-                
-                try {
-                    Thread.sleep(100);
-                } catch (InterruptedException e1) {
-                    System.err.println(e);
-                }
-                System.out.println("Login");
-            }
-            
-        });
+        // ==================================================================================================================================
+        // ACTION EVENT
 
         // Memunculkan frame di tengah layar
         centerFrameOnScreen(frame);
@@ -163,8 +125,9 @@ public class nPanel_Layanan extends JFrame {
     }
 
     public static void register() {
-        
+
     }
+
     // menempatkan frame di tengah layar
     private static void centerFrameOnScreen(JFrame frame) {
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize(); // Mendapatkan ukuran layar saat ini

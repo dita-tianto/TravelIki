@@ -17,4 +17,9 @@ public class Enums {
         CANCELLED,
         COMPLETED
     }
+
+    public static enum type{
+        PAKET,
+        SATUAN
+    }
 }
