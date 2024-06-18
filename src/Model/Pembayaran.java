@@ -7,6 +7,7 @@ import java.sql.SQLException;
 
 import javax.swing.table.TableModel;
 
+import View.All_Panel.nPanel_Pembayaran;
 import net.proteanit.sql.DbUtils;
 
 public class Pembayaran {
@@ -43,23 +44,17 @@ public class Pembayaran {
     
     // CEK PEMBAYARAN 
 
-    public static TableModel cek_pembayaran(int give_id_pembayaran){ //selalu hitung setelah insert pesanan
-        String cmd = "SELECT * FROM `pembayaran` WHERE id_pembayaran = ?";
+    public static void load_data_pembayaran(){
+        String cmd = "SELECT p.id_pesanan AS 'ID Pesanan', b.tanggal_pembayaran AS 'Tanggal Pembayaran', b.bayar AS 'Nominal Pembayaran' FROM pembayaran b JOIN pemesanan p ON b.id_pesanan = p.id_pesanan;";
 
-        TableModel tm = null;
+        try (Connection con = Database.getConnection();
+                PreparedStatement stmt = con.prepareStatement(cmd)) {
 
-        try(Connection con = Database.getConnection();
-            PreparedStatement stmt = con.prepareStatement(cmd)){
+            ResultSet rs = stmt.executeQuery();// konversi rs ke TableModel
+            nPanel_Pembayaran.table.setModel(DbUtils.resultSetToTableModel(rs));
 
-            stmt.setInt(1, give_id_pembayaran);
-
-            ResultSet rs = stmt.executeQuery();
-            tm = DbUtils.resultSetToTableModel(rs); // konversi rs ke TableModel
-            
         } catch (SQLException e) {
             System.err.println(e);
         }
-
-        return tm;
     }
 }
