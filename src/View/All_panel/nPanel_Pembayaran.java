@@ -1,20 +1,21 @@
 package View.All_Panel;
 
-import Model.Pembayaran;
-import View.nDashboard_Admin;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+// import java.awt.event.ActionListener;
+// import java.awt.event.MouseAdapter;
+
+import Model.Kategori;
+import Model.Pembayaran;
+import View.Dialogue.Cat_update;
 
 public class nPanel_Pembayaran extends JFrame {
     private static nPanel_Pembayaran frame;
     private static JDesktopPane desktopPane;
     private static JScrollPane scrollPane;
-    private static JTextField tx_pesanan;
-    private static JTextField tx_tgl;
-    private static JTextField tx_bayar;
+    private static JTextField tx_user;
     private static JButton btn_save;
-    private static JButton btn_back;
 
     public static JTable table;
 
@@ -74,41 +75,42 @@ public class nPanel_Pembayaran extends JFrame {
                 String index_2 = table.getModel().getValueAt(row, 1).toString();
 
                 // Tampilkan dialog box
+
             }
         });
 
-        // id pemesanan
-        JLabel lbl_pesanan = new JLabel("ID Pesanan :");
-        lbl_pesanan.setFont(new Font("Poppins", Font.BOLD, 10));
-        lbl_pesanan.setForeground(Color.WHITE);
-        lbl_pesanan.setBounds(30, 100, 100, 10);
-        desktopPane.add(lbl_pesanan);
+        // Nama
+        JLabel lbl_user = new JLabel("ID PEMBAYARAN :");
+        lbl_user.setFont(new Font("Poppins", Font.BOLD, 10));
+        lbl_user.setForeground(Color.WHITE);
+        lbl_user.setBounds(30, 100, 100, 10);
+        desktopPane.add(lbl_user);
 
-        tx_pesanan = new JTextField(20);
-        tx_pesanan.setBounds(20, 115, 200, 20);
-        desktopPane.add(tx_pesanan);
+        tx_user = new JTextField(20);
+        tx_user.setBounds(20, 115, 200, 20);
+        desktopPane.add(tx_user);
 
-        // Tanggal bayar
-        JLabel tgl = new JLabel("Tanggal Pembayaran :");
-        tgl.setFont(new Font("Poppins", Font.BOLD, 10));
-        tgl.setForeground(Color.WHITE);
-        tgl.setBounds(30, 140, 100, 10);
-        desktopPane.add(tgl);
+        // Kategori
+        JLabel kategori = new JLabel("DATE :");
+        kategori.setFont(new Font("Poppins", Font.BOLD, 10));
+        kategori.setForeground(Color.WHITE);
+        kategori.setBounds(30, 140, 100, 10);
+        desktopPane.add(kategori);
 
-        tx_tgl = new JTextField(20);
-        tx_tgl.setBounds(20, 155, 200, 20);
-        desktopPane.add(tx_tgl);
+        tx_user = new JTextField(20);
+        tx_user.setBounds(20, 155, 200, 20);
+        desktopPane.add(tx_user);
 
-        // Nominal
-        JLabel bayar = new JLabel("Nominal Pembayaran :");
-        bayar.setFont(new Font("Poppins", Font.BOLD, 10));
-        bayar.setForeground(Color.WHITE);
-        bayar.setBounds(30, 180, 100, 10);
-        desktopPane.add(bayar);
+        // Harga    
+        JLabel harga = new JLabel("BAYAR TIKET :");
+        harga.setFont(new Font("Poppins", Font.BOLD, 10));
+        harga.setForeground(Color.WHITE);
+        harga.setBounds(30, 180, 100, 10);
+        desktopPane.add(harga);
 
-        tx_bayar = new JTextField(20);
-        tx_bayar.setBounds(20, 195, 200, 20);
-        desktopPane.add(tx_bayar);
+        tx_user = new JTextField(20);
+        tx_user.setBounds(20, 195, 200, 20);
+        desktopPane.add(tx_user);
 
         // Save Button
         btn_save = new JButton("Save");
@@ -119,26 +121,8 @@ public class nPanel_Pembayaran extends JFrame {
 
         desktopPane.add(btn_save);
 
-        // Back Button
-        btn_back = new JButton("<");
-        btn_back.setFont(new Font("Poppins", Font.PLAIN, 10));
-        btn_back.setBackground(new Color(13, 108, 176));
-        btn_back.setForeground(Color.WHITE);
-        btn_back.setBounds(0, 0, 25, 25);
-
-        desktopPane.add(btn_back);
-
         // ==================================================================================================================================
         // ACTION EVENT
-
-        // Panel Logout
-        btn_back.addActionListener((ActionEvent e) -> {
-            System.out.println("UDAN DERES");
-            
-            nDashboard_Admin.frame.setVisible(true);
-            
-            frame.dispose();
-        });
 
         // Memunculkan frame di tengah layar
         centerFrameOnScreen(frame);
