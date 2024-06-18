@@ -6,10 +6,12 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
+import com.toedter.calendar.JDateChooser;
+
 import Controller.Get_Category_data;
 import Model.Enums;
 import Model.Kategori;
-import Model.Layanan;
+import Model.Pembayaran;
 import Model.Product_category;
 import Model.Status;
 import View.Dialogue.Cat_update;
@@ -43,20 +45,19 @@ public class Panel_Insert_Pembayaran extends JPanel {
         setForeground(new Color(0, 51, 204));
         setLayout(new MigLayout("", "[grow][][][][grow]", "[][][][][grow]"));
 
-        JLabel lblCategoryName = new JLabel("Name Kategori :");
+        JLabel lblCategoryName = new JLabel("id_Pembayaran :");
         add(lblCategoryName, "cell 1 0");
         name = new JTextField();
         add(name, "cell 4 0,growx");
         name.setColumns(10);
 
-        JLabel lblDescription = new JLabel("Deskripsi : ");
-        add(lblDescription, "cell 1 1");
+        JLabel lblDate = new JLabel("Date :");
+		add(lblDate, "cell 2 0,alignx right");
+		
+		JDateChooser dateChooser = new JDateChooser();
+		add(dateChooser, "cell 3 0,growx,aligny center");
 
-        description = new JTextField();
-        add(description, "cell 4 1,growx");
-        description.setColumns(10);
-
-        JLabel lblPrice = new JLabel("Harga : ");
+        JLabel lblPrice = new JLabel("Bayar : ");
         add(lblPrice, "cell 1 2");
 
         price = new JTextField();
@@ -74,7 +75,7 @@ public class Panel_Insert_Pembayaran extends JPanel {
                 // Lakukan sesuatu dengan data yang disimpan
 
                 // is.load(); // Memuat ulang data yang mungkin diperlukan
-                Layanan.load_data_layanan();
+                Pembayaran.load_data_pembayaran();
 
             }
         });
@@ -92,7 +93,7 @@ public class Panel_Insert_Pembayaran extends JPanel {
 
         table = new JTable();
 
-        Layanan.load_data_layanan();
+        Pembayaran.load_data_pembayaran();
 
         table.addMouseListener(new MouseAdapter() {
             @Override
