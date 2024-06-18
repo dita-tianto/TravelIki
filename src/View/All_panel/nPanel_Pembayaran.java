@@ -1,5 +1,6 @@
 package View.All_Panel;
 
+<<<<<<< HEAD
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -16,12 +17,33 @@ public class nPanel_Pembayaran extends JFrame {
     private static JScrollPane scrollPane;
     private static JTextField tx_user;
     private static JButton btn_save;
+=======
+import Model.Pembayaran;
+import View.nDashboard_Admin;
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+
+public class nPanel_Pembayaran extends JFrame {
+    private static nPanel_Pembayaran frame;
+    private static JDesktopPane desktopPane;
+    private static JScrollPane scrollPane;
+    private static JTextField tx_pesanan;
+    private static JTextField tx_tgl;
+    private static JTextField tx_bayar;
+    private static JButton btn_save;
+    private static JButton btn_back;
+>>>>>>> fee2352ac68e015b3e0222d1a26a65b8c9749834
 
     public static JTable table;
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
+<<<<<<< HEAD
             nPanel_Layanan pl = new nPanel_Layanan();
+=======
+            nPanel_Pembayaran pl = new nPanel_Pembayaran();
+>>>>>>> fee2352ac68e015b3e0222d1a26a65b8c9749834
             pl.initialize();
         });
     }
@@ -29,7 +51,11 @@ public class nPanel_Pembayaran extends JFrame {
     public void initialize() {
         // ==================================================================================================================================
         // FRAME UTAMA
+<<<<<<< HEAD
         frame = new nPanel_Layanan();
+=======
+        frame = new nPanel_Pembayaran();
+>>>>>>> fee2352ac68e015b3e0222d1a26a65b8c9749834
         frame.setTitle("Traveliki");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(810, 485); // Ubah ukuran sesuai kebutuhan
@@ -64,7 +90,11 @@ public class nPanel_Pembayaran extends JFrame {
         scrollPane = new JScrollPane(table);
         scrollPane.setBounds(300, 120, 460, 300);
         desktopPane.add(scrollPane);
+<<<<<<< HEAD
         Layanan.load_data_layanan();
+=======
+        Pembayaran.load_data_pembayaran();
+>>>>>>> fee2352ac68e015b3e0222d1a26a65b8c9749834
 
         table.addMouseListener(new MouseAdapter() {
             @Override
@@ -75,6 +105,7 @@ public class nPanel_Pembayaran extends JFrame {
                 String index_2 = table.getModel().getValueAt(row, 1).toString();
 
                 // Tampilkan dialog box
+<<<<<<< HEAD
 
             }
         });
@@ -111,6 +142,43 @@ public class nPanel_Pembayaran extends JFrame {
         tx_user = new JTextField(20);
         tx_user.setBounds(20, 195, 200, 20);
         desktopPane.add(tx_user);
+=======
+            }
+        });
+
+        // id pemesanan
+        JLabel lbl_pesanan = new JLabel("ID Pesanan :");
+        lbl_pesanan.setFont(new Font("Poppins", Font.BOLD, 10));
+        lbl_pesanan.setForeground(Color.WHITE);
+        lbl_pesanan.setBounds(30, 100, 100, 10);
+        desktopPane.add(lbl_pesanan);
+
+        tx_pesanan = new JTextField(20);
+        tx_pesanan.setBounds(20, 115, 200, 20);
+        desktopPane.add(tx_pesanan);
+
+        // Tanggal bayar
+        JLabel tgl = new JLabel("Tanggal Pembayaran :");
+        tgl.setFont(new Font("Poppins", Font.BOLD, 10));
+        tgl.setForeground(Color.WHITE);
+        tgl.setBounds(30, 140, 100, 10);
+        desktopPane.add(tgl);
+
+        tx_tgl = new JTextField(20);
+        tx_tgl.setBounds(20, 155, 200, 20);
+        desktopPane.add(tx_tgl);
+
+        // Nominal
+        JLabel bayar = new JLabel("Nominal Pembayaran :");
+        bayar.setFont(new Font("Poppins", Font.BOLD, 10));
+        bayar.setForeground(Color.WHITE);
+        bayar.setBounds(30, 180, 100, 10);
+        desktopPane.add(bayar);
+
+        tx_bayar = new JTextField(20);
+        tx_bayar.setBounds(20, 195, 200, 20);
+        desktopPane.add(tx_bayar);
+>>>>>>> fee2352ac68e015b3e0222d1a26a65b8c9749834
 
         // Save Button
         btn_save = new JButton("Save");
@@ -121,9 +189,33 @@ public class nPanel_Pembayaran extends JFrame {
 
         desktopPane.add(btn_save);
 
+<<<<<<< HEAD
         // ==================================================================================================================================
         // ACTION EVENT
 
+=======
+        // Back Button
+        btn_back = new JButton("<");
+        btn_back.setFont(new Font("Poppins", Font.PLAIN, 10));
+        btn_back.setBackground(new Color(13, 108, 176));
+        btn_back.setForeground(Color.WHITE);
+        btn_back.setBounds(0, 0, 25, 25);
+
+        desktopPane.add(btn_back);
+
+        // ==================================================================================================================================
+        // ACTION EVENT
+
+        // Panel Logout
+        btn_back.addActionListener((ActionEvent e) -> {
+            System.out.println("UDAN DERES");
+            
+            nDashboard_Admin.frame.setVisible(true);
+            
+            frame.dispose();
+        });
+
+>>>>>>> fee2352ac68e015b3e0222d1a26a65b8c9749834
         // Memunculkan frame di tengah layar
         centerFrameOnScreen(frame);
 

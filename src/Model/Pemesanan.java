@@ -5,6 +5,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import View.All_Panel.nPanel_Pemesanan;
+import net.proteanit.sql.DbUtils;
+
 public class Pemesanan {
     private  int id_pesanan;
     private int id_pengguna;
@@ -98,6 +101,10 @@ public class Pemesanan {
         return total;
     }
 
+    public static int get_id_by_name(String give_id_pengguna){
+        return 0;
+    }
+
     public int get_id_pesanan(int give_id_pengguna, String give_tanggal_pemesanan){
         String cmd = "SELECT `id_pesanan` FROM `pesanan` WHERE `id_pengguna` = ? AND `tanggal_pemesanan` = ?";
 
@@ -117,5 +124,19 @@ public class Pemesanan {
             System.err.println(e);
         }
         return id_pesanan;
+    }
+
+    public static void load_data_pesanan(){
+        String cmd = "SELECT p.id_pesanan AS 'ID Pesanan', u.username AS 'Nama Pemesan', p.tanggal_pemesanan AS 'Tanggal Pemesanan', p.status_pemesanan AS 'Status Pesanan' FROM pemesanan p JOIN pengguna u ON p.id_pengguna = u.id_pengguna;";
+
+        try (Connection con = Database.getConnection();
+                PreparedStatement stmt = con.prepareStatement(cmd)) {
+
+            ResultSet rs = stmt.executeQuery();// konversi rs ke TableModel
+            nPanel_Pemesanan.table.setModel(DbUtils.resultSetToTableModel(rs));
+
+        } catch (SQLException e) {
+            System.err.println(e);
+        }
     }
 }

@@ -1,30 +1,35 @@
 package View.All_Panel;
 
-import Model.Pemesanan;
+import Model.Pengguna;
+import View.nDashboard_Admin;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-public class nPanel_Pemesanan extends JFrame {
-    private static nPanel_Pemesanan frame;
+public class nPanel_Account extends JFrame {
+    private static nPanel_Account frame;
     private static JDesktopPane desktopPane;
     private static JScrollPane scrollPane;
     private static JTextField tx_user;
-    private static JButton btn_save; 
+    private static JTextField tx_email;
+    private static JTextField tx_telp;
+    private static JTextField tx_pass;
+    private static JButton btn_save;
+    private static JButton btn_back;
 
     public static JTable table;
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
-            nPanel_Pemesanan pl = new nPanel_Pemesanan();
+            nPanel_Account pl = new nPanel_Account();
             pl.initialize();
         });
-}
+    }
 
     public void initialize() {
         // ==================================================================================================================================
         // FRAME UTAMA
-        frame = new nPanel_Pemesanan();
+        frame = new nPanel_Account();
         frame.setTitle("Traveliki");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(810, 485); // Ubah ukuran sesuai kebutuhan
@@ -44,11 +49,11 @@ public class nPanel_Pemesanan extends JFrame {
         desktopPane.add(backgroundLabel, Integer.valueOf(Integer.MIN_VALUE)); // Menempatkan latar belakang di lapisan
                                                                               // terbawah
 
-// ==================================================================================================================================
-    // KOMPONEN GUI
+        // ==================================================================================================================================
+        // KOMPONEN GUI
 
         // Judul
-        JLabel lbl_title = new JLabel("TABEL PEMESANAN");
+        JLabel lbl_title = new JLabel("TABEL ACCOUNT");
         lbl_title.setFont(new Font("Poppins", Font.BOLD, 20));
         lbl_title.setForeground(Color.WHITE);
         lbl_title.setBounds(45, 20, 300, 50);
@@ -59,7 +64,7 @@ public class nPanel_Pemesanan extends JFrame {
         scrollPane = new JScrollPane(table);
         scrollPane.setBounds(300, 120, 460, 300);
         desktopPane.add(scrollPane);
-        Pemesanan.load_data_pesanan();
+        Pengguna.load_data_pengguna();
 
         table.addMouseListener(new MouseAdapter() {
             @Override
@@ -70,12 +75,11 @@ public class nPanel_Pemesanan extends JFrame {
                 String index_2 = table.getModel().getValueAt(row, 1).toString();
 
                 // Tampilkan dialog box
-
             }
         });
 
-        // Nama
-        JLabel lbl_user = new JLabel("Nama Pemesan :");
+        // Username
+        JLabel lbl_user = new JLabel("Username :");
         lbl_user.setFont(new Font("Poppins", Font.BOLD, 10));
         lbl_user.setForeground(Color.WHITE);
         lbl_user.setBounds(30, 100, 100, 10);
@@ -85,29 +89,79 @@ public class nPanel_Pemesanan extends JFrame {
         tx_user.setBounds(20, 115, 200, 20);
         desktopPane.add(tx_user);
 
-        // Tanggal
-        JLabel kategori = new JLabel("Tanggal Pemesanan :");
-        kategori.setFont(new Font("Poppins", Font.BOLD, 10));
-        kategori.setForeground(Color.WHITE);
-        kategori.setBounds(30, 140, 100, 10);
-        desktopPane.add(kategori);
+        // Email
+        JLabel lbl_email = new JLabel("Email :");
+        lbl_email.setFont(new Font("Poppins", Font.BOLD, 10));
+        lbl_email.setForeground(Color.WHITE);
+        lbl_email.setBounds(30, 140, 100, 10);
+        desktopPane.add(lbl_email);
 
-        tx_user = new JTextField(20);
-        tx_user.setBounds(20, 155, 200, 20);
-        desktopPane.add(tx_user);
+        tx_email = new JTextField(20);
+        tx_email.setBounds(20, 155, 200, 20);
+        desktopPane.add(tx_email);
 
+        // No Telepon
+        JLabel lbl_telp = new JLabel("No Telepon :");
+        lbl_telp.setFont(new Font("Poppins", Font.BOLD, 10));
+        lbl_telp.setForeground(Color.WHITE);
+        lbl_telp.setBounds(30, 180, 100, 10);
+        desktopPane.add(lbl_telp);
+
+        tx_telp = new JTextField(20);
+        tx_telp.setBounds(20, 195, 200, 20);
+        desktopPane.add(tx_telp);
+
+        // Password
+        JLabel lbl_pass = new JLabel("Password :");
+        lbl_pass.setFont(new Font("Poppins", Font.BOLD, 10));
+        lbl_pass.setForeground(Color.WHITE);
+        lbl_pass.setBounds(30, 220, 100, 10);
+        desktopPane.add(lbl_pass);
+
+        tx_pass = new JTextField(20);
+        tx_pass.setBounds(20, 235, 200, 20);
+        desktopPane.add(tx_pass);
+
+        // Role
+        JLabel lbl_role = new JLabel("Role :");
+        lbl_role.setFont(new Font("Poppins", Font.BOLD, 10));
+        lbl_role.setForeground(Color.WHITE);
+        lbl_role.setBounds(30, 260, 100, 10);
+        desktopPane.add(lbl_role);
+
+        tx_pass = new JTextField(20);
+        tx_pass.setBounds(20, 275, 200, 20);
+        desktopPane.add(tx_pass);
 
         // Save Button
         btn_save = new JButton("Save");
         btn_save.setFont(new Font("Poppins", Font.PLAIN, 10));
         btn_save.setBackground(new Color(13, 108, 176));
         btn_save.setForeground(Color.WHITE);
-        btn_save.setBounds(20, 190, 60, 20);
-        
+        btn_save.setBounds(20, 310, 60, 20);
+
         desktopPane.add(btn_save);
+
+        // Back Button
+        btn_back = new JButton("<");
+        btn_back.setFont(new Font("Poppins", Font.PLAIN, 10));
+        btn_back.setBackground(new Color(13, 108, 176));
+        btn_back.setForeground(Color.WHITE);
+        btn_back.setBounds(0, 0, 25, 25);
+
+        desktopPane.add(btn_back);
 
         // ==================================================================================================================================
         // ACTION EVENT
+
+        // Panel Logout
+        btn_back.addActionListener((ActionEvent e) -> {
+            System.out.println("UDAN DERES");
+            
+            nDashboard_Admin.frame.setVisible(true);
+            
+            frame.dispose();
+        });
 
         // Memunculkan frame di tengah layar
         centerFrameOnScreen(frame);

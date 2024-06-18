@@ -5,6 +5,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import View.All_Panel.nPanel_Account;
+import net.proteanit.sql.DbUtils;
+
 public class Pengguna {
     private String username;
     private String email;
@@ -94,5 +97,19 @@ public class Pengguna {
         }
 
         return user;
+    }
+
+    public static void load_data_pengguna() {
+        String cmd = "SELECT username AS 'Username', email AS 'Email', no_telepon AS 'No Telepon', password AS 'Password', role AS 'Role' FROM pengguna;";
+
+        try (Connection con = Database.getConnection();
+                PreparedStatement stmt = con.prepareStatement(cmd)) {
+
+            ResultSet rs = stmt.executeQuery();// konversi rs ke TableModel
+            nPanel_Account.table.setModel(DbUtils.resultSetToTableModel(rs));
+
+        } catch (SQLException e) {
+            System.err.println(e);
+        }
     }
 }

@@ -1,13 +1,23 @@
 package View;
 
+import View.All_Panel.nPanel_Kategori;
+import View.All_Panel.nPanel_Layanan;
+import View.All_Panel.nPanel_Pemesanan;
+import View.All_Panel.nPanel_Ulasan;
 import View.Login.nLogin_User;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
 public class nDashboard_Admin extends JFrame {
-    private static nDashboard_Admin frame;
+    public static nDashboard_Admin frame;
     private static nLogin_User login;
+    private static nPanel_Layanan layanan;
+    private static nPanel_Pemesanan pemesanan;
+    private static nPanel_Kategori kategori;
+    private static nPanel_Ulasan ulasan;
+
+
     private static JDesktopPane desktopPane;
     private static JButton btn_logout;
     private static JButton btn_panel_1;
@@ -188,43 +198,51 @@ public class nDashboard_Admin extends JFrame {
         // ==================================================================================================================================
         // ACTION EVENT
 
-        // Panel button 1
+        // Panel Logout
         btn_logout.addActionListener((ActionEvent e) -> {
             System.out.println("UDAN DERES");
             
-            frame.dispose();
             login = new nLogin_User();
             login.initialize();
+            
+            frame.dispose();
+            
         });
         
         // Panel button 1
         btn_panel_1.addActionListener((ActionEvent e) -> {
-            btn_panel_1();
+            
         });
 
         // Panel button 2
         btn_panel_2.addActionListener((ActionEvent e) -> {
-            btn_panel_2();
+
         });
 
         // Panel button 3
         btn_panel_3.addActionListener((ActionEvent e) -> {
-            btn_panel_3();
+
         });
 
         // Panel button 4
         btn_panel_4.addActionListener((ActionEvent e) -> {
-            btn_panel_4();
+            kategori = new nPanel_Kategori();
+            kategori.initialize();
+    
+            frame.setVisible(false);
         });
 
         // Panel button 5
         btn_panel_5.addActionListener((ActionEvent e) -> {
-            btn_panel_5();
+            ulasan = new nPanel_Ulasan();
+            ulasan.initialize();
+
+            frame.setVisible(false);
         });
 
         // Panel button 6
         btn_panel_6.addActionListener((ActionEvent e) -> {
-            btn_panel_6();
+            
         });
 
         // Memunculkan frame di tengah layar
@@ -232,30 +250,6 @@ public class nDashboard_Admin extends JFrame {
 
         // Menampilkan frame
         frame.setVisible(true);
-    }
-
-    private static void btn_panel_1() {
-        System.out.println("btn_panel_1");
-    }
-
-    private static void btn_panel_2() {
-        System.out.println("btn_panel_2");
-    }
-
-    private static void btn_panel_3() {
-        System.out.println("btn_panel_3");
-    }
-
-    private static void btn_panel_4() {
-        System.out.println("btn_panel_4");
-    }
-
-    private static void btn_panel_5() {
-        System.out.println("btn_panel_5");
-    }
-
-    private static void btn_panel_6() {
-        System.out.println("btn_panel_6");
     }
 
     // menempatkan frame di tengah layar

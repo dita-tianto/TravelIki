@@ -7,6 +7,7 @@ import java.sql.SQLException;
 
 import javax.swing.table.TableModel;
 
+import View.All_Panel.nPanel_Ulasan;
 import net.proteanit.sql.DbUtils;
 
 public class Ulasan {
@@ -48,43 +49,18 @@ public class Ulasan {
     
     // CEK ULASAN
 
-    public static TableModel cek_ulasan_by_layanan(int give_id_ulasan){ //selalu hitung setelah insert pesanan
-        String cmd = "SELECT `tanggal_ulasan`, `komentar` FROM `ulasan` WHERE id_layanan = ?";
+    public static void load_data_ulasan(){ //selalu hitung setelah insert pesanan
+        String cmd = "SELECT p.username AS 'Nama', l.nama_layanan AS 'Nama Layanan', u.tanggal_ulasan AS 'Tanggal Ulasan', u.komentar AS 'Komentar' FROM ulasan u JOIN pengguna p ON p.id_pengguna = u.id_pengguna JOIN layanan l ON l.id_layanan = u.id_layanan;";
 
-        TableModel tm = null;
+        try (Connection con = Database.getConnection();
+                PreparedStatement stmt = con.prepareStatement(cmd)) {
 
-        try(Connection con = Database.getConnection();
-            PreparedStatement stmt = con.prepareStatement(cmd)){
+            ResultSet rs = stmt.executeQuery();// konversi rs ke TableModel
+            nPanel_Ulasan.table.setModel(DbUtils.resultSetToTableModel(rs));
 
-            stmt.setInt(1, give_id_ulasan);
-
-            ResultSet rs = stmt.executeQuery();
-            tm = DbUtils.resultSetToTableModel(rs); // konversi rs ke TableModel
-            
         } catch (SQLException e) {
             System.err.println(e);
         }
-
-        return tm;
     }
     
-    public static TableModel cek_ulasan_by_paket(int give_id_paket){ //selalu hitung setelah insert pesanan
-        String cmd = "SELECT `tanggal_ulasan`, `komentar` FROM `ulasan` WHERE id_paket = ?";
-
-        TableModel tm = null;
-
-        try(Connection con = Database.getConnection();
-            PreparedStatement stmt = con.prepareStatement(cmd)){
-
-            stmt.setInt(1, give_id_paket);
-
-            ResultSet rs = stmt.executeQuery();
-            tm = DbUtils.resultSetToTableModel(rs); // konversi rs ke TableModel
-            
-        } catch (SQLException e) {
-            System.err.println(e);
-        }
-
-        return tm;
-    }
 }
