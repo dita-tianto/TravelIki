@@ -1,6 +1,7 @@
 package View.All_Panel;
 
 import Model.Ulasan;
+import View.nDashboard_Admin;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -12,7 +13,8 @@ public class nPanel_Ulasan extends JFrame {
     private static JTextField tx_user;
     private static JTextField tx_layanan;
     private static JTextArea tx_komentar;
-    private static JButton btn_save; 
+    private static JButton btn_save;
+    private static JButton btn_back;
 
     public static JTable table;
 
@@ -21,7 +23,7 @@ public class nPanel_Ulasan extends JFrame {
             nPanel_Ulasan pl = new nPanel_Ulasan();
             pl.initialize();
         });
-}
+    }
 
     public void initialize() {
         // ==================================================================================================================================
@@ -46,8 +48,8 @@ public class nPanel_Ulasan extends JFrame {
         desktopPane.add(backgroundLabel, Integer.valueOf(Integer.MIN_VALUE)); // Menempatkan latar belakang di lapisan
                                                                               // terbawah
 
-// ==================================================================================================================================
-    // KOMPONEN GUI
+        // ==================================================================================================================================
+        // KOMPONEN GUI
 
         // Judul
         JLabel lbl_title = new JLabel("TABEL ULASAN");
@@ -96,7 +98,7 @@ public class nPanel_Ulasan extends JFrame {
         tx_user = new JTextField(20);
         tx_user.setBounds(20, 155, 200, 20);
         desktopPane.add(tx_user);
-        
+
         // Layanan
         JLabel layanan = new JLabel("Nama Layanan :");
         layanan.setFont(new Font("Poppins", Font.BOLD, 10));
@@ -107,7 +109,7 @@ public class nPanel_Ulasan extends JFrame {
         tx_layanan = new JTextField(20);
         tx_layanan.setBounds(20, 195, 200, 20);
         desktopPane.add(tx_layanan);
-        
+
         // Komentar
         JLabel komentar = new JLabel("Komentar :");
         komentar.setFont(new Font("Poppins", Font.BOLD, 10));
@@ -125,11 +127,29 @@ public class nPanel_Ulasan extends JFrame {
         btn_save.setBackground(new Color(13, 108, 176));
         btn_save.setForeground(Color.WHITE);
         btn_save.setBounds(20, 270, 60, 20);
-        
+
         desktopPane.add(btn_save);
+
+        // Back Button
+        btn_back = new JButton("<");
+        btn_back.setFont(new Font("Poppins", Font.PLAIN, 10));
+        btn_back.setBackground(new Color(13, 108, 176));
+        btn_back.setForeground(Color.WHITE);
+        btn_back.setBounds(0, 0, 25, 25);
+
+        desktopPane.add(btn_back);
 
         // ==================================================================================================================================
         // ACTION EVENT
+
+        // Panel Logout
+        btn_back.addActionListener((ActionEvent e) -> {
+            System.out.println("UDAN DERES");
+            
+            nDashboard_Admin.frame.setVisible(true);
+            
+            frame.dispose();
+        });
 
         // Memunculkan frame di tengah layar
         centerFrameOnScreen(frame);

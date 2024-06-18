@@ -1,6 +1,7 @@
 package View.All_Panel;
 
 import Model.Kategori;
+import View.nDashboard_Admin;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -11,6 +12,7 @@ public class nPanel_Kategori extends JFrame {
     private static JScrollPane scrollPane;
     private static JTextField tx_user;
     private static JButton btn_save; 
+    private static JButton btn_back; 
 
     public static JTable table;
 
@@ -94,8 +96,26 @@ public class nPanel_Kategori extends JFrame {
         
         desktopPane.add(btn_save);
 
+        // Back Button
+        btn_back = new JButton("<");
+        btn_back.setFont(new Font("Poppins", Font.PLAIN, 10));
+        btn_back.setBackground(new Color(13, 108, 176));
+        btn_back.setForeground(Color.WHITE);
+        btn_back.setBounds(0, 0, 25, 25);
+
+        desktopPane.add(btn_back);
+
         // ==================================================================================================================================
         // ACTION EVENT
+        
+        // Panel Logout
+        btn_back.addActionListener((ActionEvent e) -> {
+            System.out.println("UDAN DERES");
+            
+            nDashboard_Admin.frame.setVisible(true);
+            
+            frame.dispose();
+        });
 
         // Memunculkan frame di tengah layar
         centerFrameOnScreen(frame);
