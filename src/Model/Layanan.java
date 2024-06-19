@@ -101,7 +101,7 @@ public class Layanan {
         }
     }
 
-    public static void load_layanan() {
+    public static void load_layanan() { // CUMA BUAT TEST
         ArrayList<String> status = new ArrayList<>();
 
         String cmd = "SELECT nama_layanan AS 'Nama Layanan' FROM layanan";
