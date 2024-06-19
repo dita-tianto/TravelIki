@@ -27,35 +27,31 @@ import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.Color;
+import com.toedter.calendar.JDateChooser;
+
 
 public class Panel_Insert_Pembayaran extends JPanel {
     private JTextField name;
-    private JTextField description;
     private JTextField price;
     public static JTable table;
-    // Product_category is = new Product_category();
-    private JComboBox cmb;
+    private JComboBox<Enums.status> cmb;
 
-    /**
-     * Create the panel.
-     */
-    @SuppressWarnings({ "unchecked", "rawtypes" })
     public Panel_Insert_Pembayaran() {
-
         setForeground(new Color(0, 51, 204));
         setLayout(new MigLayout("", "[grow][][][][grow]", "[][][][][grow]"));
 
         JLabel lblCategoryName = new JLabel("id_Pembayaran :");
         add(lblCategoryName, "cell 1 0");
+
         name = new JTextField();
         add(name, "cell 4 0,growx");
         name.setColumns(10);
 
         JLabel lblDate = new JLabel("Date :");
-		add(lblDate, "cell 2 0,alignx right");
-		
-		JDateChooser dateChooser = new JDateChooser();
-		add(dateChooser, "cell 3 0,growx,aligny center");
+        add(lblDate, "cell 1 1,alignx trailing");
+
+        JDateChooser dateChooser = new JDateChooser();
+        add(dateChooser, "cell 4 1,growx");
 
         JLabel lblPrice = new JLabel("Bayar : ");
         add(lblPrice, "cell 1 2");
@@ -67,31 +63,25 @@ public class Panel_Insert_Pembayaran extends JPanel {
         JLabel lblStatus = new JLabel("Status Pembayaran : ");
         add(lblStatus, "cell 1 3");
 
-        JButton save = new JButton("Save");
-        save.addActionListener((ActionEvent arg0) -> {
-
-            if (false) {
-            } else {
-                // Lakukan sesuatu dengan data yang disimpan
-
-                // is.load(); // Memuat ulang data yang mungkin diperlukan
-                Pembayaran.load_data_pembayaran();
-
-            }
-        });
-
-        // Status status = new Status();
-
-        cmb = new JComboBox();
+        cmb = new JComboBox<>();
         cmb.setModel(new DefaultComboBoxModel<>(Enums.status.values()));
         add(cmb, "cell 4 3,growx");
-        add(save, "cell 4 3");
+
+        JButton save = new JButton("Save");
+        save.addActionListener((ActionEvent arg0) -> {
+            if (name.getText().isEmpty() || price.getText().isEmpty() || dateChooser.getDate() == null) {
+                JOptionPane.showMessageDialog(this, "Please fill all fields!");
+            } else {
+                Pembayaran.load_data_pembayaran();
+            }
+        });
+        add(save, "cell 4 4");
 
         JScrollPane scrollPane = new JScrollPane();
-
-        add(scrollPane, "cell 0 4 5 1,grow");
+        add(scrollPane, "cell 0 5 5 1,grow");
 
         table = new JTable();
+        scrollPane.setViewportView(table);
 
         Pembayaran.load_data_pembayaran();
 
@@ -99,7 +89,6 @@ public class Panel_Insert_Pembayaran extends JPanel {
             @Override
             public void mouseClicked(MouseEvent arg0) {
                 int row = table.getSelectedRow();
-
                 String serviceName = table.getModel().getValueAt(row, 0).toString();
                 String paymentStatus = table.getModel().getValueAt(row, 1).toString();
 
@@ -107,17 +96,10 @@ public class Panel_Insert_Pembayaran extends JPanel {
                 int id = productCategory.get_cat_id(serviceName);
 
                 Cat_update catUpdate = new Cat_update(id);
-
                 catUpdate.txf_id.setText(serviceName);
                 catUpdate.comboBox.setSelectedItem(paymentStatus);
-
                 catUpdate.setVisible(true);
-
             }
         });
-        scrollPane.setViewportView(table);
-        // is.load();
-
     }
-
 }
