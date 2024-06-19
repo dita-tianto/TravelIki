@@ -1,5 +1,6 @@
 package View.Dialogue;
 
+import Controller.Update_Kategori;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -7,6 +8,7 @@ import javax.swing.*;
 import Controller.Update_Layanan;
 import Model.Kategori;
 import Model.Layanan;
+import View.All_Panel.nPanel_Kategori;
 import View.All_Panel.nPanel_Layanan;
 
 // import Model.Layanan;
@@ -16,18 +18,13 @@ import View.All_Panel.nPanel_Layanan;
 // import org.w3c.dom.events.MouseEvent;
 
 // import Model.Layanan;
-// import View.All_Panel.nDialog_Layanan;
+// import View.All_Panel.nDialog_Kategori;
 
-public class nDialog_Layanan extends JFrame {
-    private static nDialog_Layanan frame;
+public class nDialog_Kategori extends JFrame {
+    private static nDialog_Kategori frame;
     private static JDesktopPane desktopPane;
     public JTextField tx_id;
     public JTextField tx_nama;
-    public JTextField tx_kategori; // ganti combo box
-    public JTextField tx_deskripsi; // ganti text area
-    public JTextField tx_harga;
-    public JTextField tx_status; // ganti combo box
-    public JTextField tx_jenis; // ganti combo box
     private static JButton btn_update;
     private static JButton btn_delete;
     private static JButton btn_back;
@@ -36,15 +33,15 @@ public class nDialog_Layanan extends JFrame {
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
-            nDialog_Layanan dl = new nDialog_Layanan();
-            dl.initialize();
+            nDialog_Kategori dk = new nDialog_Kategori();
+            dk.initialize();
         });
     }
 
     public void initialize() {
         // ==================================================================================================================================
         // FRAME UTAMA
-        frame = new nDialog_Layanan();
+        frame = new nDialog_Kategori();
         frame.setTitle("Traveliki");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(400, 485); // Ubah ukuran sesuai kebutuhan
@@ -61,15 +58,15 @@ public class nDialog_Layanan extends JFrame {
         // Menambahkan latar belakang gambar ke desktopPane
         JLabel backgroundLabel = new JLabel(new ImageIcon(image));
         backgroundLabel.setBounds(0, 0, 400, 450);
-        
+
         // Menempatkan latar belakang di lapisan terbawah
-        desktopPane.add(backgroundLabel, Integer.valueOf(Integer.MIN_VALUE)); 
+        desktopPane.add(backgroundLabel, Integer.valueOf(Integer.MIN_VALUE));
 
         // ==================================================================================================================================
         // KOMPONEN GUI
 
         // ID
-        JLabel lbl_id = new JLabel("ID Layanan :");
+        JLabel lbl_id = new JLabel("ID Kategori :");
         lbl_id.setFont(new Font("Poppins", Font.BOLD, 10));
         lbl_id.setForeground(Color.WHITE);
         lbl_id.setBounds(30, 100, 100, 10);
@@ -81,7 +78,7 @@ public class nDialog_Layanan extends JFrame {
         desktopPane.add(tx_id);
 
         // Nama
-        JLabel lbl_nama = new JLabel("Nama Layanan :");
+        JLabel lbl_nama = new JLabel("Nama Kategori :");
         lbl_nama.setFont(new Font("Poppins", Font.BOLD, 10));
         lbl_nama.setForeground(Color.WHITE);
         lbl_nama.setBounds(30, 130, 100, 10);
@@ -91,67 +88,12 @@ public class nDialog_Layanan extends JFrame {
         tx_nama.setBounds(150, 130, 200, 20);
         desktopPane.add(tx_nama);
 
-        // Kategori
-        JLabel lbl_kategori = new JLabel("Kategori :");
-        lbl_kategori.setFont(new Font("Poppins", Font.BOLD, 10));
-        lbl_kategori.setForeground(Color.WHITE);
-        lbl_kategori.setBounds(30, 160, 100, 10);
-        desktopPane.add(lbl_kategori);
-
-        tx_kategori = new JTextField(20);
-        tx_kategori.setBounds(150, 160, 200, 20);
-        desktopPane.add(tx_kategori);
-
-        // Deskripsi
-        JLabel lbl_deskripsi = new JLabel("Deskripsi :");
-        lbl_deskripsi.setFont(new Font("Poppins", Font.BOLD, 10));
-        lbl_deskripsi.setForeground(Color.WHITE);
-        lbl_deskripsi.setBounds(30, 190, 100, 10);
-        desktopPane.add(lbl_deskripsi);
-
-        tx_deskripsi = new JTextField(20);
-        tx_deskripsi.setBounds(150, 190, 200, 20);
-        desktopPane.add(tx_deskripsi);
-
-        // Harga
-        JLabel lbl_harga = new JLabel("Harga :");
-        lbl_harga.setFont(new Font("Poppins", Font.BOLD, 10));
-        lbl_harga.setForeground(Color.WHITE);
-        lbl_harga.setBounds(30, 220, 100, 10);
-        desktopPane.add(lbl_harga);
-
-        tx_harga = new JTextField(20);
-        tx_harga.setBounds(150, 220, 200, 20);
-        desktopPane.add(tx_harga);
-
-        // Jenis
-        JLabel lbl_jenis = new JLabel("Jenis :");
-        lbl_jenis.setFont(new Font("Poppins", Font.BOLD, 10));
-        lbl_jenis.setForeground(Color.WHITE);
-        lbl_jenis.setBounds(30, 250, 100, 10);
-        desktopPane.add(lbl_jenis);
-
-        tx_jenis = new JTextField(20);
-        tx_jenis.setBounds(150, 250, 200, 20);
-        desktopPane.add(tx_jenis);
-
-        // Status
-        JLabel lbl_status = new JLabel("Status :");
-        lbl_status.setFont(new Font("Poppins", Font.BOLD, 10));
-        lbl_status.setForeground(Color.WHITE);
-        lbl_status.setBounds(30, 280, 100, 10);
-        desktopPane.add(lbl_status);
-
-        tx_status = new JTextField(20);
-        tx_status.setBounds(150, 280, 200, 20);
-        desktopPane.add(tx_status);
-
         // Update Button
         btn_update = new JButton("Update");
         btn_update.setFont(new Font("Poppins", Font.PLAIN, 10));
         btn_update.setBackground(new Color(30, 140, 227));
         btn_update.setForeground(Color.WHITE);
-        btn_update.setBounds(150, 310, 90, 20);
+        btn_update.setBounds(150, 160, 90, 20);
 
         desktopPane.add(btn_update);
 
@@ -160,7 +102,7 @@ public class nDialog_Layanan extends JFrame {
         btn_delete.setFont(new Font("Poppins", Font.PLAIN, 10));
         btn_delete.setBackground(new Color(30, 140, 227));
         btn_delete.setForeground(Color.WHITE);
-        btn_delete.setBounds(260, 310, 90, 20);
+        btn_delete.setBounds(260, 160, 90, 20);
 
         desktopPane.add(btn_delete);
 
@@ -181,25 +123,20 @@ public class nDialog_Layanan extends JFrame {
             // String Cat_name = txf_id.getText();
             int id = Integer.parseInt(tx_id.getText());
             String nama = tx_nama.getText();
-            String deskripsi = tx_deskripsi.getText();
-            int kategori = Kategori.get_kategori_by_name(tx_kategori.getText());
-            double harga = Double.parseDouble(tx_harga.getText());
-            String status = tx_status.getText();
-            String jenis = tx_jenis.getText();
 
-            new Update_Layanan(id, nama, deskripsi, harga, kategori, status, jenis);
+            new Update_Kategori(id, nama);
 
-            nPanel_Layanan.load_data();
+            nPanel_Kategori.load_data();
 
             frame.dispose();
         });
 
         // Delete Layanan
-				btn_delete.addActionListener((ActionEvent arg0) -> {
-					Layanan.delete_layanan(Integer.parseInt(tx_id.getText()));
-					nPanel_Layanan.load_data();
-                    frame.dispose();
-				});
+        btn_delete.addActionListener((ActionEvent arg0) -> {
+            Kategori.delete_kategori(Integer.parseInt(tx_id.getText()));
+            nPanel_Kategori.load_data();
+            frame.dispose();
+        });
 
         // Panel Back
         btn_back.addActionListener((ActionEvent e) -> {
