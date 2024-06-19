@@ -1,11 +1,6 @@
 package View;
 
-import View.All_Panel.nPanel_Account;
-import View.All_Panel.nPanel_Kategori;
-import View.All_Panel.nPanel_Layanan;
-import View.All_Panel.nPanel_Pembayaran;
-import View.All_Panel.nPanel_Pemesanan;
-import View.All_Panel.nPanel_Ulasan;
+import View.All_Panel.*;
 import View.Login.nLogin_User;
 import java.awt.*;
 import java.awt.event.*;
@@ -21,7 +16,6 @@ public class nDashboard_Admin extends JFrame {
     private static nPanel_Ulasan ulasan;
     private static nPanel_Account account;
 
-
     private static JDesktopPane desktopPane;
     private static JButton btn_logout;
     private static JButton btn_panel_1;
@@ -33,23 +27,22 @@ public class nDashboard_Admin extends JFrame {
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
-            nDashboard_Admin das = new nDashboard_Admin();
-            das.initialize();
+            frame = new nDashboard_Admin();
+            frame.initialize();
         });
     }
 
-    public void initialize() {
+    public nDashboard_Admin() {
         // ==================================================================================================================================
         // FRAME UTAMA
-        frame = new nDashboard_Admin();
-        frame.setTitle("Traveliki");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(810, 485); // Ubah ukuran sesuai kebutuhan
-        frame.setResizable(false);
+        setTitle("Traveliki");
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setSize(810, 485); // Ubah ukuran sesuai kebutuhan
+        setResizable(false);
 
         // Membuat desktopPane sebagai content pane utama
         desktopPane = new JDesktopPane();
-        frame.setContentPane(desktopPane); // Menetapkan desktopPane sebagai content pane
+        setContentPane(desktopPane); // Menetapkan desktopPane sebagai content pane
 
         // Menampilkan gambar
         ImageIcon imageIcon = new ImageIcon("src/resource/dashboard.png");
@@ -58,42 +51,47 @@ public class nDashboard_Admin extends JFrame {
         // Menambahkan latar belakang gambar ke desktopPane
         JLabel backgroundLabel = new JLabel(new ImageIcon(image));
         backgroundLabel.setBounds(0, 0, 800, 450);
-        desktopPane.add(backgroundLabel, Integer.valueOf(Integer.MIN_VALUE)); // Menempatkan latar belakang di lapisan
-                                                                              // terbawah
 
+        // Menempatkan latar belakang di lapisan terbawah
+        desktopPane.add(backgroundLabel, Integer.valueOf(Integer.MIN_VALUE));
+
+    }
+
+    public void initialize() {
+
+        
         // ==================================================================================================================================
         // KOMPONEN GUI
-
 
         // Info Login
         JLabel role_as = new JLabel("Login as : ");
         role_as.setFont(new Font("Poppins", Font.BOLD, 10));
         role_as.setForeground(Color.WHITE);
         role_as.setBounds(20, 420, 50, 20);
-        
+
         desktopPane.add(role_as);
-        
+
         JLabel log_role = new JLabel("CUSTOMER");
         log_role.setFont(new Font("Poppins", Font.BOLD, 10));
         log_role.setForeground(Color.WHITE);
         log_role.setBounds(70, 420, 100, 20);
-        
+
         desktopPane.add(log_role);
-        
+
         JLabel user_as = new JLabel("Username : ");
         user_as.setFont(new Font("Poppins", Font.BOLD, 10));
         user_as.setForeground(Color.WHITE);
         user_as.setBounds(170, 420, 100, 20);
-        
+
         desktopPane.add(user_as);
-        
+
         JLabel log_user = new JLabel("Fauzan Udan");
         log_user.setFont(new Font("Poppins", Font.BOLD, 10));
         log_user.setForeground(Color.WHITE);
         log_user.setBounds(230, 420, 200, 20);
-        
+
         desktopPane.add(log_user);
-        
+
         // Logout
         btn_logout = new JButton("Logout");
         btn_logout.setFont(new Font("Poppins", Font.PLAIN, 10));
@@ -106,12 +104,12 @@ public class nDashboard_Admin extends JFrame {
         // Button 1
         ImageIcon icon_1 = new ImageIcon("src/resource/layanan.png");
         Image scld_icon_1 = icon_1.getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH);
-        
+
         btn_panel_1 = new JButton("Layanan", new ImageIcon(scld_icon_1));
-        
+
         btn_panel_1.setHorizontalTextPosition(JButton.CENTER);
         btn_panel_1.setVerticalTextPosition(JButton.BOTTOM);
-        
+
         btn_panel_1.setFont(new Font("Poppins", Font.PLAIN, 12));
         btn_panel_1.setBackground(new Color(43, 150, 227));
         btn_panel_1.setForeground(Color.WHITE);
@@ -124,10 +122,10 @@ public class nDashboard_Admin extends JFrame {
         Image scld_icon_2 = icon_2.getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH);
 
         btn_panel_2 = new JButton("Pemesanan", new ImageIcon(scld_icon_2));
-        
+
         btn_panel_2.setHorizontalTextPosition(JButton.CENTER);
         btn_panel_2.setVerticalTextPosition(JButton.BOTTOM);
-        
+
         btn_panel_2.setFont(new Font("Poppins", Font.PLAIN, 12));
         btn_panel_2.setBackground(new Color(43, 150, 227));
         btn_panel_2.setForeground(Color.WHITE);
@@ -140,7 +138,7 @@ public class nDashboard_Admin extends JFrame {
         Image scld_icon_3 = icon_3.getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH);
 
         btn_panel_3 = new JButton("Pembayaran", new ImageIcon(scld_icon_3));
-        
+
         btn_panel_3.setHorizontalTextPosition(JButton.CENTER);
         btn_panel_3.setVerticalTextPosition(JButton.BOTTOM);
 
@@ -156,7 +154,7 @@ public class nDashboard_Admin extends JFrame {
         Image scld_icon_4 = icon_4.getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH);
 
         btn_panel_4 = new JButton("Kategori", new ImageIcon(scld_icon_4));
-        
+
         btn_panel_4.setHorizontalTextPosition(JButton.CENTER);
         btn_panel_4.setVerticalTextPosition(JButton.BOTTOM);
 
@@ -172,7 +170,7 @@ public class nDashboard_Admin extends JFrame {
         Image scld_icon_5 = icon_5.getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH);
 
         btn_panel_5 = new JButton("Ulasan", new ImageIcon(scld_icon_5));
-        
+
         btn_panel_5.setHorizontalTextPosition(JButton.CENTER);
         btn_panel_5.setVerticalTextPosition(JButton.BOTTOM);
 
@@ -188,7 +186,7 @@ public class nDashboard_Admin extends JFrame {
         Image scld_icon_6 = icon_6.getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH);
 
         btn_panel_6 = new JButton("Account Center", new ImageIcon(scld_icon_6));
-        
+
         btn_panel_6.setHorizontalTextPosition(JButton.CENTER);
         btn_panel_6.setVerticalTextPosition(JButton.BOTTOM);
 
@@ -205,44 +203,44 @@ public class nDashboard_Admin extends JFrame {
         // Panel Logout
         btn_logout.addActionListener((ActionEvent e) -> {
             System.out.println("UDAN DERES");
-            
+
             login = new nLogin_User();
             login.initialize();
-            
-            frame.dispose();
-            
+
+            dispose();
+
         });
-        
+
         // Panel button 1
         btn_panel_1.addActionListener((ActionEvent e) -> {
             layanan = new nPanel_Layanan();
             layanan.initialize();
-    
-            frame.setVisible(false);
+
+            setVisible(false);
         });
 
         // Panel button 2
         btn_panel_2.addActionListener((ActionEvent e) -> {
             pesanan = new nPanel_Pemesanan();
             pesanan.initialize();
-    
-            frame.setVisible(false);
+
+            setVisible(false);
         });
 
         // Panel button 3
         btn_panel_3.addActionListener((ActionEvent e) -> {
             bayar = new nPanel_Pembayaran();
             bayar.initialize();
-    
-            frame.setVisible(false);
+
+            setVisible(false);
         });
 
         // Panel button 4
         btn_panel_4.addActionListener((ActionEvent e) -> {
             kategori = new nPanel_Kategori();
             kategori.initialize();
-    
-            frame.setVisible(false);
+
+            setVisible(false);
         });
 
         // Panel button 5
@@ -250,22 +248,22 @@ public class nDashboard_Admin extends JFrame {
             ulasan = new nPanel_Ulasan();
             ulasan.initialize();
 
-            frame.setVisible(false);
+            setVisible(false);
         });
 
         // Panel button 6
         btn_panel_6.addActionListener((ActionEvent e) -> {
             account = new nPanel_Account();
             account.initialize();
-    
-            frame.setVisible(false);
+
+            setVisible(false);
         });
 
         // Memunculkan frame di tengah layar
-        centerFrameOnScreen(frame);
+        centerFrameOnScreen(this);
 
         // Menampilkan frame
-        frame.setVisible(true);
+        setVisible(true);
     }
 
     // menempatkan frame di tengah layar

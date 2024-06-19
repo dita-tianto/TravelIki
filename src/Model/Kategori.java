@@ -71,18 +71,25 @@ public class Kategori {
         }
     }
 
-    public static void get_nama_kategori(String give_kategori) {
-        String cmd = "SELECT * FROM kategori_layanan WHERE nama_kategori = ?";
+    public static int get_kategori_by_name(String give_kategori) {
+        String cmd = "SELECT `id_kategori` FROM kategori_layanan WHERE nama_kategori = ?";
+
+        int id = 0;
 
         try (Connection con = Database.getConnection();
                 PreparedStatement stmt = con.prepareStatement(cmd)) {
             stmt.setString(1, give_kategori);
             ResultSet rs = stmt.executeQuery();// konversi rs ke TableModel
-            Panel_Insert_Kategori.table.setModel(DbUtils.resultSetToTableModel(rs));
+            
+            if (rs.next()) {
+                id = rs.getInt("id_kategori");
+            }
 
         } catch (SQLException e) {
             System.err.println(e);
         }
+
+        return id;
     }
     
     public static void delete_kategori(int give_id_kategori){
