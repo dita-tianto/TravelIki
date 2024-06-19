@@ -5,8 +5,11 @@ import java.awt.event.*;
 import javax.swing.*;
 
 import Controller.Update_Layanan;
+import Controller.Update_Pengguna;
 import Model.Kategori;
 import Model.Layanan;
+import Model.Pengguna;
+import View.All_Panel.nPanel_Account;
 import View.All_Panel.nPanel_Layanan;
 
 // import Model.Layanan;
@@ -16,18 +19,17 @@ import View.All_Panel.nPanel_Layanan;
 // import org.w3c.dom.events.MouseEvent;
 
 // import Model.Layanan;
-// import View.All_Panel.nDialog_Layanan;
+// import View.All_Panel.nDialog_Account;
 
-public class nDialog_Layanan extends JFrame {
-    private static nDialog_Layanan frame;
+public class nDialog_Account extends JFrame {
+    private static nDialog_Account frame;
     private static JDesktopPane desktopPane;
     public JTextField tx_id;
-    public JTextField tx_nama;
-    public JTextField tx_kategori; // ganti combo box
-    public JTextField tx_deskripsi; // ganti text area
-    public JTextField tx_harga;
-    public JTextField tx_status; // ganti combo box
-    public JTextField tx_jenis; // ganti combo box
+    public JTextField tx_user;
+    public JTextField tx_email;
+    public JTextField tx_telp; 
+    public JTextField tx_pass; 
+    public JTextField tx_role; // ganti combo box
     private static JButton btn_update;
     private static JButton btn_delete;
     private static JButton btn_back;
@@ -36,7 +38,7 @@ public class nDialog_Layanan extends JFrame {
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
-            nDialog_Layanan dl = new nDialog_Layanan();
+            nDialog_Account dl = new nDialog_Account();
             dl.initialize();
         });
     }
@@ -44,7 +46,7 @@ public class nDialog_Layanan extends JFrame {
     public void initialize() {
         // ==================================================================================================================================
         // FRAME UTAMA
-        frame = new nDialog_Layanan();
+        frame = new nDialog_Account();
         frame.setTitle("Traveliki");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(400, 485); // Ubah ukuran sesuai kebutuhan
@@ -69,7 +71,7 @@ public class nDialog_Layanan extends JFrame {
         // KOMPONEN GUI
 
         // ID
-        JLabel lbl_id = new JLabel("ID Layanan :");
+        JLabel lbl_id = new JLabel("ID :");
         lbl_id.setFont(new Font("Poppins", Font.BOLD, 10));
         lbl_id.setForeground(Color.WHITE);
         lbl_id.setBounds(30, 100, 100, 10);
@@ -80,71 +82,60 @@ public class nDialog_Layanan extends JFrame {
         tx_id.setEditable(false);
         desktopPane.add(tx_id);
 
-        // Nama
-        JLabel lbl_nama = new JLabel("Nama Layanan :");
-        lbl_nama.setFont(new Font("Poppins", Font.BOLD, 10));
-        lbl_nama.setForeground(Color.WHITE);
-        lbl_nama.setBounds(30, 130, 100, 10);
-        desktopPane.add(lbl_nama);
+        // Username
+        JLabel lbl_user = new JLabel("Username :");
+        lbl_user.setFont(new Font("Poppins", Font.BOLD, 10));
+        lbl_user.setForeground(Color.WHITE);
+        lbl_user.setBounds(30, 130, 100, 10);
+        desktopPane.add(lbl_user);
 
-        tx_nama = new JTextField(20);
-        tx_nama.setBounds(150, 130, 200, 20);
-        desktopPane.add(tx_nama);
+        tx_user = new JTextField(20);
+        tx_user.setBounds(150, 130, 200, 20);
+        desktopPane.add(tx_user);
 
-        // Kategori
-        JLabel lbl_kategori = new JLabel("Kategori :");
-        lbl_kategori.setFont(new Font("Poppins", Font.BOLD, 10));
-        lbl_kategori.setForeground(Color.WHITE);
-        lbl_kategori.setBounds(30, 160, 100, 10);
-        desktopPane.add(lbl_kategori);
+        // Email
+        JLabel lbl_email = new JLabel("Email :");
+        lbl_email.setFont(new Font("Poppins", Font.BOLD, 10));
+        lbl_email.setForeground(Color.WHITE);
+        lbl_email.setBounds(30, 160, 100, 10);
+        desktopPane.add(lbl_email);
 
-        tx_kategori = new JTextField(20);
-        tx_kategori.setBounds(150, 160, 200, 20);
-        desktopPane.add(tx_kategori);
+        tx_email = new JTextField(20);
+        tx_email.setBounds(150, 160, 200, 20);
+        desktopPane.add(tx_email);
 
-        // Deskripsi
-        JLabel lbl_deskripsi = new JLabel("Deskripsi :");
-        lbl_deskripsi.setFont(new Font("Poppins", Font.BOLD, 10));
-        lbl_deskripsi.setForeground(Color.WHITE);
-        lbl_deskripsi.setBounds(30, 190, 100, 10);
-        desktopPane.add(lbl_deskripsi);
+        // No Telepon
+        JLabel lbl_telp = new JLabel("No Telepon :");
+        lbl_telp.setFont(new Font("Poppins", Font.BOLD, 10));
+        lbl_telp.setForeground(Color.WHITE);
+        lbl_telp.setBounds(30, 190, 100, 10);
+        desktopPane.add(lbl_telp);
 
-        tx_deskripsi = new JTextField(20);
-        tx_deskripsi.setBounds(150, 190, 200, 20);
-        desktopPane.add(tx_deskripsi);
+        tx_telp = new JTextField(20);
+        tx_telp.setBounds(150, 190, 200, 20);
+        desktopPane.add(tx_telp);
 
-        // Harga
-        JLabel lbl_harga = new JLabel("Harga :");
-        lbl_harga.setFont(new Font("Poppins", Font.BOLD, 10));
-        lbl_harga.setForeground(Color.WHITE);
-        lbl_harga.setBounds(30, 220, 100, 10);
-        desktopPane.add(lbl_harga);
+        // Password
+        JLabel lbl_pass = new JLabel("Password :");
+        lbl_pass.setFont(new Font("Poppins", Font.BOLD, 10));
+        lbl_pass.setForeground(Color.WHITE);
+        lbl_pass.setBounds(30, 220, 100, 10);
+        desktopPane.add(lbl_pass);
 
-        tx_harga = new JTextField(20);
-        tx_harga.setBounds(150, 220, 200, 20);
-        desktopPane.add(tx_harga);
+        tx_pass = new JTextField(20);
+        tx_pass.setBounds(150, 220, 200, 20);
+        desktopPane.add(tx_pass);
 
-        // Jenis
-        JLabel lbl_jenis = new JLabel("Jenis :");
-        lbl_jenis.setFont(new Font("Poppins", Font.BOLD, 10));
-        lbl_jenis.setForeground(Color.WHITE);
-        lbl_jenis.setBounds(30, 250, 100, 10);
-        desktopPane.add(lbl_jenis);
+        // Role
+        JLabel lbl_role = new JLabel("Role :");
+        lbl_role.setFont(new Font("Poppins", Font.BOLD, 10));
+        lbl_role.setForeground(Color.WHITE);
+        lbl_role.setBounds(30, 250, 100, 10);
+        desktopPane.add(lbl_role);
 
-        tx_jenis = new JTextField(20);
-        tx_jenis.setBounds(150, 250, 200, 20);
-        desktopPane.add(tx_jenis);
-
-        // Status
-        JLabel lbl_status = new JLabel("Status :");
-        lbl_status.setFont(new Font("Poppins", Font.BOLD, 10));
-        lbl_status.setForeground(Color.WHITE);
-        lbl_status.setBounds(30, 280, 100, 10);
-        desktopPane.add(lbl_status);
-
-        tx_status = new JTextField(20);
-        tx_status.setBounds(150, 280, 200, 20);
-        desktopPane.add(tx_status);
+        tx_role = new JTextField(20);
+        tx_role.setBounds(150, 250, 200, 20);
+        desktopPane.add(tx_role);
 
         // Update Button
         btn_update = new JButton("Update");
@@ -180,24 +171,22 @@ public class nDialog_Layanan extends JFrame {
         btn_update.addActionListener((ActionEvent e) -> {
             // String Cat_name = txf_id.getText();
             int id = Integer.parseInt(tx_id.getText());
-            String nama = tx_nama.getText();
-            String deskripsi = tx_deskripsi.getText();
-            int kategori = Kategori.get_kategori_by_name(tx_kategori.getText());
-            double harga = Double.parseDouble(tx_harga.getText());
-            String status = tx_status.getText();
-            String jenis = tx_jenis.getText();
+            String user = tx_user.getText();
+            String email = tx_email.getText();
+            String telp = tx_telp.getText();
+            String pass = tx_pass.getText();
+            String role = tx_role.getText();
 
-            new Update_Layanan(id, nama, deskripsi, harga, kategori, status, jenis);
-
-            nPanel_Layanan.load_data();
+            new Update_Pengguna(id, user, email, telp, pass, role);
+            nPanel_Account.load_data();
 
             frame.dispose();
         });
 
         // Delete Layanan
 				btn_delete.addActionListener((ActionEvent arg0) -> {
-					Layanan.delete_layanan(Integer.parseInt(tx_id.getText()));
-					nPanel_Layanan.load_data();
+					Pengguna.delete_pengguna(Integer.parseInt(tx_id.getText()));
+					nPanel_Account.load_data();
                     frame.dispose();
 				});
 

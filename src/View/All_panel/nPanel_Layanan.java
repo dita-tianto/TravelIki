@@ -184,10 +184,7 @@ public class nPanel_Layanan extends JFrame {
 
         // Panel Back
         btn_back.addActionListener((ActionEvent e) -> {
-            System.out.println("UDAN DERES");
-
             nDashboard_Admin.frame.setVisible(true);
-
             dispose();
         });
 

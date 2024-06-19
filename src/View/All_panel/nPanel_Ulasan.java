@@ -1,10 +1,19 @@
 package View.All_Panel;
 
+import Model.Kategori;
 import Model.Ulasan;
 import View.nDashboard_Admin;
+import View.Dialogue.nDialog_Layanan;
+import View.Dialogue.nDialog_Ulasan;
+
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+import javax.swing.table.TableColumnModel;
+
+import Controller.Insert_Layanan;
+import Controller.Insert_Ulasan;
+import Controller.Update_Ulasan;
 
 public class nPanel_Ulasan extends JFrame {
     private static nPanel_Ulasan frame;
@@ -12,6 +21,7 @@ public class nPanel_Ulasan extends JFrame {
     private static JScrollPane scrollPane;
     private static JTextField tx_user;
     private static JTextField tx_layanan;
+    private static JTextField tx_tanggal;
     private static JTextArea tx_komentar;
     private static JButton btn_save;
     private static JButton btn_back;
@@ -63,19 +73,7 @@ public class nPanel_Ulasan extends JFrame {
         scrollPane = new JScrollPane(table);
         scrollPane.setBounds(300, 120, 460, 300);
         desktopPane.add(scrollPane);
-        Ulasan.load_data_ulasan();
-
-        table.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent arg0) {
-                int row = table.getSelectedRow();
-
-                String index_1 = table.getModel().getValueAt(row, 0).toString();
-                String index_2 = table.getModel().getValueAt(row, 1).toString();
-
-                // Tampilkan dialog box
-            }
-        });
+        load_data();
 
         // Nama
         JLabel lbl_user = new JLabel("Nama :");
@@ -95,9 +93,9 @@ public class nPanel_Ulasan extends JFrame {
         kategori.setBounds(30, 140, 100, 10);
         desktopPane.add(kategori);
 
-        tx_user = new JTextField(20);
-        tx_user.setBounds(20, 155, 200, 20);
-        desktopPane.add(tx_user);
+        tx_tanggal = new JTextField(20);
+        tx_tanggal.setBounds(20, 155, 200, 20);
+        desktopPane.add(tx_tanggal);
 
         // Layanan
         JLabel layanan = new JLabel("Nama Layanan :");
@@ -142,10 +140,47 @@ public class nPanel_Ulasan extends JFrame {
         // ==================================================================================================================================
         // ACTION EVENT
 
+        // Table Click
+        table.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent arg0) {
+                int row = table.getSelectedRow();
+
+                String index_1 = table.getModel().getValueAt(row, 0).toString();
+                String index_2 = table.getModel().getValueAt(row, 1).toString();
+                String index_3 = table.getModel().getValueAt(row, 2).toString();
+                String index_4 = table.getModel().getValueAt(row, 3).toString();
+                String index_5 = table.getModel().getValueAt(row, 4).toString();
+
+                // Tampilkan dialog box
+                nDialog_Ulasan dialog = new nDialog_Ulasan();
+                dialog.initialize();
+                
+                dialog.tx_id.setText(index_1);
+                dialog.tx_user.setText(index_2);
+                dialog.tx_layanan.setText(index_3);
+                dialog.tx_tanggal.setText(index_4);
+                dialog.tx_komentar.setText(index_5);
+
+            }
+        });
+
+        // Save button
+        btn_save.addActionListener((ActionEvent e) -> {
+            int user = Integer.parseInt(tx_user.getText());
+            int id_layanan = Integer.parseInt(tx_layanan.getText());
+            String tanggal = tx_tanggal.getText();
+            String comment = tx_komentar.getText();
+
+            new Insert_Ulasan(user, id_layanan, tanggal, comment);
+
+            load_data();
+
+            // frame.dispose();
+        });
+
         // Panel Logout
         btn_back.addActionListener((ActionEvent e) -> {
-            System.out.println("UDAN DERES");
-            
             nDashboard_Admin.frame.setVisible(true);
             
             frame.dispose();
@@ -175,5 +210,22 @@ public class nPanel_Ulasan extends JFrame {
         int y = (screenHeight - frameHeight) / 2;
 
         frame.setLocation(x, y); // Menetapkan posisi frame di tengah layar
+    }
+
+    public static void load_data() {
+        Ulasan.load_data_ulasan();
+        
+        TableColumnModel columnModel = table.getColumnModel();
+        for (int column = 0; column < table.getColumnCount(); column++) {
+            int width = 15; // Minimum width
+            for (int row = 0; row < table.getRowCount(); row++) {
+                Component comp = table.prepareRenderer(table.getCellRenderer(row, column), row, column);
+                width = Math.max(comp.getPreferredSize().width + 1, width);
+            }
+            if (width > 300) {
+                width = 300; // Max width
+            }
+            columnModel.getColumn(column).setPreferredWidth(width);
+        }
     }
 }

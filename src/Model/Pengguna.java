@@ -9,15 +9,16 @@ import View.All_Panel.nPanel_Account;
 import net.proteanit.sql.DbUtils;
 
 public class Pengguna {
+    // private int id_pengguna;
     private String username;
     private String email;
     private String no_telepon;
     private String password;
-    private Enums.role role;
+    private String role;
 
     // REGISTER
     public void set_user_data(String give_username, String give_email, String give_no_telepon, String give_password,
-            Enums.role give_role) {
+            String give_role) {
         this.username = give_username;
         this.email = give_email;
         this.no_telepon = give_no_telepon;
@@ -35,7 +36,28 @@ public class Pengguna {
             stmt.setString(2, this.email);
             stmt.setString(3, this.no_telepon);
             stmt.setString(4, this.password);
-            stmt.setString(5, role.name());
+            stmt.setString(5, this.role);
+            stmt.execute();
+
+            System.out.println("[ USER DITAMBAHKAN ]");
+
+        } catch (SQLException e) {
+            System.err.println(e);
+        }
+    }
+    
+    public void update_user(int give_id_pengguna) {
+        String cmd = "UPDATE `pengguna` SET `username` = ?, `email` = ?, `no_telepon` = ?, `password` = ?, `role` = ? WHERE id_pengguna = ?";
+
+        try (Connection con = Database.getConnection();
+                PreparedStatement stmt = con.prepareStatement(cmd)) {
+
+            stmt.setString(1, this.username);
+            stmt.setString(2, this.email);
+            stmt.setString(3, this.no_telepon);
+            stmt.setString(4, this.password);
+            stmt.setString(5, this.role);
+            stmt.setInt(6, give_id_pengguna);
             stmt.execute();
 
             System.out.println("[ USER DITAMBAHKAN ]");
@@ -100,7 +122,7 @@ public class Pengguna {
     }
 
     public static void load_data_pengguna() {
-        String cmd = "SELECT username AS 'Username', email AS 'Email', no_telepon AS 'No Telepon', password AS 'Password', role AS 'Role' FROM pengguna;";
+        String cmd = "SELECT id_pengguna AS 'ID', username AS 'Username', email AS 'Email', no_telepon AS 'No Telepon', password AS 'Password', role AS 'Role' FROM pengguna;";
 
         try (Connection con = Database.getConnection();
                 PreparedStatement stmt = con.prepareStatement(cmd)) {
@@ -111,5 +133,20 @@ public class Pengguna {
         } catch (SQLException e) {
             System.err.println(e);
         }
+    }
+
+    // delete pengguna
+    public static void delete_pengguna(int give_id_pengguna) {
+        String cmd = "DELETE FROM `pengguna` WHERE id_pengguna = ?";
+
+        try (Connection con = Database.getConnection();
+                PreparedStatement stmt = con.prepareStatement(cmd)) {
+            stmt.setInt(1, give_id_pengguna);
+            stmt.execute();
+
+        } catch (SQLException e) {
+            System.err.println(e);
+        }
+
     }
 }
