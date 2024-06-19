@@ -2,9 +2,14 @@ package View.All_Panel;
 
 import Model.Pengguna;
 import View.nDashboard_Admin;
+import View.Dialogue.nDialog_Account;
+
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+import javax.swing.table.TableColumnModel;
+
+import Controller.Insert_Pengguna;
 
 public class nPanel_Account extends JFrame {
     private static nPanel_Account frame;
@@ -14,6 +19,7 @@ public class nPanel_Account extends JFrame {
     private static JTextField tx_email;
     private static JTextField tx_telp;
     private static JTextField tx_pass;
+    private static JTextField tx_role;
     private static JButton btn_save;
     private static JButton btn_back;
 
@@ -64,19 +70,7 @@ public class nPanel_Account extends JFrame {
         scrollPane = new JScrollPane(table);
         scrollPane.setBounds(300, 120, 460, 300);
         desktopPane.add(scrollPane);
-        Pengguna.load_data_pengguna();
-
-        table.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent arg0) {
-                int row = table.getSelectedRow();
-
-                String index_1 = table.getModel().getValueAt(row, 0).toString();
-                String index_2 = table.getModel().getValueAt(row, 1).toString();
-
-                // Tampilkan dialog box
-            }
-        });
+        load_data();
 
         // Username
         JLabel lbl_user = new JLabel("Username :");
@@ -129,9 +123,9 @@ public class nPanel_Account extends JFrame {
         lbl_role.setBounds(30, 260, 100, 10);
         desktopPane.add(lbl_role);
 
-        tx_pass = new JTextField(20);
-        tx_pass.setBounds(20, 275, 200, 20);
-        desktopPane.add(tx_pass);
+        tx_role = new JTextField(20);
+        tx_role.setBounds(20, 275, 200, 20);
+        desktopPane.add(tx_role);
 
         // Save Button
         btn_save = new JButton("Save");
@@ -154,10 +148,50 @@ public class nPanel_Account extends JFrame {
         // ==================================================================================================================================
         // ACTION EVENT
 
-        // Panel Logout
+        // Table Click
+        table.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent arg0) {
+                int row = table.getSelectedRow();
+
+                String index_1 = table.getModel().getValueAt(row, 0).toString();
+                String index_2 = table.getModel().getValueAt(row, 1).toString();
+                String index_3 = table.getModel().getValueAt(row, 2).toString();
+                String index_4 = table.getModel().getValueAt(row, 3).toString();
+                String index_5 = table.getModel().getValueAt(row, 4).toString();
+                String index_6 = table.getModel().getValueAt(row, 5).toString();
+
+                // Tampilkan dialog box
+                nDialog_Account dialog = new nDialog_Account();
+                dialog.initialize();
+                
+                dialog.tx_id.setText(index_1);
+                dialog.tx_user.setText(index_2);
+                dialog.tx_email.setText(index_3);
+                dialog.tx_telp.setText(index_4);
+                dialog.tx_pass.setText(index_5);
+                dialog.tx_role.setText(index_6);
+
+            }
+        });
+
+        // Save button
+        btn_save.addActionListener((ActionEvent e) -> {
+            String user = tx_user.getText();
+            String email = tx_email.getText();
+            String telp = tx_telp.getText();
+            String pass = tx_pass.getText();
+            String role = tx_role.getText();
+
+            new Insert_Pengguna(user, email, telp, pass, role);
+
+            load_data();
+
+            // frame.dispose();
+        });
+
+        // Button Back
         btn_back.addActionListener((ActionEvent e) -> {
-            System.out.println("UDAN DERES");
-            
             nDashboard_Admin.frame.setVisible(true);
             
             frame.dispose();
@@ -187,5 +221,23 @@ public class nPanel_Account extends JFrame {
         int y = (screenHeight - frameHeight) / 2;
 
         frame.setLocation(x, y); // Menetapkan posisi frame di tengah layar
+    }
+
+    // Menyesuaikan ukuran kolom secara otomatis
+    public static void load_data() {
+        Pengguna.load_data_pengguna();
+
+        TableColumnModel columnModel = table.getColumnModel();
+        for (int column = 0; column < table.getColumnCount(); column++) {
+            int width = 15; // Minimum width
+            for (int row = 0; row < table.getRowCount(); row++) {
+                Component comp = table.prepareRenderer(table.getCellRenderer(row, column), row, column);
+                width = Math.max(comp.getPreferredSize().width + 1, width);
+            }
+            if (width > 300) {
+                width = 300; // Max width
+            }
+            columnModel.getColumn(column).setPreferredWidth(width);
+        }
     }
 }

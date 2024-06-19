@@ -69,20 +69,7 @@ public class nPanel_Kategori extends JFrame {
         scrollPane = new JScrollPane(table);
         scrollPane.setBounds(300, 120, 460, 300);
         desktopPane.add(scrollPane);
-        Kategori.load_data_kategori();
-
-        table.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent arg0) {
-                int row = table.getSelectedRow();
-
-                String index_1 = table.getModel().getValueAt(row, 0).toString();
-                String index_2 = table.getModel().getValueAt(row, 1).toString();
-
-                // Tampilkan dialog box
-
-            }
-        });
+        load_data();
 
         // Nama
         JLabel lbl_nama = new JLabel("Nama Kategori :");
