@@ -17,7 +17,8 @@ public class Splash_Screen {
 		showSplash();
 		// Tampilkan aplikasi utama (misal JFrame)
 		// Login_Pengguna log = new Login_Pengguna();
-		Login_Pengguna.main(null);
+		nLogin_User lg = new nLogin_User();
+		lg.initialize();
 	}
 
 	public static void showSplash() throws InterruptedException {
@@ -46,7 +47,7 @@ public class Splash_Screen {
 		// Simulasi proses loading
 		for (int i = 0; i <= 100; i++) {
 			progressBar.setValue(i);
-			Thread.sleep(1000); // Simulasi waktu loading
+			Thread.sleep(50); // Simulasi waktu loading
 		}
 
 		// affff

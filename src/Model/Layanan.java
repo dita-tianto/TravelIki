@@ -1,13 +1,17 @@
 package Model;
 
+import View.Panel_Test;
+
 import View.All_Panel.Panel_Insert_Layanan;
 import View.All_Panel.nPanel_Layanan;
+import java.lang.reflect.Array;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import net.proteanit.sql.DbUtils;
 
@@ -20,15 +24,16 @@ public class Layanan {
     private String jenis;
 
     // TAMBAH LAYANAN
-    
-        public void set_data_layanan(String give_layanan, double give_harga, int give_id_kategori, String give_jenis) {
-            this.layanan = give_layanan;
-            this.harga = give_harga;
-            this.id_kategori = give_id_kategori;
-            this.jenis = give_jenis;
-        }
 
-    public void set_data_layanan(String give_layanan, String give_deskripsi, double give_harga, int give_id_kategori, String give_status, String give_jenis) {
+    public void set_data_layanan(String give_layanan, double give_harga, int give_id_kategori, String give_jenis) {
+        this.layanan = give_layanan;
+        this.harga = give_harga;
+        this.id_kategori = give_id_kategori;
+        this.jenis = give_jenis;
+    }
+
+    public void set_data_layanan(String give_layanan, String give_deskripsi, double give_harga, int give_id_kategori,
+            String give_status, String give_jenis) {
         this.layanan = give_layanan;
         this.deskripsi = give_deskripsi;
         this.harga = give_harga;
@@ -96,6 +101,23 @@ public class Layanan {
         }
     }
 
+    public static void load_layanan() {
+        ArrayList<String> status = new ArrayList<>();
+
+        String cmd = "SELECT nama_layanan AS 'Nama Layanan' FROM layanan";
+
+        try (Connection con = Database.getConnection();
+                PreparedStatement stmt = con.prepareStatement(cmd)) {
+
+            ResultSet rs = stmt.executeQuery();
+            Panel_Test.table.setModel(DbUtils.resultSetToTableModel(rs));
+
+        } catch (SQLException e) {
+            System.err.println(e);
+        }
+
+    }
+
     public static ArrayList<String> get_status_layanan() {
         ArrayList<String> status = new ArrayList<>();
 
@@ -104,30 +126,30 @@ public class Layanan {
         try (Connection con = Database.getConnection();
                 PreparedStatement stmt = con.prepareStatement(cmd)) {
 
-			ResultSet rs = stmt.executeQuery();
-			while (rs.next()) {
-				status.add(rs.getString("status_layanan"));
-			}
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                status.add(rs.getString("status_layanan"));
+            }
 
         } catch (SQLException e) {
             System.err.println(e);
         }
 
-		return status;
-	}
+        return status;
+    }
 
     // delete layanan
-    public static void delete_layanan (int give_id_kategori){
+    public static void delete_layanan(int give_id_kategori) {
         String cmd = "DELETE FROM `layanan` WHERE id_layanan = ?";
-    
+
         try (Connection con = Database.getConnection();
                 PreparedStatement stmt = con.prepareStatement(cmd)) {
             stmt.setInt(1, give_id_kategori);
             stmt.execute();
-    
+
         } catch (SQLException e) {
             System.err.println(e);
         }
-        
+
     }
 }
