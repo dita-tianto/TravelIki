@@ -1,7 +1,9 @@
 package View;
 
+import View.All_Panel.nPanel_Account;
 import View.All_Panel.nPanel_Kategori;
 import View.All_Panel.nPanel_Layanan;
+import View.All_Panel.nPanel_Pembayaran;
 import View.All_Panel.nPanel_Pemesanan;
 import View.All_Panel.nPanel_Ulasan;
 import View.Login.nLogin_User;
@@ -13,9 +15,11 @@ public class nDashboard_Admin extends JFrame {
     public static nDashboard_Admin frame;
     private static nLogin_User login;
     private static nPanel_Layanan layanan;
-    private static nPanel_Pemesanan pemesanan;
+    private static nPanel_Pemesanan pesanan;
+    private static nPanel_Pembayaran bayar;
     private static nPanel_Kategori kategori;
     private static nPanel_Ulasan ulasan;
+    private static nPanel_Account account;
 
 
     private static JDesktopPane desktopPane;
@@ -211,17 +215,26 @@ public class nDashboard_Admin extends JFrame {
         
         // Panel button 1
         btn_panel_1.addActionListener((ActionEvent e) -> {
-            
+            layanan = new nPanel_Layanan();
+            layanan.initialize();
+    
+            frame.setVisible(false);
         });
 
         // Panel button 2
         btn_panel_2.addActionListener((ActionEvent e) -> {
-
+            pesanan = new nPanel_Pemesanan();
+            pesanan.initialize();
+    
+            frame.setVisible(false);
         });
 
         // Panel button 3
         btn_panel_3.addActionListener((ActionEvent e) -> {
-
+            bayar = new nPanel_Pembayaran();
+            bayar.initialize();
+    
+            frame.setVisible(false);
         });
 
         // Panel button 4
@@ -242,7 +255,10 @@ public class nDashboard_Admin extends JFrame {
 
         // Panel button 6
         btn_panel_6.addActionListener((ActionEvent e) -> {
-            
+            account = new nPanel_Account();
+            account.initialize();
+    
+            frame.setVisible(false);
         });
 
         // Memunculkan frame di tengah layar
