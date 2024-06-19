@@ -43,8 +43,7 @@ public class nPanel_Pemesanan extends JFrame {
         // Menambahkan latar belakang gambar ke desktopPane
         JLabel backgroundLabel = new JLabel(new ImageIcon(image));
         backgroundLabel.setBounds(0, 0, 800, 450);
-        desktopPane.add(backgroundLabel, Integer.valueOf(Integer.MIN_VALUE)); // Menempatkan latar belakang di lapisan
-                                                                              // terbawah
+        desktopPane.add(backgroundLabel, Integer.valueOf(Integer.MIN_VALUE)); // Menempatkan latar belakang di lapisan terbawah
 
 // ==================================================================================================================================
     // KOMPONEN GUI
