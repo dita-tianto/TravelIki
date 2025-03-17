@@ -1,4 +1,4 @@
-package View.All_Panel;
+package View.All_panel;
 
 import Controller.Insert_Layanan;
 import java.awt.*;

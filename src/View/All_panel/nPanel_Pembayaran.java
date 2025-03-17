@@ -1,4 +1,4 @@
-package View.All_Panel;
+package View.All_panel;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -8,7 +8,7 @@ import javax.swing.*;
 
 import Model.Kategori;
 import Model.Pembayaran;
-import View.Dialogue.Cat_update;
+// import View.Dialogue.Cat_update;
 
 public class nPanel_Pembayaran extends JFrame {
     private static nPanel_Pembayaran frame;
@@ -101,7 +101,7 @@ public class nPanel_Pembayaran extends JFrame {
         tx_user.setBounds(20, 155, 200, 20);
         desktopPane.add(tx_user);
 
-        // Harga    
+        // Harga
         JLabel harga = new JLabel("BAYAR TIKET :");
         harga.setFont(new Font("Poppins", Font.BOLD, 10));
         harga.setForeground(Color.WHITE);

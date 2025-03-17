@@ -1,6 +1,6 @@
 package View;
 
-import View.All_Panel.*;
+import View.All_panel.*;
 import View.Login.nLogin_User;
 import java.awt.*;
 import java.awt.event.*;

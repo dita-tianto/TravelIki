@@ -7,7 +7,7 @@ import java.sql.SQLException;
 
 import javax.swing.table.TableModel;
 
-import View.All_Panel.nPanel_Ulasan;
+import View.All_panel.nPanel_Ulasan;
 import net.proteanit.sql.DbUtils;
 
 public class Ulasan {

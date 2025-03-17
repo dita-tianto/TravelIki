@@ -1,4 +1,4 @@
-package View.All_Panel;
+package View.All_panel;
 
 import javax.swing.JPanel;
 import net.miginfocom.swing.MigLayout;
@@ -8,13 +8,13 @@ import javax.swing.JTextField;
 
 import com.toedter.calendar.JDateChooser;
 
-import Controller.Get_Category_data;
+// import Controller.Get_Category_data;
 import Model.Enums;
 import Model.Kategori;
 import Model.Pembayaran;
-import Model.Product_category;
-import Model.Status;
-import View.Dialogue.Cat_update;
+// import Model.Product_category;
+// import Model.Status;
+// import View.Dialogue.Cat_update;
 
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
@@ -28,7 +28,6 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.Color;
 import com.toedter.calendar.JDateChooser;
-
 
 public class Panel_Insert_Pembayaran extends JPanel {
     private JTextField name;
@@ -104,9 +103,8 @@ public class Panel_Insert_Pembayaran extends JPanel {
     }
 }
 
-
 // supaya bisa commit : )
 // tes
 
-//dikumpulno
+// dikumpulno
 // sada

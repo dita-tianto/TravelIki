@@ -2,8 +2,8 @@ package Model;
 
 import View.Panel_Test;
 
-import View.All_Panel.Panel_Insert_Layanan;
-import View.All_Panel.nPanel_Layanan;
+import View.All_panel.Panel_Insert_Pembayaran;
+import View.All_panel.nPanel_Layanan;
 import java.lang.reflect.Array;
 
 import java.sql.Connection;
@@ -12,6 +12,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
+
+import javax.swing.JTable;
 
 import net.proteanit.sql.DbUtils;
 
@@ -110,7 +112,7 @@ public class Layanan {
                 PreparedStatement stmt = con.prepareStatement(cmd)) {
 
             ResultSet rs = stmt.executeQuery();
-            Panel_Test.table.setModel(DbUtils.resultSetToTableModel(rs));
+            ((JTable) Panel_Test.table).setModel(DbUtils.resultSetToTableModel(rs));
 
         } catch (SQLException e) {
             System.err.println(e);

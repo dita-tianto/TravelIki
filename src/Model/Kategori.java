@@ -1,7 +1,7 @@
 package Model;
 
-import View.All_Panel.Panel_Insert_Kategori;
-import View.All_Panel.nPanel_Kategori;
+// import View.All_panel.Panel_Insert_Kategori;
+import View.All_panel.nPanel_Kategori;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

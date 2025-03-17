@@ -9,8 +9,8 @@ import Controller.Update_Pengguna;
 import Model.Kategori;
 import Model.Layanan;
 import Model.Pengguna;
-import View.All_Panel.nPanel_Account;
-import View.All_Panel.nPanel_Layanan;
+import View.All_panel.nPanel_Account;
+import View.All_panel.nPanel_Layanan;
 
 // import Model.Layanan;
 // import View.nDashboard_Admin;

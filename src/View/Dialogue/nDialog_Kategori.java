@@ -8,8 +8,8 @@ import javax.swing.*;
 import Controller.Update_Layanan;
 import Model.Kategori;
 import Model.Layanan;
-import View.All_Panel.nPanel_Kategori;
-import View.All_Panel.nPanel_Layanan;
+import View.All_panel.nPanel_Kategori;
+import View.All_panel.nPanel_Layanan;
 
 // import Model.Layanan;
 // import View.nDashboard_Admin;

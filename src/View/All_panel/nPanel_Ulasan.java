@@ -1,4 +1,4 @@
-package View.All_Panel;
+package View.All_panel;
 
 import Model.Kategori;
 import Model.Ulasan;

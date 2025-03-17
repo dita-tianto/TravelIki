@@ -9,8 +9,8 @@ import Controller.Update_Ulasan;
 import Model.Kategori;
 import Model.Layanan;
 import Model.Ulasan;
-import View.All_Panel.nPanel_Layanan;
-import View.All_Panel.nPanel_Ulasan;
+import View.All_panel.nPanel_Layanan;
+import View.All_panel.nPanel_Ulasan;
 
 // import Model.Layanan;
 // import View.nDashboard_Admin;
