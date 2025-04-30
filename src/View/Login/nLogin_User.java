@@ -6,6 +6,8 @@ import java.awt.event.*;
 import javax.swing.*;
 // import java.awt.event.ActionListener;
 // import java.awt.event.MouseAdapter;
+import Controller.Login;
+import Model.Enums;
 
 public class nLogin_User extends JFrame {
     private static nLogin_User frame;
@@ -17,8 +19,8 @@ public class nLogin_User extends JFrame {
     private static JButton btn_login;
 
     public void initialize() {
-// ==================================================================================================================================
-    // FRAME UTAMA
+        // ==================================================================================================================================
+        // FRAME UTAMA
         frame = new nLogin_User();
         frame.setTitle("Traveliki");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -36,11 +38,12 @@ public class nLogin_User extends JFrame {
         // Menambahkan latar belakang gambar ke desktopPane
         JLabel backgroundLabel = new JLabel(new ImageIcon(image));
         backgroundLabel.setBounds(0, 0, 800, 400);
-        desktopPane.add(backgroundLabel, Integer.valueOf(Integer.MIN_VALUE)); // Menempatkan latar belakang di lapisan terbawah
+        desktopPane.add(backgroundLabel, Integer.valueOf(Integer.MIN_VALUE)); // Menempatkan latar belakang di lapisan
+                                                                              // terbawah
 
-// ==================================================================================================================================
-    // KOMPONEN GUI
-        
+        // ==================================================================================================================================
+        // KOMPONEN GUI
+
         // Username
         JLabel lbl_user = new JLabel("Username:");
         lbl_user.setFont(new Font("Poppins", Font.BOLD, 10));
@@ -74,8 +77,8 @@ public class nLogin_User extends JFrame {
         btn_show_pass.setFont(new Font("Poppins", Font.PLAIN, 10));
         btn_show_pass.setBackground(Color.WHITE); // Warna latar belakang tombol
         btn_show_pass.setBounds(480, 240, 15, 15);
-        
-        desktopPane.add(btn_show_pass);        
+
+        desktopPane.add(btn_show_pass);
 
         // Login Button
         btn_login = new JButton("Login");
@@ -83,7 +86,7 @@ public class nLogin_User extends JFrame {
         btn_login.setBackground(new Color(13, 108, 176));
         btn_login.setForeground(Color.WHITE);
         btn_login.setBounds(620, 240, 110, 30);
-        
+
         desktopPane.add(btn_login);
 
         // Register Menu
@@ -92,30 +95,36 @@ public class nLogin_User extends JFrame {
         register.setForeground(Color.WHITE);
         register.setBounds(490, 300, 120, 10);
         desktopPane.add(register);
-        
+
         JLabel click_here = new JLabel("Click here!");
         click_here.setFont(new Font("Poppins", Font.BOLD, 10));
         click_here.setForeground(new Color(13, 108, 176));
         click_here.setBounds(600, 300, 120, 10);
-        
+
         desktopPane.add(click_here);
 
-// ==================================================================================================================================
-    // ACTION EVENT
+        // ==================================================================================================================================
+        // ACTION EVENT
 
         // Login button
         btn_login.addActionListener((ActionEvent e) -> {
             String username = tx_user.getText();
             String password = new String(tx_pass.getPassword());
-            
+
+            Login login = new Login();
+            Enums.role user_role = login.run_login(username, password);
+
             // Contoh validasi sederhana
-            if (username.equals("admin") && password.equals("admin123")) { // belum di ubah
+            if (user_role != null) { // belum di ubah
                 JOptionPane.showMessageDialog(frame, "Login Successful!");
-                
+
                 frame.dispose();
-                dashboard = new nDashboard_Admin();
-                dashboard.initialize();
-                
+
+                if (user_role == Enums.role.ADMIN) {
+                    dashboard = new nDashboard_Admin();
+                    dashboard.initialize();
+                }
+
             } else {
                 JOptionPane.showMessageDialog(frame, "Login Failed. Invalid username or password.");
                 // Lakukan tindakan setelah login gagal di sini
@@ -146,10 +155,10 @@ public class nLogin_User extends JFrame {
             }
 
             @Override
-            public void mouseReleased(MouseEvent e){
+            public void mouseReleased(MouseEvent e) {
                 click_here.setForeground(new Color(13, 108, 176));
                 System.out.println("RELEASED");
-                
+
                 try {
                     Thread.sleep(100);
                 } catch (InterruptedException e1) {
@@ -157,7 +166,7 @@ public class nLogin_User extends JFrame {
                 }
                 System.out.println("Login");
             }
-            
+
         });
 
         // Memunculkan frame di tengah layar
@@ -168,8 +177,9 @@ public class nLogin_User extends JFrame {
     }
 
     public static void register() {
-        
+
     }
+
     // menempatkan frame di tengah layar
     private static void centerFrameOnScreen(JFrame frame) {
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize(); // Mendapatkan ukuran layar saat ini
