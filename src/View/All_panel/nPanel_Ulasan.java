@@ -129,11 +129,11 @@ public class nPanel_Ulasan extends JFrame {
         desktopPane.add(btn_save);
 
         // Back Button
-        btn_back = new JButton("<");
+        btn_back = new JButton("<-");
         btn_back.setFont(new Font("Poppins", Font.PLAIN, 10));
         btn_back.setBackground(new Color(13, 108, 176));
         btn_back.setForeground(Color.WHITE);
-        btn_back.setBounds(0, 0, 25, 25);
+        btn_back.setBounds(0, 0, 50, 50);
 
         desktopPane.add(btn_back);
 
@@ -155,7 +155,7 @@ public class nPanel_Ulasan extends JFrame {
                 // Tampilkan dialog box
                 nDialog_Ulasan dialog = new nDialog_Ulasan();
                 dialog.initialize();
-                
+
                 dialog.tx_id.setText(index_1);
                 dialog.tx_user.setText(index_2);
                 dialog.tx_layanan.setText(index_3);
@@ -182,7 +182,7 @@ public class nPanel_Ulasan extends JFrame {
         // Panel Logout
         btn_back.addActionListener((ActionEvent e) -> {
             nDashboard_Admin.frame.setVisible(true);
-            
+
             frame.dispose();
         });
 
@@ -214,7 +214,7 @@ public class nPanel_Ulasan extends JFrame {
 
     public static void load_data() {
         Ulasan.load_data_ulasan();
-        
+
         TableColumnModel columnModel = table.getColumnModel();
         for (int column = 0; column < table.getColumnCount(); column++) {
             int width = 15; // Minimum width

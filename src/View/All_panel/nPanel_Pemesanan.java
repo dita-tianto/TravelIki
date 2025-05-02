@@ -108,12 +108,12 @@ public class nPanel_Pemesanan extends JFrame {
         desktopPane.add(btn_save);
 
         // Back Button
-        btn_back = new JButton("<");
+        btn_back = new JButton("<-");
         btn_back.setFont(new Font("Poppins", Font.PLAIN, 10));
         btn_back.setBackground(new Color(13, 108, 176));
         btn_back.setForeground(Color.WHITE);
-        btn_back.setBounds(0, 0, 25, 25);
-
+        btn_back.setBounds(0, 0, 50, 50);
+        
         desktopPane.add(btn_back);
 
         // ==================================================================================================================================
@@ -121,10 +121,8 @@ public class nPanel_Pemesanan extends JFrame {
 
         // Panel Back
         btn_back.addActionListener((ActionEvent e) -> {
-            System.out.println("UDAN DERES");
-            
+            System.out.println("Back in black!");
             nDashboard_Admin.frame.setVisible(true);
-            
             frame.dispose();
         });
 

@@ -13,7 +13,7 @@ import View.Dialogue.nDialog_Layanan;
 
 public class nPanel_Layanan extends JFrame {
     private static nPanel_Layanan frame;
-    public  static JDesktopPane desktopPane;
+    public static JDesktopPane desktopPane;
     private static JScrollPane scrollPane;
     private static JTextField tx_nama;
     private static JTextField tx_kategori; // ganti combo box
@@ -51,9 +51,9 @@ public class nPanel_Layanan extends JFrame {
         // Menambahkan latar belakang gambar ke desktopPane
         JLabel backgroundLabel = new JLabel(new ImageIcon(image));
         backgroundLabel.setBounds(0, 0, 800, 450);
-        
+
         // Menempatkan latar belakang di lapisan terbawah
-        desktopPane.add(backgroundLabel, Integer.valueOf(Integer.MIN_VALUE)); 
+        desktopPane.add(backgroundLabel, Integer.valueOf(Integer.MIN_VALUE));
     }
 
     public void initialize() {
@@ -103,11 +103,11 @@ public class nPanel_Layanan extends JFrame {
         lbl_harga.setForeground(Color.WHITE);
         lbl_harga.setBounds(30, 180, 100, 10);
         desktopPane.add(lbl_harga);
-        
+
         tx_harga = new JTextField(20);
         tx_harga.setBounds(20, 195, 200, 20);
         desktopPane.add(tx_harga);
-        
+
         // Jenis
         JLabel lbl_jenis = new JLabel("Jenis :");
         lbl_jenis.setFont(new Font("Poppins", Font.BOLD, 10));
@@ -118,7 +118,7 @@ public class nPanel_Layanan extends JFrame {
         tx_jenis = new JTextField(20);
         tx_jenis.setBounds(20, 235, 200, 20);
         desktopPane.add(tx_jenis);
-        
+
         // Save Button
         btn_save = new JButton("Save");
         btn_save.setFont(new Font("Poppins", Font.PLAIN, 10));
@@ -129,11 +129,11 @@ public class nPanel_Layanan extends JFrame {
         desktopPane.add(btn_save);
 
         // Back Button
-        btn_back = new JButton("<");
+        btn_back = new JButton("<-");
         btn_back.setFont(new Font("Poppins", Font.PLAIN, 10));
         btn_back.setBackground(new Color(13, 108, 176));
         btn_back.setForeground(Color.WHITE);
-        btn_back.setBounds(0, 0, 25, 25);
+        btn_back.setBounds(0, 0, 50, 50);
 
         desktopPane.add(btn_back);
 
@@ -156,7 +156,7 @@ public class nPanel_Layanan extends JFrame {
                 // Tampilkan dialog box
                 nDialog_Layanan dialog = new nDialog_Layanan();
                 dialog.initialize();
-                
+
                 dialog.tx_id.setText(index_1);
                 dialog.tx_nama.setText(index_2);
                 dialog.tx_kategori.setText(index_3);
@@ -184,6 +184,8 @@ public class nPanel_Layanan extends JFrame {
 
         // Panel Back
         btn_back.addActionListener((ActionEvent e) -> {
+            System.out.println("Back in black!");
+
             nDashboard_Admin.frame.setVisible(true);
             dispose();
         });
@@ -194,7 +196,6 @@ public class nPanel_Layanan extends JFrame {
         // Menampilkan frame
         setVisible(true);
     }
-
 
     // Menempatkan frame di tengah layar
     private static void centerFrameOnScreen(JFrame frame) {
